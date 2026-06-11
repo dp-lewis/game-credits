@@ -1,0 +1,84 @@
+# FIRE Central State — source of truth
+# Initialized via Orchestrator (project-init): standards generated, autonomy set.
+
+project:
+  name: Call Sheet
+  description: >-
+    A daily web game where players sort a scrambled ensemble cast back into the
+    two films the actors came from (Connections-style, limited mistakes).
+  created: 2026-06-11T20:58:52Z
+  fire_version: "0.1.8"
+
+workspace:
+  type: greenfield
+  structure: monolith
+  autonomy_bias: autonomous
+  run_scope_preference: single
+  run_scope_history: []
+
+intents:
+  - id: call-sheet
+    title: Call Sheet
+    status: in_progress
+    work_items:
+      # Phase 1 — MVP: one fully playable puzzle
+      - id: project-scaffold
+        title: Project Scaffold
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: []
+      - id: puzzle-schema-and-loader
+        title: Puzzle Schema and Loader
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: [project-scaffold]
+      - id: game-logic-lib
+        title: Game Logic Library
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: [puzzle-schema-and-loader]
+      - id: game-board-ui
+        title: Game Board UI
+        status: pending
+        complexity: high
+        mode: confirm
+        depends_on: [puzzle-schema-and-loader, game-logic-lib]
+      - id: result-and-share
+        title: Result and Share
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: [game-logic-lib, game-board-ui]
+      # Phase 2 — Daily rotation + streaks
+      - id: daily-puzzle-rotation
+        title: Daily Puzzle Rotation
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: [puzzle-schema-and-loader, game-board-ui]
+      - id: streak-tracking
+        title: Streak Tracking
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: [result-and-share, daily-puzzle-rotation]
+      # Phase 3 — TMDB curation pipeline + deploy
+      - id: tmdb-curation-script
+        title: TMDB Curation Script
+        status: pending
+        complexity: high
+        mode: confirm
+        depends_on: [puzzle-schema-and-loader]
+      - id: dreamhost-deploy
+        title: Dreamhost Deploy
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: [project-scaffold]
+
+runs:
+  active: []
+  completed: []
