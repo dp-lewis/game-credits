@@ -78,6 +78,25 @@ const puzzle = await loadPuzzle('2026-06-13'); // fetches puzzles/2026-06-13.jso
 validates, returning a normalized `Puzzle`. `validatePuzzle(data)` can be used
 directly on already-loaded data.
 
+## Daily rotation
+
+Static hosting can't list a directory, so a **manifest** is the registry of
+available puzzles:
+
+```jsonc
+// public/puzzles/manifest.json
+["2026-06-12", "2026-06-13", "2026-06-14"]
+```
+
+The app resolves which puzzle to show via `resolvePuzzleId(todayKey, ids)`
+(`src/lib/puzzle-schedule.js`): the exact date if present, else the most recent
+puzzle on or before today, else the earliest. **Timezone:** "today" is the
+player's _local_ calendar date (`todayKey`, `src/lib/date-key.js`) — the puzzle
+rolls at local midnight.
+
+A `?puzzle=<id>` query override forces a specific puzzle (used for deterministic
+tests and replay/share links), bypassing date resolution.
+
 ## Recommended puzzle design (v2)
 
 - **4 films, 16 actors, 4 per film** (tunable via the schema's group-balance rule).

@@ -51,6 +51,32 @@ describe('generateGroupShareText', () => {
     expect(text).not.toContain('⬜');
   });
 
+  it('appends a streak line when streak > 0', () => {
+    const text = generateGroupShareText({
+      id: '2026-06-13',
+      status: 'won',
+      groupsSolved: 3,
+      totalGroups: 3,
+      mistakes: 0,
+      streak: 5,
+    });
+    expect(text).toContain('🔥 Streak: 5');
+    expect(text.split('\n')).toHaveLength(4);
+  });
+
+  it('omits the streak line when streak is 0 or absent', () => {
+    const text = generateGroupShareText({
+      id: '2026-06-13',
+      status: 'won',
+      groupsSolved: 3,
+      totalGroups: 3,
+      mistakes: 0,
+      streak: 0,
+    });
+    expect(text).not.toContain('Streak');
+    expect(text.split('\n')).toHaveLength(3);
+  });
+
   it('is spoiler-free — three lines, no actor/film identifiers', () => {
     const text = generateGroupShareText({
       id: '2026-06-13',

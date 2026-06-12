@@ -4,9 +4,13 @@ title: Daily Puzzle Rotation
 intent: call-sheet
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [puzzle-schema-and-loader, game-board-ui]
+status: completed
+depends_on:
+  - puzzle-schema-and-loader
+  - game-board-ui
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-004
+completed_at: 2026-06-12T21:58:30.497Z
 ---
 
 # Work Item: Daily Puzzle Rotation

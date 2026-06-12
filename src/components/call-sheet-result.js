@@ -16,6 +16,7 @@ export class CallSheetResult extends LitElement {
     maxMistakes: { attribute: false },
     groupsSolved: { attribute: false },
     totalGroups: { attribute: false },
+    streak: { attribute: false },
     _copied: { state: true },
   };
 
@@ -78,6 +79,7 @@ export class CallSheetResult extends LitElement {
       totalGroups: this.totalGroups,
       mistakes: this.mistakes,
       maxMistakes: this.maxMistakes,
+      streak: this.streak,
     });
   }
 
@@ -105,6 +107,9 @@ export class CallSheetResult extends LitElement {
         <p class="groups">
           ${this.groupsSolved}/${this.totalGroups} groups found
         </p>
+        ${this.streak > 0
+          ? html`<p class="streak">🔥 ${this.streak}-day streak</p>`
+          : ''}
         <pre class="share">${this._shareText}</pre>
         <button class="copy" @click=${this._copy}>
           ${this._copied ? 'Copied!' : 'Copy result'}

@@ -218,3 +218,49 @@ export async function loadPuzzle(id, options = {}) {
 
   return validatePuzzle(raw);
 }
+
+/**
+ * Fetch the puzzle manifest — the list of available puzzle ids (date keys).
+ * Static hosting can't list a directory, so the manifest is the registry.
+ *
+ * @param {Object} [options]
+ * @param {string} [options.basePath='puzzles/']
+ * @param {typeof fetch} [options.fetchImpl]
+ * @returns {Promise<string[]>}
+ * @throws {PuzzleValidationError} when missing or malformed.
+ */
+export async function loadManifest(options = {}) {
+  const { basePath = 'puzzles/', fetchImpl = fetch } = options;
+  const url = `${basePath}manifest.json`;
+
+  let response;
+  try {
+    response = await fetchImpl(url);
+  } catch (err) {
+    throw new PuzzleValidationError(
+      `Failed to fetch puzzle manifest: ${err.message}`
+    );
+  }
+  if (!response || !response.ok) {
+    const status = response ? response.status : 'no response';
+    throw new PuzzleValidationError(
+      `Failed to load puzzle manifest (${status}).`
+    );
+  }
+
+  let raw;
+  try {
+    raw = await response.json();
+  } catch (err) {
+    throw new PuzzleValidationError(
+      `Puzzle manifest is not valid JSON: ${err.message}`
+    );
+  }
+
+  if (!Array.isArray(raw) || !raw.every((id) => isNonEmptyString(id))) {
+    throw new PuzzleValidationError(
+      'Puzzle manifest must be an array of non-empty id strings.'
+    );
+  }
+  return raw;
+}

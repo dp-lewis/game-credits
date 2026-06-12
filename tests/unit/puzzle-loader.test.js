@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   validatePuzzle,
   loadPuzzle,
+  loadManifest,
   PuzzleValidationError,
 } from '../../src/lib/puzzle-loader.js';
 import sample from '../fixtures/sample-puzzle.json';
@@ -154,6 +155,47 @@ describe('loadPuzzle', () => {
   it('throws when fetch resolves to no response', async () => {
     const fetchImpl = async () => undefined;
     await expect(loadPuzzle('x', { fetchImpl })).rejects.toThrow(/no response/);
+  });
+});
+
+describe('loadManifest', () => {
+  const okFetch = (body) => async () => ({
+    ok: true,
+    status: 200,
+    json: async () => body,
+  });
+
+  it('fetches and returns the array of ids', async () => {
+    const ids = ['2026-06-12', '2026-06-13'];
+    const out = await loadManifest({ fetchImpl: okFetch(ids) });
+    expect(out).toEqual(ids);
+  });
+
+  it('requests manifest.json under the base path', async () => {
+    let url = '';
+    const fetchImpl = async (u) => {
+      url = u;
+      return { ok: true, status: 200, json: async () => [] };
+    };
+    await loadManifest({ basePath: '/data/', fetchImpl });
+    expect(url).toBe('/data/manifest.json');
+  });
+
+  it('throws on a non-ok response', async () => {
+    const fetchImpl = async () => ({ ok: false, status: 404 });
+    await expect(loadManifest({ fetchImpl })).rejects.toThrow(/manifest/);
+  });
+
+  it('throws when the body is not an array of strings', async () => {
+    await expect(
+      loadManifest({ fetchImpl: okFetch({ nope: true }) })
+    ).rejects.toThrow(/array of non-empty id strings/);
+  });
+
+  it('throws when an entry is empty', async () => {
+    await expect(
+      loadManifest({ fetchImpl: okFetch(['2026-06-12', '']) })
+    ).rejects.toThrow(/array of non-empty id strings/);
   });
 });
 

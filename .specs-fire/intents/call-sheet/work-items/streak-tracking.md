@@ -4,9 +4,13 @@ title: Streak Tracking
 intent: call-sheet
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [result-and-share, daily-puzzle-rotation]
+status: completed
+depends_on:
+  - result-and-share
+  - daily-puzzle-rotation
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-004
+completed_at: 2026-06-12T22:03:49.192Z
 ---
 
 # Work Item: Streak Tracking

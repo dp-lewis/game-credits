@@ -42,6 +42,7 @@ export function generateShareText({ id, status, mistakes, maxMistakes }) {
  * @param {number} params.groupsSolved Groups completed.
  * @param {number} params.totalGroups Total groups (= film count).
  * @param {number} params.mistakes Wrong submits used.
+ * @param {number} [params.streak] Current streak; a 🔥 line is appended when > 0.
  * @returns {string} Multi-line share text.
  */
 export function generateGroupShareText({
@@ -50,6 +51,7 @@ export function generateGroupShareText({
   groupsSolved,
   totalGroups,
   mistakes,
+  streak,
 }) {
   const solved = Math.max(0, Math.min(groupsSolved, totalGroups));
   const pips =
@@ -57,9 +59,10 @@ export function generateGroupShareText({
   const header = `Call Sheet ${id}`;
   const used = Math.max(0, mistakes);
 
-  if (status === 'won') {
-    const plural = used === 1 ? '' : 's';
-    return `${header}\nSolved ${solved}/${totalGroups} with ${used} mistake${plural} ✅\n${pips}`;
-  }
-  return `${header}\n${solved}/${totalGroups} groups ❌\n${pips}`;
+  const body =
+    status === 'won'
+      ? `${header}\nSolved ${solved}/${totalGroups} with ${used} mistake${used === 1 ? '' : 's'} ✅\n${pips}`
+      : `${header}\n${solved}/${totalGroups} groups ❌\n${pips}`;
+
+  return streak && streak > 0 ? `${body}\n🔥 Streak: ${streak}` : body;
 }

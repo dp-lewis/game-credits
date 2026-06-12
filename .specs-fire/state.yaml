@@ -94,20 +94,24 @@ intents:
         completed_at: 2026-06-12T10:02:09.814Z
       - id: daily-puzzle-rotation
         title: Daily Puzzle Rotation
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - puzzle-schema-and-loader
           - game-board-ui
+        run_id: run-game-credits-004
+        completed_at: 2026-06-12T22:03:49.192Z
       - id: streak-tracking
         title: Streak Tracking
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - result-and-share
           - daily-puzzle-rotation
+        run_id: run-game-credits-004
+        completed_at: 2026-06-12T22:03:49.192Z
       - id: tmdb-curation-script
         title: TMDB Curation Script
         status: pending
@@ -164,3 +168,14 @@ runs:
           mode: autopilot
       started: 2026-06-12T09:37:41.860Z
       completed: 2026-06-12T10:02:09.814Z
+    - id: run-game-credits-004
+      scope: wide
+      work_items:
+        - id: daily-puzzle-rotation
+          intent: call-sheet
+          mode: autopilot
+        - id: streak-tracking
+          intent: call-sheet
+          mode: autopilot
+      started: 2026-06-12T21:53:35.601Z
+      completed: 2026-06-12T22:03:49.192Z

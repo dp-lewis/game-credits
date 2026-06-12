@@ -1,13 +1,26 @@
 import { LitElement, html, css } from 'lit';
-import { loadPuzzle } from '../lib/puzzle-loader.js';
+import { loadPuzzle, loadManifest } from '../lib/puzzle-loader.js';
+import { todayKey } from '../lib/date-key.js';
+import { resolvePuzzleId } from '../lib/puzzle-schedule.js';
+import { createProgressStore } from '../lib/progress-store.js';
 import './call-sheet-board.js';
 import './call-sheet-result.js';
 
-/**
- * Fixed puzzle id for the MVP. The `daily-puzzle-rotation` work item replaces
- * this with date-based resolution.
- */
-const DEFAULT_PUZZLE_ID = '2026-06-14';
+/** localStorage, with an in-memory fallback when it's unavailable (private mode). */
+function safeStorage() {
+  try {
+    const probe = '__cs_probe__';
+    window.localStorage.setItem(probe, probe);
+    window.localStorage.removeItem(probe);
+    return window.localStorage;
+  } catch {
+    const mem = new Map();
+    return {
+      getItem: (k) => (mem.has(k) ? mem.get(k) : null),
+      setItem: (k, v) => mem.set(k, String(v)),
+    };
+  }
+}
 
 /**
  * `<call-sheet-app>` — root application shell. Loads today's puzzle and renders
@@ -19,6 +32,8 @@ export class CallSheetApp extends LitElement {
     _error: { state: true },
     _loading: { state: true },
     _gameOver: { state: true },
+    _played: { state: true },
+    _streak: { state: true },
   };
 
   static styles = css`
@@ -58,10 +73,21 @@ export class CallSheetApp extends LitElement {
     this._error = '';
     this._loading = true;
     this._gameOver = null;
+    this._played = false;
+    this._streak = 0;
+    this._store = createProgressStore(safeStorage());
   }
 
   _onGameOver(event) {
-    this._gameOver = event.detail;
+    const detail = event.detail;
+    const { current } = this._store.recordResult(this._puzzle.id, {
+      status: detail.status,
+      mistakes: detail.mistakes,
+      groupsSolved: detail.groupsSolved,
+      totalGroups: detail.totalGroups,
+    });
+    this._streak = current;
+    this._gameOver = detail;
   }
 
   connectedCallback() {
@@ -69,10 +95,38 @@ export class CallSheetApp extends LitElement {
     this._load();
   }
 
+  /** Resolve which puzzle to load: an explicit `?puzzle=<id>` override, else
+   *  the manifest + today's local date. */
+  async _resolvePuzzleId() {
+    const override = new URLSearchParams(window.location.search).get('puzzle');
+    if (override) return override;
+    const ids = await loadManifest();
+    return resolvePuzzleId(todayKey(), ids);
+  }
+
   async _load() {
     try {
-      this._puzzle = await loadPuzzle(DEFAULT_PUZZLE_ID);
+      const id = await this._resolvePuzzleId();
+      if (!id) {
+        this._error = 'No puzzle is scheduled today. Check back tomorrow.';
+        this._loading = false;
+        return;
+      }
+      this._puzzle = await loadPuzzle(id);
       this._loading = false;
+
+      // Restore a finished day instead of letting it be replayed.
+      const prior = this._store.getDay(this._puzzle.id);
+      if (prior) {
+        this._played = true;
+        this._streak = this._store.getStreaks().current;
+        this._gameOver = {
+          status: prior.status,
+          mistakes: prior.mistakes,
+          groupsSolved: prior.groupsSolved,
+          totalGroups: prior.totalGroups,
+        };
+      }
     } catch (err) {
       this._error = "Couldn't load today's puzzle. Please try again later.";
       this._loading = false;
@@ -83,12 +137,17 @@ export class CallSheetApp extends LitElement {
   render() {
     return html`
       <h1>Call Sheet</h1>
-      <p class="tagline">Sort the scrambled cast back into their two films.</p>
+      <p class="tagline">Sort the scrambled cast back into their films.</p>
       ${this._loading
         ? html`<p class="status">Loading today's puzzle…</p>`
         : ''}
       ${this._error ? html`<p class="status error">${this._error}</p>` : ''}
-      ${this._puzzle
+      ${this._played
+        ? html`<p class="status">
+            You've already played this puzzle. Come back tomorrow for a new one.
+          </p>`
+        : ''}
+      ${this._puzzle && !this._played
         ? html`<call-sheet-board
             .puzzle=${this._puzzle}
             @game-over=${this._onGameOver}
@@ -102,6 +161,7 @@ export class CallSheetApp extends LitElement {
             .maxMistakes=${this._gameOver.maxMistakes}
             .groupsSolved=${this._gameOver.groupsSolved}
             .totalGroups=${this._gameOver.totalGroups}
+            .streak=${this._streak}
           ></call-sheet-result>`
         : ''}
     `;

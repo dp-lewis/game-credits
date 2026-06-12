@@ -33,6 +33,22 @@ describe('<call-sheet-result>', () => {
     expect(el.shadowRoot.querySelector('button.copy')).toBeTruthy();
   });
 
+  it('shows the streak and includes it in the share text', async () => {
+    const el = await mountResult({
+      puzzleId: '2026-06-13',
+      status: 'won',
+      mistakes: 0,
+      maxMistakes: 4,
+      groupsSolved: 3,
+      totalGroups: 3,
+      streak: 2,
+    });
+    expect(el.shadowRoot.textContent).toContain('🔥 2-day streak');
+    expect(el.shadowRoot.querySelector('pre').textContent).toContain(
+      '🔥 Streak: 2'
+    );
+  });
+
   it('shows a loss heading and partial groups when not solved', async () => {
     const el = await mountResult({
       puzzleId: 'x',
