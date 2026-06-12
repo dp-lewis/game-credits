@@ -4,9 +4,12 @@ title: Puzzle Schema and Loader
 intent: call-sheet
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [project-scaffold]
+status: completed
+depends_on:
+  - project-scaffold
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-002
+completed_at: 2026-06-12T08:39:21.611Z
 ---
 
 # Work Item: Puzzle Schema and Loader

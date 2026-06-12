@@ -4,9 +4,13 @@ title: Result and Share
 intent: call-sheet
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [game-logic-lib, game-board-ui]
+status: completed
+depends_on:
+  - game-logic-lib
+  - game-board-ui
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-002
+completed_at: 2026-06-12T09:26:04.603Z
 ---
 
 # Work Item: Result and Share

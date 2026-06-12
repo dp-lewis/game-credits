@@ -26,34 +26,42 @@ intents:
         completed_at: 2026-06-12T08:09:54.114Z
       - id: puzzle-schema-and-loader
         title: Puzzle Schema and Loader
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - project-scaffold
+        run_id: run-game-credits-002
+        completed_at: 2026-06-12T09:26:04.603Z
       - id: game-logic-lib
         title: Game Logic Library
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - puzzle-schema-and-loader
+        run_id: run-game-credits-002
+        completed_at: 2026-06-12T09:26:04.603Z
       - id: game-board-ui
         title: Game Board UI
-        status: pending
+        status: completed
         complexity: high
         mode: confirm
         depends_on:
           - puzzle-schema-and-loader
           - game-logic-lib
+        run_id: run-game-credits-002
+        completed_at: 2026-06-12T09:26:04.603Z
       - id: result-and-share
         title: Result and Share
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - game-logic-lib
           - game-board-ui
+        run_id: run-game-credits-002
+        completed_at: 2026-06-12T09:26:04.603Z
       - id: daily-puzzle-rotation
         title: Daily Puzzle Rotation
         status: pending
@@ -95,3 +103,20 @@ runs:
           mode: autopilot
       started: 2026-06-12T07:59:48.216Z
       completed: 2026-06-12T08:09:54.114Z
+    - id: run-game-credits-002
+      scope: wide
+      work_items:
+        - id: puzzle-schema-and-loader
+          intent: call-sheet
+          mode: autopilot
+        - id: game-logic-lib
+          intent: call-sheet
+          mode: autopilot
+        - id: game-board-ui
+          intent: call-sheet
+          mode: confirm
+        - id: result-and-share
+          intent: call-sheet
+          mode: autopilot
+      started: 2026-06-12T08:35:45.254Z
+      completed: 2026-06-12T09:26:04.603Z

@@ -4,9 +4,13 @@ title: Game Board UI
 intent: call-sheet
 complexity: high
 mode: confirm
-status: pending
-depends_on: [puzzle-schema-and-loader, game-logic-lib]
+status: completed
+depends_on:
+  - puzzle-schema-and-loader
+  - game-logic-lib
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-002
+completed_at: 2026-06-12T09:22:21.996Z
 ---
 
 # Work Item: Game Board UI

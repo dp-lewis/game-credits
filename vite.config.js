@@ -11,7 +11,7 @@ export default defineConfig({
   // Vitest configuration (read by `vitest`).
   test: {
     environment: 'happy-dom',
-    include: ['tests/unit/**/*.test.js'],
+    include: ['tests/unit/**/*.test.js', 'tests/component/**/*.test.js'],
     coverage: {
       provider: 'v8',
       include: ['src/lib/**/*.js'],

@@ -1,0 +1,14 @@
+{
+  "id": "sample",
+  "maxMistakes": 4,
+  "films": [
+    { "id": "film-a", "title": "Film A", "year": 1999 },
+    { "id": "film-b", "title": "Film B", "year": 2010 }
+  ],
+  "actors": [
+    { "id": "a1", "name": "Actor One", "filmId": "film-a" },
+    { "id": "a2", "name": "Actor Two", "filmId": "film-a" },
+    { "id": "b1", "name": "Actor Three", "filmId": "film-b" },
+    { "id": "b2", "name": "Actor Four", "filmId": "film-b" }
+  ]
+}

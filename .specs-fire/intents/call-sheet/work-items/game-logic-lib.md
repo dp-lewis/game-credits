@@ -4,9 +4,12 @@ title: Game Logic Library
 intent: call-sheet
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [puzzle-schema-and-loader]
+status: completed
+depends_on:
+  - puzzle-schema-and-loader
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-002
+completed_at: 2026-06-12T08:42:08.107Z
 ---
 
 # Work Item: Game Logic Library
