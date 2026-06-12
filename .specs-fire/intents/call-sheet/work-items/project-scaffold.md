@@ -4,9 +4,11 @@ title: Project Scaffold
 intent: call-sheet
 complexity: medium
 mode: autopilot
-status: pending
+status: completed
 depends_on: []
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-001
+completed_at: 2026-06-12T08:09:54.114Z
 ---
 
 # Work Item: Project Scaffold

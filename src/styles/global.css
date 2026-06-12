@@ -1,0 +1,39 @@
+/* Global, mobile-first styles + design tokens.
+   Component-specific styles live inside each Lit component's `static styles`. */
+
+:root {
+  /* Color tokens (placeholder palette — refined during UI work items) */
+  --cs-bg: #fafafa;
+  --cs-fg: #1a1a1a;
+  --cs-muted: #555;
+  --cs-accent: #2b6cb0;
+
+  /* Typography */
+  --cs-font:
+    system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--cs-bg);
+  color: var(--cs-fg);
+  font-family: var(--cs-font);
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cs-bg: #121212;
+    --cs-fg: #f0f0f0;
+    --cs-muted: #aaa;
+  }
+}
