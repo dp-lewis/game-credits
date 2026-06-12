@@ -1,11 +1,12 @@
 import { LitElement, html, css } from 'lit';
-import { generateShareText } from '../lib/share-grid.js';
+import { generateGroupShareText } from '../lib/share-grid.js';
 
 /**
  * `<call-sheet-result>` — end-of-game result with a copyable, spoiler-free
  * share grid. Shown by the app when the board emits `game-over`.
  *
- * Properties: `puzzleId`, `status` ('won'|'lost'), `mistakes`, `maxMistakes`.
+ * Properties: `puzzleId`, `status` ('won'|'lost'), `mistakes`, `maxMistakes`,
+ * `groupsSolved`, `totalGroups`.
  */
 export class CallSheetResult extends LitElement {
   static properties = {
@@ -13,6 +14,8 @@ export class CallSheetResult extends LitElement {
     status: { attribute: false },
     mistakes: { attribute: false },
     maxMistakes: { attribute: false },
+    groupsSolved: { attribute: false },
+    totalGroups: { attribute: false },
     _copied: { state: true },
   };
 
@@ -68,9 +71,11 @@ export class CallSheetResult extends LitElement {
   }
 
   get _shareText() {
-    return generateShareText({
+    return generateGroupShareText({
       id: this.puzzleId,
       status: this.status,
+      groupsSolved: this.groupsSolved,
+      totalGroups: this.totalGroups,
       mistakes: this.mistakes,
       maxMistakes: this.maxMistakes,
     });
@@ -97,6 +102,9 @@ export class CallSheetResult extends LitElement {
     return html`
       <section class="result" role="status">
         <h2>${won ? 'Solved! 🎬' : 'Out of lives'}</h2>
+        <p class="groups">
+          ${this.groupsSolved}/${this.totalGroups} groups found
+        </p>
         <pre class="share">${this._shareText}</pre>
         <button class="copy" @click=${this._copy}>
           ${this._copied ? 'Copied!' : 'Copy result'}

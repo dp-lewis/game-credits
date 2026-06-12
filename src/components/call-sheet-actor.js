@@ -1,23 +1,19 @@
 import { LitElement, html, css } from 'lit';
 
 /**
- * `<call-sheet-actor>` — one actor with a two-film segmented control.
+ * `<call-sheet-actor>` — one selectable actor chip for the v2 group board.
  *
- * Tapping a film button assigns (or reassigns) the actor and emits an
- * `actor-assign` event `{ actorId, filmId }`. When `locked`, the buttons are
- * disabled. When `revealed` (game over), the correct film is highlighted.
+ * Tapping the chip emits `actor-pick` `{ actorId }`; the board decides what to do
+ * (assign to the active bucket, or toggle out). The chip shows its current bucket
+ * colour via `bucketIndex` and a locked state once its group is solved.
  *
- * Properties (set by the board): `actor`, `films`, `assignedFilmId`,
- * `correctFilmId`, `locked`, `revealed`.
+ * Properties: `actor`, `bucketIndex` (number | null), `locked`.
  */
 export class CallSheetActor extends LitElement {
   static properties = {
     actor: { attribute: false },
-    films: { attribute: false },
-    assignedFilmId: { attribute: false },
-    correctFilmId: { attribute: false },
+    bucketIndex: { attribute: false },
     locked: { type: Boolean },
-    revealed: { type: Boolean },
   };
 
   static styles = css`
@@ -25,58 +21,48 @@ export class CallSheetActor extends LitElement {
       display: block;
     }
 
-    .chip {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 0.75rem;
-      border: 1px solid var(--cs-border, #ddd);
-      border-radius: 0.75rem;
-      background: var(--cs-card, #fff);
-    }
-
-    .name {
-      flex: 1 1 8rem;
-      font-weight: 600;
-    }
-
-    .choices {
-      display: flex;
-      gap: 0.375rem;
-    }
-
     button {
+      width: 100%;
       font: inherit;
-      padding: 0.4rem 0.7rem;
-      border: 1px solid var(--cs-border, #ccc);
-      border-radius: 999px;
-      background: transparent;
+      min-height: 3rem;
+      padding: 0.5rem;
+      border: 2px solid var(--cs-border, #ddd);
+      border-radius: 0.6rem;
+      background: var(--cs-card, #fff);
       color: inherit;
       cursor: pointer;
-      min-height: 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      text-align: center;
+      line-height: 1.15;
     }
 
     button:disabled {
       cursor: default;
-      opacity: 0.8;
     }
 
-    .film-0.selected {
-      background: var(--cs-film-a, #2b6cb0);
-      border-color: var(--cs-film-a, #2b6cb0);
-      color: #fff;
+    /* Assigned-bucket colours (left accent + tint). */
+    button.g0 {
+      border-color: var(--cs-group-0);
+      box-shadow: inset 0.35rem 0 0 var(--cs-group-0);
+    }
+    button.g1 {
+      border-color: var(--cs-group-1);
+      box-shadow: inset 0.35rem 0 0 var(--cs-group-1);
+    }
+    button.g2 {
+      border-color: var(--cs-group-2);
+      box-shadow: inset 0.35rem 0 0 var(--cs-group-2);
+    }
+    button.g3 {
+      border-color: var(--cs-group-3);
+      box-shadow: inset 0.35rem 0 0 var(--cs-group-3);
     }
 
-    .film-1.selected {
-      background: var(--cs-film-b, #b7791f);
-      border-color: var(--cs-film-b, #b7791f);
-      color: #fff;
-    }
-
-    button.correct {
-      outline: 2px dashed var(--cs-correct, #2f855a);
-      outline-offset: 2px;
+    button.locked {
+      opacity: 0.85;
     }
 
     .lock {
@@ -85,18 +71,18 @@ export class CallSheetActor extends LitElement {
     }
 
     @media (prefers-color-scheme: dark) {
-      .chip {
+      button {
         --cs-card: #1e1e1e;
         --cs-border: #333;
       }
     }
   `;
 
-  _select(filmId) {
+  _pick() {
     if (this.locked) return;
     this.dispatchEvent(
-      new CustomEvent('actor-assign', {
-        detail: { actorId: this.actor.id, filmId },
+      new CustomEvent('actor-pick', {
+        detail: { actorId: this.actor.id },
         bubbles: true,
         composed: true,
       })
@@ -104,30 +90,26 @@ export class CallSheetActor extends LitElement {
   }
 
   render() {
-    const films = this.films || [];
+    const inBucket =
+      this.bucketIndex !== null && this.bucketIndex !== undefined;
+    const classes = [
+      inBucket ? `g${this.bucketIndex}` : '',
+      this.locked ? 'locked' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
+
     return html`
-      <div class="chip" role="group" aria-label=${this.actor.name}>
+      <button
+        class=${classes}
+        aria-pressed=${inBucket ? 'true' : 'false'}
+        aria-label=${this.actor.name}
+        ?disabled=${this.locked}
+        @click=${this._pick}
+      >
         <span class="name">${this.actor.name}</span>
-        <div class="choices">
-          ${films.map((film, i) => {
-            const selected = this.assignedFilmId === film.id;
-            const showCorrect = this.revealed && this.correctFilmId === film.id;
-            return html`<button
-              class="film-${i} ${selected ? 'selected' : ''} ${showCorrect
-                ? 'correct'
-                : ''}"
-              aria-pressed=${selected ? 'true' : 'false'}
-              ?disabled=${this.locked}
-              @click=${() => this._select(film.id)}
-            >
-              ${film.title}
-            </button>`;
-          })}
-        </div>
-        ${this.locked
-          ? html`<span class="lock" aria-label="locked correct">✓</span>`
-          : ''}
-      </div>
+        ${this.locked ? html`<span class="lock">✓</span>` : ''}
+      </button>
     `;
   }
 }

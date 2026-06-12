@@ -1,4 +1,4 @@
-import { DEFAULT_MAX_MISTAKES, FILMS_PER_PUZZLE } from './puzzle-schema.js';
+import { DEFAULT_MAX_MISTAKES, MIN_FILMS_PER_PUZZLE } from './puzzle-schema.js';
 
 /**
  * Thrown when puzzle data does not conform to the schema. The loader rejects
@@ -35,10 +35,10 @@ export function validatePuzzle(data) {
     throw new PuzzleValidationError('Puzzle "id" must be a non-empty string.');
   }
 
-  // Films: exactly two, unique ids, non-empty titles.
-  if (!Array.isArray(films) || films.length !== FILMS_PER_PUZZLE) {
+  // Films: at least MIN_FILMS_PER_PUZZLE, unique ids, non-empty titles.
+  if (!Array.isArray(films) || films.length < MIN_FILMS_PER_PUZZLE) {
     throw new PuzzleValidationError(
-      `Puzzle "films" must be an array of exactly ${FILMS_PER_PUZZLE} films.`
+      `Puzzle "films" must be an array of at least ${MIN_FILMS_PER_PUZZLE} films.`
     );
   }
   const filmIds = new Set();
@@ -92,7 +92,57 @@ export function validatePuzzle(data) {
       throw new PuzzleValidationError(`Duplicate actor id "${actor.id}".`);
     }
     actorIds.add(actor.id);
+
+    // alsoIn (optional): other films in this puzzle the actor appeared in.
+    // Traps — never the correct answer — so they must reference declared films
+    // and must not include the solution film.
+    if (actor.alsoIn !== undefined) {
+      if (!Array.isArray(actor.alsoIn)) {
+        throw new PuzzleValidationError(
+          `actors[${i}].alsoIn must be an array when provided.`
+        );
+      }
+      const seen = new Set();
+      for (const filmId of actor.alsoIn) {
+        if (!filmIds.has(filmId)) {
+          throw new PuzzleValidationError(
+            `actors[${i}].alsoIn references unknown film "${filmId}".`
+          );
+        }
+        if (filmId === actor.filmId) {
+          throw new PuzzleValidationError(
+            `actors[${i}].alsoIn must not include the solution film "${filmId}".`
+          );
+        }
+        if (seen.has(filmId)) {
+          throw new PuzzleValidationError(
+            `actors[${i}].alsoIn has duplicate film "${filmId}".`
+          );
+        }
+        seen.add(filmId);
+      }
+    }
   });
+
+  // Group balance: actors split evenly across all films by solution film, so
+  // every film is the answer for exactly the same number of actors.
+  if (actors.length % films.length !== 0) {
+    throw new PuzzleValidationError(
+      `Puzzle has ${actors.length} actors, not divisible by ${films.length} films.`
+    );
+  }
+  const groupSize = actors.length / films.length;
+  const counts = new Map(films.map((f) => [f.id, 0]));
+  for (const actor of actors) {
+    counts.set(actor.filmId, counts.get(actor.filmId) + 1);
+  }
+  for (const film of films) {
+    if (counts.get(film.id) !== groupSize) {
+      throw new PuzzleValidationError(
+        `Film "${film.id}" has ${counts.get(film.id)} actors; expected ${groupSize} (groups must be balanced).`
+      );
+    }
+  }
 
   // maxMistakes: positive integer when present, else default.
   let resolvedMaxMistakes = DEFAULT_MAX_MISTAKES;
@@ -114,7 +164,12 @@ export function validatePuzzle(data) {
       title: f.title,
       ...(f.year !== undefined ? { year: f.year } : {}),
     })),
-    actors: actors.map((a) => ({ id: a.id, name: a.name, filmId: a.filmId })),
+    actors: actors.map((a) => ({
+      id: a.id,
+      name: a.name,
+      filmId: a.filmId,
+      ...(a.alsoIn !== undefined ? { alsoIn: [...a.alsoIn] } : {}),
+    })),
   };
 }
 

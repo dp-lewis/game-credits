@@ -1,38 +1,30 @@
 import { test, expect } from '@playwright/test';
 
-// The correct film for each actor in the default puzzle (public/puzzles/2026-06-12.json).
-const ANSWERS = {
-  'George Clooney': "Ocean's Eleven",
-  'Brad Pitt': "Ocean's Eleven",
-  'Matt Damon': "Ocean's Eleven",
-  'Julia Roberts': "Ocean's Eleven",
-  'Meryl Streep': 'The Devil Wears Prada',
-  'Anne Hathaway': 'The Devil Wears Prada',
-  'Emily Blunt': 'The Devil Wears Prada',
-  'Stanley Tucci': 'The Devil Wears Prada',
-};
+// Correct groups for the 3-film puzzle (public/puzzles/2026-06-14.json).
+const GROUPS = [
+  ['Leonardo DiCaprio', 'Joseph Gordon-Levitt', 'Tom Hardy', 'Elliot Page'],
+  ['Christian Bale', 'Heath Ledger', 'Aaron Eckhart', 'Cillian Murphy'],
+  ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain', 'Michael Caine'],
+];
 
-test('play the daily puzzle through to a win', async ({ page }) => {
+test('play the 3-film puzzle through to a win', async ({ page }) => {
   await page.goto('/');
 
-  // Board renders after the puzzle loads.
-  await expect(
-    page.getByRole('group', { name: 'George Clooney' })
-  ).toBeVisible();
+  // Board renders the group buckets once the puzzle loads.
+  await expect(page.getByRole('button', { name: 'Group 1' })).toBeVisible();
 
-  // Assign every actor to their correct film.
-  for (const [actor, film] of Object.entries(ANSWERS)) {
-    await page
-      .getByRole('group', { name: actor })
-      .getByRole('button', { name: film, exact: true })
-      .click();
+  // Drop each correct group into a bucket (brush: pick bucket, tap its actors).
+  for (let i = 0; i < GROUPS.length; i++) {
+    await page.getByRole('button', { name: `Group ${i + 1}` }).click();
+    for (const name of GROUPS[i]) {
+      await page.getByRole('button', { name, exact: true }).click();
+    }
   }
 
   await page.getByRole('button', { name: 'Submit' }).click();
 
-  // The result view with a copyable, spoiler-free share grid appears,
-  // confirming a clean win (zero mistakes).
+  // Result view with a spoiler-free share grid, confirming a clean win.
   await expect(page.getByRole('button', { name: 'Copy result' })).toBeVisible();
-  await expect(page.getByText('Call Sheet 2026-06-12')).toBeVisible();
-  await expect(page.getByText(/Solved with 0 mistakes/)).toBeVisible();
+  await expect(page.getByText('Call Sheet 2026-06-14')).toBeVisible();
+  await expect(page.getByText(/Solved 3\/3 with 0 mistakes/)).toBeVisible();
 });

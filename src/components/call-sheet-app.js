@@ -7,7 +7,7 @@ import './call-sheet-result.js';
  * Fixed puzzle id for the MVP. The `daily-puzzle-rotation` work item replaces
  * this with date-based resolution.
  */
-const DEFAULT_PUZZLE_ID = '2026-06-12';
+const DEFAULT_PUZZLE_ID = '2026-06-14';
 
 /**
  * `<call-sheet-app>` — root application shell. Loads today's puzzle and renders
@@ -100,6 +100,8 @@ export class CallSheetApp extends LitElement {
             .status=${this._gameOver.status}
             .mistakes=${this._gameOver.mistakes}
             .maxMistakes=${this._gameOver.maxMistakes}
+            .groupsSolved=${this._gameOver.groupsSolved}
+            .totalGroups=${this._gameOver.totalGroups}
           ></call-sheet-result>`
         : ''}
     `;

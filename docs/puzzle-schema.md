@@ -4,69 +4,85 @@ The contract between a puzzle source and the Call Sheet client. Today puzzles ar
 hand-authored under `public/puzzles/<id>.json`; later the TMDB curation pipeline
 (`scripts/build-puzzles.js`) emits files conforming to this same schema.
 
-Each puzzle presents **two films** and a **scrambled ensemble cast**. Every actor
-belongs to exactly one of the two films — `actors[].filmId` is the answer key. As
-with any no-backend daily game, the answer ships in the client; the UI shuffles
-display order and only reveals correctness at grading time.
+Each puzzle presents **N films** (≥ 2; v2 uses 4) and a **scrambled ensemble
+cast** split into equal groups. Every actor has a single **solution** film
+(`filmId`) — the only correct placement. Some actors genuinely appeared in other
+films in the same puzzle too (`alsoIn`); those overlaps are **traps**, never the
+correct answer. As with any no-backend daily game, the answer ships in the client;
+the UI shuffles display order and only reveals correctness at grading time.
 
 ## Shape
 
 ```jsonc
 {
-  "id": "2026-06-12", // required: puzzle / date key (matches filename)
-  "date": "2026-06-12", // optional: ISO date; defaults to `id`
+  "id": "2026-06-13", // required: puzzle / date key (matches filename)
+  "date": "2026-06-13", // optional: ISO date; defaults to `id`
   "maxMistakes": 4, // optional: positive integer; defaults to 4
   "films": [
-    // required: EXACTLY two films
+    // required: N films (>= 2); v2 uses 4
     { "id": "oceans-eleven", "title": "Ocean's Eleven", "year": 2001 },
-    {
-      "id": "devil-wears-prada",
-      "title": "The Devil Wears Prada",
-      "year": 2006,
-    },
+    { "id": "the-departed", "title": "The Departed", "year": 2006 },
+    { "id": "inception", "title": "Inception", "year": 2010 },
+    { "id": "ouath", "title": "Once Upon a Time in Hollywood", "year": 2019 },
   ],
   "actors": [
-    // required: >= 1, each belongs to one film
+    // required: split evenly across films by solution
     { "id": "clooney", "name": "George Clooney", "filmId": "oceans-eleven" },
-    // ...
+    {
+      "id": "pitt",
+      "name": "Brad Pitt",
+      "filmId": "oceans-eleven",
+      "alsoIn": ["ouath"], // trap: really in OUATIH, but the answer is Ocean's Eleven
+    },
+    // ...16 total, 4 per film
   ],
 }
 ```
 
 ## Fields
 
-| Field         | Type    | Required | Notes                                                                  |
-| ------------- | ------- | -------- | ---------------------------------------------------------------------- |
-| `id`          | string  | yes      | Non-empty. Matches the JSON filename (`<id>.json`).                    |
-| `date`        | string  | no       | ISO date; defaults to `id`.                                            |
-| `maxMistakes` | integer | no       | Positive. Defaults to `4` (Connections convention).                    |
-| `films`       | array   | yes      | **Exactly 2**. Unique `id`s, non-empty `title`s; optional `year`.      |
-| `actors`      | array   | yes      | Non-empty. Unique `id`s; `filmId` must reference one of the two films. |
+| Field             | Type     | Required | Notes                                                                                                                                       |
+| ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`              | string   | yes      | Non-empty. Matches the JSON filename (`<id>.json`).                                                                                         |
+| `date`            | string   | no       | ISO date; defaults to `id`.                                                                                                                 |
+| `maxMistakes`     | integer  | no       | Positive. Defaults to `4`.                                                                                                                  |
+| `films`           | array    | yes      | **≥ 2 films**. Unique `id`s, non-empty `title`s; optional `year`.                                                                           |
+| `actors`          | array    | yes      | Non-empty. Unique `id`s; `filmId` (solution) must reference a declared film.                                                                |
+| `actors[].alsoIn` | string[] | no       | Other films in this puzzle the actor appeared in (traps). Each references a declared film, none equal the solution `filmId`, no duplicates. |
 
 ## Validation rules (enforced by `src/lib/puzzle-loader.js`)
 
-- Top level is an object.
-- `films` is an array of exactly two objects with unique, non-empty `id` and non-empty `title`.
-- `actors` is a non-empty array; each actor has non-empty `id` and `name`, and a `filmId` matching a declared film. Actor `id`s are unique.
-- `maxMistakes`, if present, is a positive integer; otherwise it defaults to `4`.
+- Top level is an object; `films` has at least 2 entries with unique non-empty ids/titles.
+- `actors` is non-empty; each has non-empty `id`/`name` and a `filmId` referencing a declared film; actor ids are unique.
+- **Group balance**: `actors.length` is divisible by `films.length`, and each film is the solution for exactly `groupSize = actors.length / films.length` actors.
+- `alsoIn` (when present) is an array of declared film ids, none equal to the actor's solution, with no duplicates.
+- `maxMistakes`, if present, is a positive integer; otherwise defaults to `4`.
 
 Any violation throws a `PuzzleValidationError` with a descriptive message.
+
+> **Note:** the loader validates _structure_, not _solvability_. The guarantee
+> that a puzzle has exactly **one** valid partition (given actors' real
+> memberships = `filmId` ∪ `alsoIn`) is the responsibility of the curation
+> pipeline (`tmdb-curation-script`). Hand-made fixtures are verified for
+> uniqueness before commit.
 
 ## Loading
 
 ```js
 import { loadPuzzle } from '../lib/puzzle-loader.js';
 
-const puzzle = await loadPuzzle('2026-06-12'); // fetches puzzles/2026-06-12.json
+const puzzle = await loadPuzzle('2026-06-13'); // fetches puzzles/2026-06-13.json
 ```
 
 `loadPuzzle(id, { basePath = 'puzzles/', fetchImpl = fetch })` fetches and
 validates, returning a normalized `Puzzle`. `validatePuzzle(data)` can be used
 directly on already-loaded data.
 
-## Recommended puzzle design
+## Recommended puzzle design (v2)
 
-- ~8 actors, 4 per film, for a balanced board (tunable).
-- Pick two films with **distinct** casts so each actor maps unambiguously to one
-  film. (An actor appearing in both films is out of scope for this schema — each
-  actor has a single `filmId`.)
+- **4 films, 16 actors, 4 per film** (tunable via the schema's group-balance rule).
+- Include genuine crossovers (`alsoIn`) so the board is ambiguous — but ensure a
+  **unique** solution: only one assignment puts every actor in a film they were
+  in while giving each film its group of four. The `2026-06-13.json` fixture is a
+  worked example (single-film "anchor" actors fill films to capacity, forcing the
+  crossovers to their solution film).

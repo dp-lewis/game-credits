@@ -1,11 +1,16 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import '../../src/components/call-sheet-board.js';
 import { validatePuzzle } from '../../src/lib/puzzle-loader.js';
-import { buildAnswerKey } from '../../src/lib/game-logic.js';
-import sample from '../fixtures/sample-puzzle.json';
+import fourFilm from '../../public/puzzles/2026-06-13.json';
 
-const puzzle = validatePuzzle(sample);
-const answerKey = buildAnswerKey(puzzle);
+const puzzle = validatePuzzle(fourFilm);
+
+const GROUPS = [
+  ['clooney', 'roberts', 'pitt', 'damon'], // Ocean's Eleven
+  ['nicholson', 'wahlberg', 'farmiga', 'dicaprio'], // The Departed
+  ['hardy', 'gordon-levitt', 'page', 'watanabe'], // Inception
+  ['robbie', 'pacino', 'russell', 'olyphant'], // OUATIH
+];
 
 async function mountBoard() {
   const el = document.createElement('call-sheet-board');
@@ -15,100 +20,128 @@ async function mountBoard() {
   return el;
 }
 
-/** Find the rendered <call-sheet-actor> for a given actor id. */
-function actorEl(board, actorId) {
-  return [...board.shadowRoot.querySelectorAll('call-sheet-actor')].find(
-    (a) => a.actor.id === actorId
+const submitBtn = (b) => b.shadowRoot.querySelector('button.submit');
+
+function bucketBtn(board, idx) {
+  return [...board.shadowRoot.querySelectorAll('.bucket')].find((b) =>
+    b.textContent.includes(`Group ${idx + 1}`)
   );
 }
 
-/** Click the film button (by film index) inside an actor chip. */
-async function assign(board, actorId, filmId) {
-  const el = actorEl(board, actorId);
+function actorEl(board, id) {
+  return [...board.shadowRoot.querySelectorAll('call-sheet-actor')].find(
+    (a) => a.actor.id === id
+  );
+}
+
+async function clickActor(board, id) {
+  const el = actorEl(board, id);
   await el.updateComplete;
-  const idx = puzzle.films.findIndex((f) => f.id === filmId);
-  el.shadowRoot.querySelectorAll('button')[idx].click();
+  el.shadowRoot.querySelector('button').click();
   await board.updateComplete;
 }
 
-function submitBtn(board) {
-  return board.shadowRoot.querySelector('button.submit');
+async function assignGroup(board, bucketIdx, actorIds) {
+  bucketBtn(board, bucketIdx).click();
+  await board.updateComplete;
+  for (const id of actorIds) await clickActor(board, id);
+}
+
+async function assignAll(board, layout) {
+  for (let b = 0; b < layout.length; b++)
+    await assignGroup(board, b, layout[b]);
 }
 
 afterEach(() => {
   document.body.innerHTML = '';
 });
 
-describe('<call-sheet-board>', () => {
-  it('disables submit until every actor is assigned', async () => {
+describe('<call-sheet-board> v2 (hidden-films groups)', () => {
+  it('disables submit until all buckets are full', async () => {
     const board = await mountBoard();
     expect(submitBtn(board).disabled).toBe(true);
-
-    for (const actor of puzzle.actors) {
-      await assign(board, actor.id, answerKey[actor.id]);
-    }
+    await assignAll(board, GROUPS);
     expect(submitBtn(board).disabled).toBe(false);
   });
 
-  it('wins when all actors are assigned correctly and submitted', async () => {
+  it('wins when every group is correct (any bucket order)', async () => {
     const board = await mountBoard();
-    for (const actor of puzzle.actors) {
-      await assign(board, actor.id, answerKey[actor.id]);
-    }
+    // Put the correct groups in shuffled buckets — grading is by membership.
+    await assignAll(board, [GROUPS[2], GROUPS[0], GROUPS[3], GROUPS[1]]);
     submitBtn(board).click();
     await board.updateComplete;
-
     expect(board._status).toBe('won');
-    // Every actor locked.
-    expect(board._locked.size).toBe(puzzle.actors.length);
+    expect(board._solved.size).toBe(4);
   });
 
-  it('emits game-over with status "won" on a correct submission', async () => {
+  it('emits game-over with status "won" and zero mistakes on a clean solve', async () => {
     const board = await mountBoard();
     const events = [];
     board.addEventListener('game-over', (e) => events.push(e.detail));
+    await assignAll(board, GROUPS);
+    submitBtn(board).click();
+    await board.updateComplete;
+    expect(events).toHaveLength(1);
+    expect(events[0]).toMatchObject({
+      status: 'won',
+      mistakes: 0,
+      groupsSolved: 4,
+      totalGroups: 4,
+    });
+  });
 
-    for (const actor of puzzle.actors) {
-      await assign(board, actor.id, answerKey[actor.id]);
-    }
+  it('locks a correct group, reveals its film, and keeps playing', async () => {
+    const board = await mountBoard();
+    await assignAll(board, [
+      GROUPS[0], // Ocean's — correct
+      ['nicholson', 'hardy', 'robbie', 'dicaprio'],
+      ['wahlberg', 'gordon-levitt', 'pacino', 'watanabe'],
+      ['farmiga', 'page', 'russell', 'olyphant'],
+    ]);
     submitBtn(board).click();
     await board.updateComplete;
 
-    expect(events).toHaveLength(1);
-    expect(events[0]).toMatchObject({ status: 'won', mistakes: 0 });
+    expect(board._solved.has(0)).toBe(true);
+    expect(board._status).toBe('playing');
+    expect(board._lives).toBe(puzzle.maxMistakes - 1);
+    expect(board.shadowRoot.querySelector('.solved').textContent).toContain(
+      "Ocean's Eleven"
+    );
   });
 
-  it('locks correct actors after a partially-correct submit', async () => {
+  it('shows "One away…" on a near-miss', async () => {
     const board = await mountBoard();
-    // a1 correct, the rest wrong.
-    for (const actor of puzzle.actors) {
-      const film =
-        actor.id === 'a1'
-          ? answerKey[actor.id]
-          : puzzle.films.find((f) => f.id !== answerKey[actor.id]).id;
-      await assign(board, actor.id, film);
-    }
+    await assignAll(board, [
+      ['nicholson', 'wahlberg', 'farmiga', 'damon'], // 3 Departed + Damon (trap)
+      ['clooney', 'roberts', 'pitt', 'dicaprio'], // 3 Ocean's + DiCaprio
+      ['hardy', 'gordon-levitt', 'page', 'robbie'], // 3 Inception + Robbie
+      ['watanabe', 'pacino', 'russell', 'olyphant'], // 3 OUATIH + Watanabe
+    ]);
     submitBtn(board).click();
     await board.updateComplete;
 
     expect(board._status).toBe('playing');
-    expect(board._locked.has('a1')).toBe(true);
     expect(board._lives).toBe(puzzle.maxMistakes - 1);
+    expect(board._oneAway.size).toBeGreaterThan(0);
+    expect(board.shadowRoot.querySelector('.hint').textContent).toContain(
+      'One away'
+    );
   });
 
-  it('loses after exhausting all lives on wrong submits', async () => {
+  it('loses after exhausting all lives', async () => {
     const board = await mountBoard();
-    for (const actor of puzzle.actors) {
-      const wrong = puzzle.films.find((f) => f.id !== answerKey[actor.id]).id;
-      await assign(board, actor.id, wrong);
-    }
+    // Four 2+2 buckets: never correct, never one-away.
+    await assignAll(board, [
+      ['clooney', 'roberts', 'nicholson', 'wahlberg'],
+      ['pitt', 'damon', 'farmiga', 'dicaprio'],
+      ['hardy', 'gordon-levitt', 'robbie', 'pacino'],
+      ['page', 'watanabe', 'russell', 'olyphant'],
+    ]);
     for (let i = 0; i < puzzle.maxMistakes; i++) {
       submitBtn(board).click();
       await board.updateComplete;
     }
-
     expect(board._status).toBe('lost');
     expect(board._lives).toBe(0);
-    expect(board._revealed).toBe(true);
   });
 });

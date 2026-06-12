@@ -1,0 +1,52 @@
+{
+  "id": "2026-06-13",
+  "date": "2026-06-13",
+  "maxMistakes": 4,
+  "films": [
+    { "id": "oceans-eleven", "title": "Ocean's Eleven", "year": 2001 },
+    { "id": "the-departed", "title": "The Departed", "year": 2006 },
+    { "id": "inception", "title": "Inception", "year": 2010 },
+    {
+      "id": "ouath",
+      "title": "Once Upon a Time in Hollywood",
+      "year": 2019
+    }
+  ],
+  "actors": [
+    { "id": "clooney", "name": "George Clooney", "filmId": "oceans-eleven" },
+    { "id": "roberts", "name": "Julia Roberts", "filmId": "oceans-eleven" },
+    {
+      "id": "pitt",
+      "name": "Brad Pitt",
+      "filmId": "oceans-eleven",
+      "alsoIn": ["ouath"]
+    },
+    {
+      "id": "damon",
+      "name": "Matt Damon",
+      "filmId": "oceans-eleven",
+      "alsoIn": ["the-departed"]
+    },
+    { "id": "nicholson", "name": "Jack Nicholson", "filmId": "the-departed" },
+    { "id": "wahlberg", "name": "Mark Wahlberg", "filmId": "the-departed" },
+    { "id": "farmiga", "name": "Vera Farmiga", "filmId": "the-departed" },
+    {
+      "id": "dicaprio",
+      "name": "Leonardo DiCaprio",
+      "filmId": "the-departed",
+      "alsoIn": ["inception", "ouath"]
+    },
+    { "id": "hardy", "name": "Tom Hardy", "filmId": "inception" },
+    {
+      "id": "gordon-levitt",
+      "name": "Joseph Gordon-Levitt",
+      "filmId": "inception"
+    },
+    { "id": "page", "name": "Elliot Page", "filmId": "inception" },
+    { "id": "watanabe", "name": "Ken Watanabe", "filmId": "inception" },
+    { "id": "robbie", "name": "Margot Robbie", "filmId": "ouath" },
+    { "id": "pacino", "name": "Al Pacino", "filmId": "ouath" },
+    { "id": "russell", "name": "Kurt Russell", "filmId": "ouath" },
+    { "id": "olyphant", "name": "Timothy Olyphant", "filmId": "ouath" }
+  ]
+}

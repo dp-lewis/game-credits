@@ -50,10 +50,10 @@ describe('validatePuzzle', () => {
     expect(() => validatePuzzle(data)).toThrow(/id/);
   });
 
-  it('rejects when there are not exactly two films', () => {
+  it('rejects fewer than two films', () => {
     const data = clone(sample);
     data.films = [data.films[0]];
-    expect(() => validatePuzzle(data)).toThrow(/exactly 2/);
+    expect(() => validatePuzzle(data)).toThrow(/at least 2 films/);
   });
 
   it('rejects duplicate film ids', () => {

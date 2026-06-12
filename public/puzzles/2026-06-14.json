@@ -1,0 +1,42 @@
+{
+  "id": "2026-06-14",
+  "date": "2026-06-14",
+  "maxMistakes": 4,
+  "films": [
+    { "id": "inception", "title": "Inception", "year": 2010 },
+    { "id": "the-dark-knight", "title": "The Dark Knight", "year": 2008 },
+    { "id": "interstellar", "title": "Interstellar", "year": 2014 }
+  ],
+  "actors": [
+    { "id": "dicaprio", "name": "Leonardo DiCaprio", "filmId": "inception" },
+    {
+      "id": "gordon-levitt",
+      "name": "Joseph Gordon-Levitt",
+      "filmId": "inception"
+    },
+    { "id": "hardy", "name": "Tom Hardy", "filmId": "inception" },
+    { "id": "page", "name": "Elliot Page", "filmId": "inception" },
+    { "id": "bale", "name": "Christian Bale", "filmId": "the-dark-knight" },
+    { "id": "ledger", "name": "Heath Ledger", "filmId": "the-dark-knight" },
+    { "id": "eckhart", "name": "Aaron Eckhart", "filmId": "the-dark-knight" },
+    {
+      "id": "murphy",
+      "name": "Cillian Murphy",
+      "filmId": "the-dark-knight",
+      "alsoIn": ["inception"]
+    },
+    {
+      "id": "mcconaughey",
+      "name": "Matthew McConaughey",
+      "filmId": "interstellar"
+    },
+    { "id": "hathaway", "name": "Anne Hathaway", "filmId": "interstellar" },
+    { "id": "chastain", "name": "Jessica Chastain", "filmId": "interstellar" },
+    {
+      "id": "caine",
+      "name": "Michael Caine",
+      "filmId": "interstellar",
+      "alsoIn": ["inception", "the-dark-knight"]
+    }
+  ]
+}
