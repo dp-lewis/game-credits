@@ -1,8 +1,9 @@
 ---
 id: call-sheet
 title: Call Sheet
-status: in_progress
+status: completed
 created: 2026-06-11T20:58:52Z
+completed_at: 2026-06-13T10:16:14.110Z
 ---
 
 # Intent: Call Sheet

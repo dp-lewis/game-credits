@@ -1,8 +1,10 @@
 # Call Sheet
 
-A daily web game: sort a scrambled ensemble cast back into the **two films** the
-actors came from. _Connections_-style — assign every actor to Film A or Film B,
-with a limited number of mistakes. One puzzle a day, shareable result, streaks.
+A daily web game: sort a scrambled ensemble cast back into the films they came
+from. _Connections_-style deduction — the film titles are hidden, so you group the
+actors into the right films (crossover actors are traps), solving a group to
+reveal its film. A limited mistake budget, one puzzle a day, shareable result,
+and streaks.
 
 Built **web-platform-first**: HTML, modern CSS, and vanilla JavaScript (ES
 modules) with [Lit](https://lit.dev) Web Components. No server runtime — the daily
@@ -80,10 +82,41 @@ uniqueness algorithm.
 
 ## Deployment
 
-The site is a static bundle (`npm run build` → `dist/`) uploaded to **Dreamhost**
-shared hosting. The exact deploy procedure is set up in the `dreamhost-deploy`
-work item. `base: './'` in `vite.config.js` keeps asset paths relative so the
-game can live at a domain root or a subpath.
+The site is a static bundle (`npm run build` → `dist/`) deployed to **Dreamhost**
+shared hosting by GitHub Actions (`.github/workflows/ci.yml`). On every push to
+`main`, the **check** job runs format/lint/unit/e2e/build; if it passes, the
+**deploy** job builds and `rsync`s `dist/` over SSH into this game's own
+subfolder on Dreamhost.
+
+**Multiple games on one host.** `DEPLOY_PATH` is the _shared_ web root that all
+your games deploy under; each game repo declares its own folder via
+`DEPLOY_SUBDIR` in `.github/workflows/ci.yml` (this game: `call-sheet`). The site
+is served from `<root>/call-sheet/`, and `rsync --delete` is scoped to that
+subfolder, so deploying one game never touches the others.
+
+`base: './'` in `vite.config.js` keeps asset paths relative (and the puzzle
+`fetch`es are relative too), so serving from a subfolder needs no changes.
+
+### One-time setup — repository secrets
+
+Add these under **Settings → Secrets and variables → Actions** in this repo
+(same scheme as the blog):
+
+| Secret           | Value                                                                |
+| ---------------- | -------------------------------------------------------------------- |
+| `DEPLOY_SSH_KEY` | Private SSH key authorised on the Dreamhost account                  |
+| `DEPLOY_HOST`    | Dreamhost host (e.g. `iad1-shared-xxxx.dreamhost.com`)               |
+| `DEPLOY_USER`    | Dreamhost SSH username                                               |
+| `DEPLOY_PATH`    | Shared web root all games deploy under (e.g. the domain's directory) |
+
+To change this game's folder, edit `DEPLOY_SUBDIR` in the workflow. Once the
+secrets are set, the next push to `main` deploys automatically. To deploy
+manually instead:
+
+```bash
+npm run build
+rsync -az --delete dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/call-sheet/"
+```
 
 ## Development process
 

@@ -123,11 +123,13 @@ intents:
         completed_at: 2026-06-12T23:47:13.325Z
       - id: dreamhost-deploy
         title: Dreamhost Deploy
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - project-scaffold
+        run_id: run-game-credits-006
+        completed_at: 2026-06-13T10:16:14.097Z
 runs:
   active: []
   completed:
@@ -189,3 +191,11 @@ runs:
           mode: confirm
       started: 2026-06-12T23:37:04.477Z
       completed: 2026-06-12T23:47:13.325Z
+    - id: run-game-credits-006
+      scope: single
+      work_items:
+        - id: dreamhost-deploy
+          intent: call-sheet
+          mode: autopilot
+      started: 2026-06-13T10:13:47.739Z
+      completed: 2026-06-13T10:16:14.097Z

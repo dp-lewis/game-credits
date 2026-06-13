@@ -4,9 +4,12 @@ title: Dreamhost Deploy
 intent: call-sheet
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [project-scaffold]
+status: completed
+depends_on:
+  - project-scaffold
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-006
+completed_at: 2026-06-13T10:16:14.097Z
 ---
 
 # Work Item: Dreamhost Deploy
