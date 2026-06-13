@@ -3,7 +3,7 @@ id: call-sheet
 title: Call Sheet
 status: completed
 created: 2026-06-11T20:58:52Z
-completed_at: 2026-06-13T10:16:14.110Z
+completed_at: 2026-06-13T11:34:25.765Z
 ---
 
 # Intent: Call Sheet
