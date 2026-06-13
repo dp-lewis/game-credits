@@ -3,28 +3,14 @@ import { loadPuzzle, loadManifest } from '../lib/puzzle-loader.js';
 import { todayKey } from '../lib/date-key.js';
 import { resolvePuzzleId } from '../lib/puzzle-schedule.js';
 import { createProgressStore } from '../lib/progress-store.js';
+import { safeStorage } from '../lib/safe-storage.js';
 import './call-sheet-board.js';
 import './call-sheet-result.js';
 
-/** localStorage, with an in-memory fallback when it's unavailable (private mode). */
-function safeStorage() {
-  try {
-    const probe = '__cs_probe__';
-    window.localStorage.setItem(probe, probe);
-    window.localStorage.removeItem(probe);
-    return window.localStorage;
-  } catch {
-    const mem = new Map();
-    return {
-      getItem: (k) => (mem.has(k) ? mem.get(k) : null),
-      setItem: (k, v) => mem.set(k, String(v)),
-    };
-  }
-}
-
 /**
  * `<call-sheet-app>` — root application shell. Loads today's puzzle and renders
- * the board, with loading and error states.
+ * the board, with loading and error states. A `?puzzle=<id>` override plays a
+ * specific puzzle as a practice replay (fresh board, no streak effect).
  */
 export class CallSheetApp extends LitElement {
   static properties = {
@@ -65,6 +51,22 @@ export class CallSheetApp extends LitElement {
     .status.error {
       color: var(--cs-wrong, #c53030);
     }
+
+    .nav {
+      text-align: center;
+      margin: 0 0 1.5rem;
+    }
+    .nav a {
+      color: var(--cs-accent, #2b6cb0);
+      font-weight: 600;
+    }
+
+    .practice {
+      text-align: center;
+      color: var(--cs-muted, #555);
+      font-size: 0.9rem;
+      margin: 0 0 1rem;
+    }
   `;
 
   constructor() {
@@ -75,17 +77,24 @@ export class CallSheetApp extends LitElement {
     this._gameOver = null;
     this._played = false;
     this._streak = 0;
+    this._isReplay = false;
     this._store = createProgressStore(safeStorage());
   }
 
   _onGameOver(event) {
     const detail = event.detail;
-    const { current } = this._store.recordResult(this._puzzle.id, {
-      status: detail.status,
-      mistakes: detail.mistakes,
-      groupsSolved: detail.groupsSolved,
-      totalGroups: detail.totalGroups,
-    });
+    // Only the official daily play moves the streak; a `?puzzle=` replay is practice.
+    const updateStreak = !this._isReplay && this._puzzle.id === todayKey();
+    const { current } = this._store.recordResult(
+      this._puzzle.id,
+      {
+        status: detail.status,
+        mistakes: detail.mistakes,
+        groupsSolved: detail.groupsSolved,
+        totalGroups: detail.totalGroups,
+      },
+      { updateStreak }
+    );
     this._streak = current;
     this._gameOver = detail;
   }
@@ -95,18 +104,19 @@ export class CallSheetApp extends LitElement {
     this._load();
   }
 
-  /** Resolve which puzzle to load: an explicit `?puzzle=<id>` override, else
-   *  the manifest + today's local date. */
-  async _resolvePuzzleId() {
-    const override = new URLSearchParams(window.location.search).get('puzzle');
-    if (override) return override;
+  /** Today's puzzle id from the manifest + local date. */
+  async _resolveTodayId() {
     const ids = await loadManifest();
     return resolvePuzzleId(todayKey(), ids);
   }
 
   async _load() {
     try {
-      const id = await this._resolvePuzzleId();
+      const override = new URLSearchParams(window.location.search).get(
+        'puzzle'
+      );
+      this._isReplay = !!override;
+      const id = override || (await this._resolveTodayId());
       if (!id) {
         this._error = 'No puzzle is scheduled today. Check back tomorrow.';
         this._loading = false;
@@ -115,17 +125,20 @@ export class CallSheetApp extends LitElement {
       this._puzzle = await loadPuzzle(id);
       this._loading = false;
 
-      // Restore a finished day instead of letting it be replayed.
-      const prior = this._store.getDay(this._puzzle.id);
-      if (prior) {
-        this._played = true;
-        this._streak = this._store.getStreaks().current;
-        this._gameOver = {
-          status: prior.status,
-          mistakes: prior.mistakes,
-          groupsSolved: prior.groupsSolved,
-          totalGroups: prior.totalGroups,
-        };
+      // Restore a finished day on the official daily path only; a `?puzzle=`
+      // replay always starts on a fresh board.
+      if (!this._isReplay) {
+        const prior = this._store.getDay(this._puzzle.id);
+        if (prior) {
+          this._played = true;
+          this._streak = this._store.getStreaks().current;
+          this._gameOver = {
+            status: prior.status,
+            mistakes: prior.mistakes,
+            groupsSolved: prior.groupsSolved,
+            totalGroups: prior.totalGroups,
+          };
+        }
       }
     } catch (err) {
       this._error = "Couldn't load today's puzzle. Please try again later.";
@@ -138,6 +151,12 @@ export class CallSheetApp extends LitElement {
     return html`
       <h1>Call Sheet</h1>
       <p class="tagline">Sort the scrambled cast back into their films.</p>
+      <p class="nav"><a href="archive.html">Archive ▸</a></p>
+      ${this._isReplay && this._puzzle
+        ? html`<p class="practice">
+            Practice mode — this play won't affect your streak.
+          </p>`
+        : ''}
       ${this._loading
         ? html`<p class="status">Loading today's puzzle…</p>`
         : ''}

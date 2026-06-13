@@ -92,4 +92,49 @@ describe('createProgressStore', () => {
     expect(store.getStreaks()).toEqual({ current: 0, longest: 0 });
     expect(() => store.recordResult('2026-06-13', won())).not.toThrow();
   });
+
+  describe('practice mode (updateStreak)', () => {
+    it('records a practice win as a played day without touching the streak', () => {
+      const store = createProgressStore(fakeStorage());
+      const res = store.recordResult('2026-06-01', won(), {
+        updateStreak: false,
+      });
+      expect(res).toMatchObject({ current: 0, longest: 0 });
+      expect(store.getDay('2026-06-01')).toMatchObject({ status: 'won' });
+      expect(store.getStreaks()).toEqual({ current: 0, longest: 0 });
+    });
+
+    it('leaves an existing streak untouched on a practice play', () => {
+      const store = createProgressStore(fakeStorage());
+      store.recordResult('2026-06-13', won()); // streak 1
+      store.recordResult('2026-06-14', won()); // streak 2
+      const res = store.recordResult('2026-05-01', won(), {
+        updateStreak: false,
+      });
+      expect(res).toMatchObject({ current: 2, longest: 2 });
+      expect(store.getDay('2026-05-01')).toMatchObject({ status: 'won' });
+    });
+
+    it('a practice loss does not break the streak', () => {
+      const store = createProgressStore(fakeStorage());
+      store.recordResult('2026-06-14', won()); // streak 1
+      store.recordResult('2026-05-02', lost(), { updateStreak: false });
+      expect(store.getStreaks()).toEqual({ current: 1, longest: 1 });
+    });
+
+    it('is replay-safe: re-recording a day never overwrites or re-streaks it', () => {
+      const store = createProgressStore(fakeStorage());
+      store.recordResult('2026-06-14', won()); // recorded + streak 1
+      const replay = store.recordResult('2026-06-14', lost(), {
+        updateStreak: false,
+      });
+      expect(replay.day).toMatchObject({ status: 'won' }); // original kept
+      expect(store.getStreaks()).toEqual({ current: 1, longest: 1 });
+    });
+
+    it('defaults to updating the streak (backward compatible)', () => {
+      const store = createProgressStore(fakeStorage());
+      expect(store.recordResult('2026-06-14', won()).current).toBe(1);
+    });
+  });
 });

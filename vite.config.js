@@ -1,4 +1,8 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = fileURLToPath(new URL('.', import.meta.url));
 
 // Web-platform-first static build. `base: './'` keeps asset URLs relative so the
 // built site can live at a domain root or a subpath on Dreamhost without rework.
@@ -7,6 +11,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    // Multi-page: the game and the archive index are real, separate pages.
+    rollupOptions: {
+      input: {
+        main: resolve(root, 'index.html'),
+        archive: resolve(root, 'archive.html'),
+      },
+    },
   },
   // Vitest configuration (read by `vitest`).
   test: {

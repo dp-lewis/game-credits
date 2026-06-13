@@ -8,8 +8,11 @@ const GROUPS = [
 ];
 
 test('play the 3-film puzzle through to a win', async ({ page }) => {
-  // Force the 3-film puzzle so the test is independent of the run date.
+  // Force a specific puzzle so the test is independent of the run date.
+  // `?puzzle=` is a practice replay (fresh board, no streak effect).
   await page.goto('/?puzzle=2026-06-14');
+
+  await expect(page.getByText(/Practice mode/i)).toBeVisible();
 
   // Board renders the group buckets once the puzzle loads.
   await expect(page.getByRole('button', { name: 'Group 1' })).toBeVisible();
@@ -29,9 +32,8 @@ test('play the 3-film puzzle through to a win', async ({ page }) => {
   await expect(page.getByText('Call Sheet 2026-06-14')).toBeVisible();
   await expect(page.getByText(/Solved 3\/3 with 0 mistakes/)).toBeVisible();
 
-  // Reload: the finished puzzle is restored (localStorage), not replayable.
+  // A `?puzzle=` replay starts a fresh board on reload (it is not restored).
   await page.reload();
-  await expect(page.getByText(/already played/i)).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Copy result' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Group 1' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Group 1' })).toBeVisible();
+  await expect(page.getByText(/already played/i)).toHaveCount(0);
 });

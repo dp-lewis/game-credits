@@ -68,13 +68,20 @@ export function createProgressStore(storage) {
     },
 
     /**
-     * Record a finished day. Idempotent per day (a day is never double-counted).
+     * Record a finished day. Idempotent per day (a day is never double-counted,
+     * so replays are safe).
+     *
+     * `updateStreak` (default true) gates the streak counters: a practice / past
+     * play (false) still records the day's result — so the archive can show it —
+     * but leaves `current`/`longest`/`lastPlayedKey` untouched. Only today's play
+     * should pass true.
      *
      * @param {string} dateKey
      * @param {DayResult} result
+     * @param {{updateStreak?: boolean}} [options]
      * @returns {{day: DayResult, current: number, longest: number}}
      */
-    recordResult(dateKey, result) {
+    recordResult(dateKey, result, { updateStreak = true } = {}) {
       const s = read();
       if (s.days[dateKey]) {
         return { day: s.days[dateKey], current: s.current, longest: s.longest };
@@ -88,17 +95,19 @@ export function createProgressStore(storage) {
       };
       s.days[dateKey] = day;
 
-      if (result.status === 'won') {
-        const consecutive =
-          s.current > 0 &&
-          s.lastPlayedKey &&
-          daysBetween(s.lastPlayedKey, dateKey) === 1;
-        s.current = consecutive ? s.current + 1 : 1;
-        if (s.current > s.longest) s.longest = s.current;
-      } else {
-        s.current = 0;
+      if (updateStreak) {
+        if (result.status === 'won') {
+          const consecutive =
+            s.current > 0 &&
+            s.lastPlayedKey &&
+            daysBetween(s.lastPlayedKey, dateKey) === 1;
+          s.current = consecutive ? s.current + 1 : 1;
+          if (s.current > s.longest) s.longest = s.current;
+        } else {
+          s.current = 0;
+        }
+        s.lastPlayedKey = dateKey;
       }
-      s.lastPlayedKey = dateKey;
 
       write(s);
       return { day, current: s.current, longest: s.longest };

@@ -198,6 +198,38 @@ intents:
         depends_on: []
         run_id: run-game-credits-011
         completed_at: 2026-06-13T20:37:40.873Z
+  - id: call-sheet-archive
+    title: Call Sheet — Archive
+    status: completed
+    created: 2026-06-13T20:46:22Z
+    completed_at: 2026-06-13T20:58:30Z
+    work_items:
+      - id: practice-mode-streaks
+        title: Practice-Mode Streaks
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-012
+        completed_at: 2026-06-13T21:32:42.719Z
+      - id: archive-list
+        title: Archive List Helper
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-012
+        completed_at: 2026-06-13T21:32:42.719Z
+      - id: archive-view
+        title: Archive View
+        status: completed
+        complexity: high
+        mode: confirm
+        depends_on:
+          - practice-mode-streaks
+          - archive-list
+        run_id: run-game-credits-012
+        completed_at: 2026-06-13T21:32:42.719Z
 runs:
   active: []
   completed:
@@ -313,3 +345,17 @@ runs:
           mode: confirm
       started: 2026-06-13T12:03:02.965Z
       completed: 2026-06-13T20:37:40.873Z
+    - id: run-game-credits-012
+      scope: wide
+      work_items:
+        - id: practice-mode-streaks
+          intent: call-sheet-archive
+          mode: autopilot
+        - id: archive-list
+          intent: call-sheet-archive
+          mode: autopilot
+        - id: archive-view
+          intent: call-sheet-archive
+          mode: confirm
+      started: 2026-06-13T20:50:07.189Z
+      completed: 2026-06-13T21:32:42.719Z

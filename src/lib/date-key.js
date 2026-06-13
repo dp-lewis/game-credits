@@ -54,3 +54,30 @@ export function daysBetween(aKey, bKey) {
   const b = Date.parse(`${bKey}T00:00:00Z`);
   return Math.round((b - a) / 86_400_000);
 }
+
+const MONTHS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+/**
+ * Human label for a date key, e.g. `2026-06-14` → `Jun 14, 2026`. Locale-free so
+ * it's deterministic across environments.
+ *
+ * @param {string} key
+ * @returns {string}
+ */
+export function formatDateKey(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+}

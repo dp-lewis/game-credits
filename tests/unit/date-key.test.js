@@ -3,6 +3,7 @@ import {
   todayKey,
   isValidDateKey,
   daysBetween,
+  formatDateKey,
 } from '../../src/lib/date-key.js';
 
 describe('todayKey', () => {
@@ -47,5 +48,13 @@ describe('daysBetween', () => {
 
   it('spans month boundaries', () => {
     expect(daysBetween('2026-06-30', '2026-07-01')).toBe(1);
+  });
+});
+
+describe('formatDateKey', () => {
+  it('formats a key as "Mon D, YYYY"', () => {
+    expect(formatDateKey('2026-06-14')).toBe('Jun 14, 2026');
+    expect(formatDateKey('2026-01-05')).toBe('Jan 5, 2026');
+    expect(formatDateKey('2026-12-31')).toBe('Dec 31, 2026');
   });
 });
