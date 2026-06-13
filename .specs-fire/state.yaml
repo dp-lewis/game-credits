@@ -130,6 +130,15 @@ intents:
           - project-scaffold
         run_id: run-game-credits-006
         completed_at: 2026-06-13T10:16:14.097Z
+      - id: curation-actor-prominence
+        title: Curation — Actor Prominence
+        status: completed
+        complexity: medium
+        mode: confirm
+        depends_on:
+          - tmdb-curation-script
+        run_id: run-game-credits-007
+        completed_at: 2026-06-13T11:28:35.893Z
 runs:
   active: []
   completed:
@@ -199,3 +208,11 @@ runs:
           mode: autopilot
       started: 2026-06-13T10:13:47.739Z
       completed: 2026-06-13T10:16:14.097Z
+    - id: run-game-credits-007
+      scope: single
+      work_items:
+        - id: curation-actor-prominence
+          intent: call-sheet
+          mode: confirm
+      started: 2026-06-13T11:27:03.359Z
+      completed: 2026-06-13T11:28:35.893Z

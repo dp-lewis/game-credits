@@ -10,16 +10,19 @@ const TMDB_BASE = 'https://api.themoviedb.org/3';
  * Fetch a film's top cast from TMDB and shape it as a `FilmWithCast`.
  *
  * @param {{id: string, title: string, year?: number, tmdbId: number}} film
+ * Each cast member keeps its billing `order` (lower = more prominent) so the
+ * assembler can prefer recognizable leads over deep-cut character actors.
+ *
  * @param {Object} [options]
  * @param {string} [options.apiKey=process.env.TMDB_API_KEY]
- * @param {number} [options.limit=12]  Max cast members to keep.
+ * @param {number} [options.limit=20]  Max cast members to keep (by billing).
  * @param {typeof fetch} [options.fetchImpl=fetch]
- * @returns {Promise<{id:string,title:string,year?:number,cast:{id:string,name:string}[]}>}
+ * @returns {Promise<{id:string,title:string,year?:number,cast:{id:string,name:string,order:number}[]}>}
  */
 export async function fetchFilmCast(film, options = {}) {
   const {
     apiKey = process.env.TMDB_API_KEY,
-    limit = 12,
+    limit = 20,
     fetchImpl = fetch,
   } = options;
 
@@ -37,9 +40,12 @@ export async function fetchFilmCast(film, options = {}) {
     );
   }
   const data = await res.json();
-  const cast = (data.cast || [])
-    .slice(0, limit)
-    .map((c) => ({ id: tmdbActorId(c), name: c.name }));
+  // TMDB returns cast in billing order; keep that order so prominence is known.
+  const cast = (data.cast || []).slice(0, limit).map((c, i) => ({
+    id: tmdbActorId(c),
+    name: c.name,
+    order: typeof c.order === 'number' ? c.order : i,
+  }));
 
   return {
     id: film.id,

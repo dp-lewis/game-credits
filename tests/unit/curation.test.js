@@ -156,6 +156,85 @@ describe('assemblePuzzle', () => {
     expect(() => validatePuzzle(puzzle)).not.toThrow();
   });
 
+  it('prefers the most prominent (lowest billing order) anchors', () => {
+    const cast = (prefix, n) =>
+      Array.from({ length: n }, (_, i) => ({
+        id: `${prefix}${i}`,
+        name: `${prefix}${i}`,
+        order: i,
+      }));
+    const ordered = [
+      { id: 'f1', title: 'F1', cast: cast('a', 6) },
+      { id: 'f2', title: 'F2', cast: cast('b', 6) },
+      { id: 'f3', title: 'F3', cast: cast('c', 6) },
+    ];
+    const puzzle = assemblePuzzle(ordered, {
+      id: 'x',
+      filmCount: 3,
+      groupSize: 4,
+      rng: mulberry32(9),
+    });
+    const ids = (film) =>
+      puzzle.actors
+        .filter((a) => a.filmId === film)
+        .map((a) => a.id)
+        .sort();
+    // Top 4 by billing order (0–3), never the deep cuts (#4/#5).
+    expect(ids('f1')).toEqual(['a0', 'a1', 'a2', 'a3']);
+    expect(ids('f2')).toEqual(['b0', 'b1', 'b2', 'b3']);
+    expect(ids('f3')).toEqual(['c0', 'c1', 'c2', 'c3']);
+  });
+
+  it('uses a prominent crossover as a trap and drops the least-prominent anchor', () => {
+    const star = { id: 'star', name: 'Star', order: 0 };
+    const pool2 = [
+      {
+        id: 'f1',
+        title: 'F1',
+        cast: [
+          star,
+          { id: 'a1', name: 'a1', order: 1 },
+          { id: 'a2', name: 'a2', order: 2 },
+          { id: 'a3', name: 'a3', order: 3 },
+          { id: 'a4', name: 'a4', order: 4 },
+        ],
+      },
+      {
+        id: 'f2',
+        title: 'F2',
+        cast: [
+          star, // crossover: also billed in f2
+          { id: 'b1', name: 'b1', order: 1 },
+          { id: 'b2', name: 'b2', order: 2 },
+          { id: 'b3', name: 'b3', order: 3 },
+          { id: 'b4', name: 'b4', order: 4 },
+        ],
+      },
+      {
+        id: 'f3',
+        title: 'F3',
+        cast: [
+          { id: 'c1', name: 'c1', order: 1 },
+          { id: 'c2', name: 'c2', order: 2 },
+          { id: 'c3', name: 'c3', order: 3 },
+          { id: 'c4', name: 'c4', order: 4 },
+        ],
+      },
+    ];
+    const puzzle = assemblePuzzle(pool2, {
+      id: 'x',
+      filmCount: 3,
+      groupSize: 4,
+      rng: mulberry32(5),
+    });
+    const ids = puzzle.actors.map((a) => a.id);
+    // The prominent crossover is in; the least-prominent anchor (a4 or b4) is out.
+    expect(ids).toContain('star');
+    const starActor = puzzle.actors.find((a) => a.id === 'star');
+    expect(starActor.alsoIn?.length).toBeGreaterThan(0);
+    expect(ids).not.toContain(starActor.filmId === 'f1' ? 'a4' : 'b4');
+  });
+
   it('returns null when the pool is too small', () => {
     expect(
       assemblePuzzle(pool.slice(0, 2), { id: 'x', filmCount: 3 })

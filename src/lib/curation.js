@@ -53,6 +53,21 @@ export function hasUniqueSolution(actors, filmIds, groupSize) {
 }
 
 /**
+ * Order members by prominence — billing `order` ascending (leads first) when
+ * every member has it, otherwise fall back to a deterministic shuffle. This is
+ * what keeps generated puzzles full of recognizable names rather than deep-cut
+ * character actors.
+ */
+function byProminence(list, rng) {
+  if (list.length > 0 && list.every((m) => typeof m.order === 'number')) {
+    return [...list].sort(
+      (a, b) => a.order - b.order || (a.id < b.id ? -1 : 1)
+    );
+  }
+  return shuffle(list, rng);
+}
+
+/**
  * @typedef {Object} FilmWithCast
  * @property {string} id
  * @property {string} title
@@ -93,7 +108,8 @@ export function assemblePuzzle(pool, opts) {
   const filmIds = films.map((f) => f.id);
   const filmIdSet = new Set(filmIds);
 
-  // Membership: actorId → { name, films: Set(chosen films they appear in) }.
+  // Membership: actorId → { name, films, order } where `order` is the best
+  // (lowest) billing across the films they're in — a prominence proxy.
   const members = new Map();
   for (const film of films) {
     for (const actor of film.cast || []) {
@@ -102,9 +118,17 @@ export function assemblePuzzle(pool, opts) {
           id: actor.id,
           name: actor.name,
           films: new Set(),
+          order: actor.order,
         });
       }
-      members.get(actor.id).films.add(film.id);
+      const m = members.get(actor.id);
+      m.films.add(film.id);
+      if (typeof actor.order === 'number') {
+        m.order =
+          typeof m.order === 'number'
+            ? Math.min(m.order, actor.order)
+            : actor.order;
+      }
     }
   }
 
@@ -124,17 +148,18 @@ export function assemblePuzzle(pool, opts) {
     if (anchorsByFilm.get(f).length < groupSize) return null;
   }
 
-  // Baseline: groupSize anchors per film (shuffled for variety).
-  /** @type {Map<string, {id:string,name:string,filmId:string,memberFilms:string[]}>} */
+  // Baseline: the groupSize most prominent anchors per film.
+  /** @type {Map<string, {id:string,name:string,filmId:string,memberFilms:string[],order:number|undefined}>} */
   const selected = new Map();
   for (const f of filmIds) {
-    const picks = shuffle(anchorsByFilm.get(f), rng).slice(0, groupSize);
+    const picks = byProminence(anchorsByFilm.get(f), rng).slice(0, groupSize);
     for (const a of picks) {
       selected.set(a.id, {
         id: a.id,
         name: a.name,
         filmId: f,
         memberFilms: [f],
+        order: a.order,
       });
     }
   }
@@ -143,15 +168,19 @@ export function assemblePuzzle(pool, opts) {
   // appears in, keeping the swap only while uniqueness holds.
   const trapLimit = maxTraps ?? filmCount;
   let traps = 0;
-  for (const x of shuffle(crossovers, rng)) {
+  for (const x of byProminence(crossovers, rng)) {
     if (traps >= trapLimit) break;
     if (selected.has(x.id)) continue;
     for (const solutionFilm of shuffle(x.films, rng)) {
-      // Drop one anchor currently assigned to solutionFilm.
-      const droppable = [...selected.values()].find(
+      // Drop the LEAST prominent single-film anchor of solutionFilm, so adding a
+      // trap doesn't cost us a lead.
+      const candidates = [...selected.values()].filter(
         (s) => s.filmId === solutionFilm && s.memberFilms.length === 1
       );
-      if (!droppable) continue;
+      if (candidates.length === 0) continue;
+      const droppable = candidates.sort(
+        (a, b) => (a.order ?? Infinity) - (b.order ?? Infinity)
+      )[candidates.length - 1];
 
       const trial = new Map(selected);
       trial.delete(droppable.id);
@@ -160,6 +189,7 @@ export function assemblePuzzle(pool, opts) {
         name: x.name,
         filmId: solutionFilm,
         memberFilms: x.films,
+        order: x.order,
       });
 
       const actorsForOracle = [...trial.values()].map((s) => ({
