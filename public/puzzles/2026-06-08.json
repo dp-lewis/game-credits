@@ -1,0 +1,85 @@
+{
+  "id": "2026-06-08",
+  "date": "2026-06-08",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "interstellar",
+      "title": "Interstellar",
+      "year": 2014
+    },
+    {
+      "id": "the-wolf-of-wall-street",
+      "title": "The Wolf of Wall Street",
+      "year": 2013
+    },
+    {
+      "id": "inglourious-basterds",
+      "title": "Inglourious Basterds",
+      "year": 2009
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-3895",
+      "name": "Michael Caine",
+      "filmId": "interstellar"
+    },
+    {
+      "id": "tmdb-234352",
+      "name": "Margot Robbie",
+      "filmId": "the-wolf-of-wall-street"
+    },
+    {
+      "id": "tmdb-16847",
+      "name": "Eli Roth",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-10297",
+      "name": "Matthew McConaughey",
+      "filmId": "the-wolf-of-wall-street",
+      "alsoIn": ["interstellar"]
+    },
+    {
+      "id": "tmdb-83002",
+      "name": "Jessica Chastain",
+      "filmId": "interstellar"
+    },
+    {
+      "id": "tmdb-21007",
+      "name": "Jonah Hill",
+      "filmId": "the-wolf-of-wall-street"
+    },
+    {
+      "id": "tmdb-1893",
+      "name": "Casey Affleck",
+      "filmId": "interstellar"
+    },
+    {
+      "id": "tmdb-27319",
+      "name": "Christoph Waltz",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-19119",
+      "name": "Mélanie Laurent",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-6193",
+      "name": "Leonardo DiCaprio",
+      "filmId": "the-wolf-of-wall-street"
+    },
+    {
+      "id": "tmdb-1813",
+      "name": "Anne Hathaway",
+      "filmId": "interstellar"
+    }
+  ]
+}

@@ -202,7 +202,8 @@ intents:
     title: Call Sheet — Archive
     status: completed
     created: 2026-06-13T20:46:22Z
-    completed_at: 2026-06-13T20:58:30Z
+    completed_at: 2026-06-13T21:44:30Z
+    reopened_at: 2026-06-13T21:40:58Z
     work_items:
       - id: practice-mode-streaks
         title: Practice-Mode Streaks
@@ -230,6 +231,15 @@ intents:
           - archive-list
         run_id: run-game-credits-012
         completed_at: 2026-06-13T21:32:42.719Z
+      - id: backfill-past-puzzles
+        title: Backfill Past Puzzles
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - archive-view
+        run_id: run-game-credits-013
+        completed_at: 2026-06-13T21:43:44.704Z
 runs:
   active: []
   completed:
@@ -359,3 +369,11 @@ runs:
           mode: confirm
       started: 2026-06-13T20:50:07.189Z
       completed: 2026-06-13T21:32:42.719Z
+    - id: run-game-credits-013
+      scope: single
+      work_items:
+        - id: backfill-past-puzzles
+          intent: call-sheet-archive
+          mode: autopilot
+      started: 2026-06-13T21:41:43.764Z
+      completed: 2026-06-13T21:43:44.704Z

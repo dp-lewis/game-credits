@@ -1,0 +1,85 @@
+{
+  "id": "2026-06-10",
+  "date": "2026-06-10",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "inception",
+      "title": "Inception",
+      "year": 2010
+    },
+    {
+      "id": "django-unchained",
+      "title": "Django Unchained",
+      "year": 2012
+    },
+    {
+      "id": "oceans-eleven",
+      "title": "Ocean's Eleven",
+      "year": 2001
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-2524",
+      "name": "Tom Hardy",
+      "filmId": "inception"
+    },
+    {
+      "id": "tmdb-1461",
+      "name": "George Clooney",
+      "filmId": "oceans-eleven"
+    },
+    {
+      "id": "tmdb-2231",
+      "name": "Samuel L. Jackson",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-1892",
+      "name": "Matt Damon",
+      "filmId": "oceans-eleven"
+    },
+    {
+      "id": "tmdb-1271",
+      "name": "Andy Garcia",
+      "filmId": "oceans-eleven"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "oceans-eleven"
+    },
+    {
+      "id": "tmdb-27319",
+      "name": "Christoph Waltz",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-11703",
+      "name": "Kerry Washington",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-6193",
+      "name": "Leonardo DiCaprio",
+      "filmId": "inception",
+      "alsoIn": ["django-unchained"]
+    },
+    {
+      "id": "tmdb-134",
+      "name": "Jamie Foxx",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-3899",
+      "name": "Ken Watanabe",
+      "filmId": "inception"
+    },
+    {
+      "id": "tmdb-24045",
+      "name": "Joseph Gordon-Levitt",
+      "filmId": "inception"
+    }
+  ]
+}
