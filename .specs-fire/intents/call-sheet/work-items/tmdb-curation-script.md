@@ -4,10 +4,12 @@ title: TMDB Curation Script
 intent: call-sheet
 complexity: high
 mode: confirm
-status: pending
+status: completed
 depends_on:
   - multi-film-schema
 created: 2026-06-11T21:10:53Z
+run_id: run-game-credits-005
+completed_at: 2026-06-12T23:47:13.325Z
 ---
 
 # Work Item: TMDB Curation Script

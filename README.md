@@ -25,21 +25,40 @@ npm run dev        # start the Vite dev server (http://localhost:5173)
 
 ## Scripts
 
-| Script                  | What it does                                |
-| ----------------------- | ------------------------------------------- |
-| `npm run dev`           | Start the Vite dev server                   |
-| `npm run build`         | Build the static site into `dist/`          |
-| `npm run preview`       | Preview the production build locally        |
-| `npm test`              | Run unit tests (Vitest) once                |
-| `npm run test:watch`    | Run unit tests in watch mode                |
-| `npm run test:coverage` | Unit tests with coverage (gates `src/lib/`) |
-| `npm run test:e2e`      | Run end-to-end smoke tests (Playwright)     |
-| `npm run lint`          | Lint with ESLint                            |
-| `npm run format`        | Format with Prettier                        |
-| `npm run format:check`  | Check formatting without writing            |
+| Script                  | What it does                                 |
+| ----------------------- | -------------------------------------------- |
+| `npm run dev`           | Start the Vite dev server                    |
+| `npm run build`         | Build the static site into `dist/`           |
+| `npm run preview`       | Preview the production build locally         |
+| `npm test`              | Run unit tests (Vitest) once                 |
+| `npm run test:watch`    | Run unit tests in watch mode                 |
+| `npm run test:coverage` | Unit tests with coverage (gates `src/lib/`)  |
+| `npm run test:e2e`      | Run end-to-end smoke tests (Playwright)      |
+| `npm run build:puzzle`  | Generate a puzzle (see "Generating puzzles") |
+| `npm run lint`          | Lint with ESLint                             |
+| `npm run format`        | Format with Prettier                         |
+| `npm run format:check`  | Check formatting without writing             |
 
 > **E2E browsers:** the first Playwright run needs browser binaries:
 > `npx playwright install chromium`.
+
+## Generating puzzles
+
+Puzzles are produced by a build-time script that assembles a crossover puzzle and
+**verifies it has a unique solution** before writing it (and appending the date to
+`public/puzzles/manifest.json`).
+
+```bash
+# Offline — uses sample cast data, no API key needed
+npm run build:puzzle -- --date 2026-06-20 --films 3 --group-size 4 --offline --dry-run
+
+# Live — sources real casts from TMDB (key via env, never written to disk/output)
+TMDB_API_KEY=… npm run build:puzzle -- --date 2026-06-20 --films 3
+```
+
+Drop `--dry-run` to write the puzzle (you'll be asked to approve the preview;
+`--yes` skips the prompt). See `docs/puzzle-schema.md` for details and the
+uniqueness algorithm.
 
 ## Project structure
 

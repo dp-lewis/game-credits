@@ -1,0 +1,75 @@
+[
+  {
+    "id": "inception",
+    "title": "Inception",
+    "year": 2010,
+    "cast": [
+      { "id": "dicaprio", "name": "Leonardo DiCaprio" },
+      { "id": "gordon-levitt", "name": "Joseph Gordon-Levitt" },
+      { "id": "hardy", "name": "Tom Hardy" },
+      { "id": "page", "name": "Elliot Page" },
+      { "id": "watanabe", "name": "Ken Watanabe" },
+      { "id": "cotillard", "name": "Marion Cotillard" },
+      { "id": "caine", "name": "Michael Caine" },
+      { "id": "murphy", "name": "Cillian Murphy" }
+    ]
+  },
+  {
+    "id": "the-dark-knight",
+    "title": "The Dark Knight",
+    "year": 2008,
+    "cast": [
+      { "id": "bale", "name": "Christian Bale" },
+      { "id": "ledger", "name": "Heath Ledger" },
+      { "id": "eckhart", "name": "Aaron Eckhart" },
+      { "id": "gyllenhaal", "name": "Maggie Gyllenhaal" },
+      { "id": "oldman", "name": "Gary Oldman" },
+      { "id": "freeman", "name": "Morgan Freeman" },
+      { "id": "caine", "name": "Michael Caine" },
+      { "id": "murphy", "name": "Cillian Murphy" }
+    ]
+  },
+  {
+    "id": "interstellar",
+    "title": "Interstellar",
+    "year": 2014,
+    "cast": [
+      { "id": "mcconaughey", "name": "Matthew McConaughey" },
+      { "id": "hathaway", "name": "Anne Hathaway" },
+      { "id": "chastain", "name": "Jessica Chastain" },
+      { "id": "lithgow", "name": "John Lithgow" },
+      { "id": "bentley", "name": "Wes Bentley" },
+      { "id": "damon", "name": "Matt Damon" },
+      { "id": "affleck", "name": "Casey Affleck" },
+      { "id": "caine", "name": "Michael Caine" }
+    ]
+  },
+  {
+    "id": "dunkirk",
+    "title": "Dunkirk",
+    "year": 2017,
+    "cast": [
+      { "id": "whitehead", "name": "Fionn Whitehead" },
+      { "id": "styles", "name": "Harry Styles" },
+      { "id": "keoghan", "name": "Barry Keoghan" },
+      { "id": "rylance", "name": "Mark Rylance" },
+      { "id": "branagh", "name": "Kenneth Branagh" },
+      { "id": "hardy", "name": "Tom Hardy" },
+      { "id": "murphy", "name": "Cillian Murphy" }
+    ]
+  },
+  {
+    "id": "oppenheimer",
+    "title": "Oppenheimer",
+    "year": 2023,
+    "cast": [
+      { "id": "blunt", "name": "Emily Blunt" },
+      { "id": "downey", "name": "Robert Downey Jr." },
+      { "id": "pugh", "name": "Florence Pugh" },
+      { "id": "hartnett", "name": "Josh Hartnett" },
+      { "id": "murphy", "name": "Cillian Murphy" },
+      { "id": "damon", "name": "Matt Damon" },
+      { "id": "affleck", "name": "Casey Affleck" }
+    ]
+  }
+]

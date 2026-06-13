@@ -1,0 +1,22 @@
+[
+  { "id": "inception", "title": "Inception", "year": 2010, "tmdbId": 27205 },
+  {
+    "id": "the-dark-knight",
+    "title": "The Dark Knight",
+    "year": 2008,
+    "tmdbId": 155
+  },
+  {
+    "id": "interstellar",
+    "title": "Interstellar",
+    "year": 2014,
+    "tmdbId": 157336
+  },
+  { "id": "dunkirk", "title": "Dunkirk", "year": 2017, "tmdbId": 374720 },
+  {
+    "id": "oppenheimer",
+    "title": "Oppenheimer",
+    "year": 2023,
+    "tmdbId": 872585
+  }
+]

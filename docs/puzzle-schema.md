@@ -97,6 +97,27 @@ rolls at local midnight.
 A `?puzzle=<id>` query override forces a specific puzzle (used for deterministic
 tests and replay/share links), bypassing date resolution.
 
+## Generating puzzles (curation)
+
+`scripts/build-puzzles.js` assembles a crossover puzzle and **verifies it has a
+unique solution** before writing it, then appends the date to the manifest. The
+uniqueness engine (`src/lib/curation.js`) fills each film with single-film
+"anchor" actors, then greedily swaps in crossover actors as traps — keeping a
+swap only while the solution stays unique (checked by `countPartitions`).
+
+```bash
+# Offline — uses scripts/fixtures/sample-casts.json (no API key needed)
+npm run build:puzzle -- --date 2026-06-20 --films 3 --group-size 4 --offline
+
+# Live — sources casts from TMDB (key via env, never written anywhere)
+TMDB_API_KEY=… npm run build:puzzle -- --date 2026-06-20 --films 3
+
+# --dry-run previews without writing; --yes skips the approval prompt
+```
+
+The output is validated against this schema before writing. Live mode reads the
+candidate film list from `scripts/lib/tmdb-films.json` (slug → TMDB movie id).
+
 ## Recommended puzzle design (v2)
 
 - **4 films, 16 actors, 4 per film** (tunable via the schema's group-balance rule).
