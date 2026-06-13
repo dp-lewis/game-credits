@@ -39,9 +39,7 @@
       "id": "tmdb-6193",
       "name": "Leonardo DiCaprio",
       "filmId": "the-revenant",
-      "alsoIn": [
-        "django-unchained"
-      ]
+      "alsoIn": ["django-unchained"]
     },
     {
       "id": "tmdb-93491",

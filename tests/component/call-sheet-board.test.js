@@ -1,7 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import '../../src/components/call-sheet-board.js';
 import { validatePuzzle } from '../../src/lib/puzzle-loader.js';
-import fourFilm from '../../public/puzzles/2026-06-13.json';
+import fourFilm from '../fixtures/four-film-puzzle.json';
 
 const puzzle = validatePuzzle(fourFilm);
 

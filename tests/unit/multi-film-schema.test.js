@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { validatePuzzle } from '../../src/lib/puzzle-loader.js';
-import fourFilm from '../../public/puzzles/2026-06-13.json';
+import fourFilm from '../fixtures/four-film-puzzle.json';
 import threeFilm from '../../public/puzzles/2026-06-14.json';
 import twoFilm from '../fixtures/sample-puzzle.json';
 

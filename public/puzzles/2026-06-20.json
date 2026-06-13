@@ -34,9 +34,7 @@
       "id": "tmdb-6193",
       "name": "Leonardo DiCaprio",
       "filmId": "once-upon-a-time-in-hollywood",
-      "alsoIn": [
-        "the-revenant"
-      ]
+      "alsoIn": ["the-revenant"]
     },
     {
       "id": "tmdb-93491",
@@ -82,9 +80,7 @@
       "id": "tmdb-287",
       "name": "Brad Pitt",
       "filmId": "oceans-eleven",
-      "alsoIn": [
-        "once-upon-a-time-in-hollywood"
-      ]
+      "alsoIn": ["once-upon-a-time-in-hollywood"]
     }
   ]
 }

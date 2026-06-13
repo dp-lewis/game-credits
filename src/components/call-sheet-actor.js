@@ -19,10 +19,12 @@ export class CallSheetActor extends LitElement {
   static styles = css`
     :host {
       display: block;
+      height: 100%;
     }
 
     button {
       width: 100%;
+      height: 100%;
       font: inherit;
       min-height: 3rem;
       padding: 0.5rem;
@@ -68,13 +70,6 @@ export class CallSheetActor extends LitElement {
     .lock {
       color: var(--cs-correct, #2f855a);
       font-weight: 700;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      button {
-        --cs-card: #1e1e1e;
-        --cs-border: #333;
-      }
     }
   `;
 

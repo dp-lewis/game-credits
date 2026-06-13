@@ -29,9 +29,7 @@
       "id": "tmdb-287",
       "name": "Brad Pitt",
       "filmId": "inglourious-basterds",
-      "alsoIn": [
-        "oceans-eleven"
-      ]
+      "alsoIn": ["oceans-eleven"]
     },
     {
       "id": "tmdb-10297",

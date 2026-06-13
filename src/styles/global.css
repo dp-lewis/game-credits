@@ -12,15 +12,17 @@
   --cs-font:
     system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-  /* Feedback + group (bucket) colours */
+  /* Feedback + group (bucket) colours.
+     Group colours are chosen to clear WCAG AA (>= 4.5:1) against white text,
+     since active group buttons render white-on-colour. */
   --cs-correct: #2f855a;
   --cs-wrong: #c53030;
   --cs-border: #ddd;
   --cs-card: #fff;
-  --cs-group-0: #2b6cb0;
-  --cs-group-1: #b7791f;
-  --cs-group-2: #6b46c1;
-  --cs-group-3: #2f855a;
+  --cs-group-0: #2c5282;
+  --cs-group-1: #92400e;
+  --cs-group-2: #553c9a;
+  --cs-group-3: #276749;
 }
 
 * {
@@ -45,5 +47,8 @@ body {
     --cs-bg: #121212;
     --cs-fg: #f0f0f0;
     --cs-muted: #aaa;
+    /* Surfaces must flip too, or cards/buttons stay light (white-on-white). */
+    --cs-card: #1e1e1e;
+    --cs-border: #444;
   }
 }

@@ -130,6 +130,8 @@ export class CallSheetBoard extends LitElement {
       padding: 0;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      /* Equal-height rows so a wrapped (2-line) name doesn't make the grid ragged. */
+      grid-auto-rows: 1fr;
       gap: 0.5rem;
     }
     @media (min-width: 30rem) {
@@ -161,6 +163,7 @@ export class CallSheetBoard extends LitElement {
     }
     .submit:disabled {
       background: var(--cs-border, #ccc);
+      color: var(--cs-muted, #555);
       cursor: default;
     }
 

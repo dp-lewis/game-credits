@@ -34,17 +34,13 @@
       "id": "tmdb-1892",
       "name": "Matt Damon",
       "filmId": "oppenheimer",
-      "alsoIn": [
-        "the-departed"
-      ]
+      "alsoIn": ["the-departed"]
     },
     {
       "id": "tmdb-2037",
       "name": "Cillian Murphy",
       "filmId": "oppenheimer",
-      "alsoIn": [
-        "inception"
-      ]
+      "alsoIn": ["inception"]
     },
     {
       "id": "tmdb-2524",
@@ -80,9 +76,7 @@
       "id": "tmdb-6193",
       "name": "Leonardo DiCaprio",
       "filmId": "inception",
-      "alsoIn": [
-        "the-departed"
-      ]
+      "alsoIn": ["the-departed"]
     },
     {
       "id": "tmdb-8349",

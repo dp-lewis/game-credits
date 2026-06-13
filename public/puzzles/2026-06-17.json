@@ -54,9 +54,7 @@
       "id": "tmdb-2037",
       "name": "Cillian Murphy",
       "filmId": "the-dark-knight",
-      "alsoIn": [
-        "oppenheimer"
-      ]
+      "alsoIn": ["oppenheimer"]
     },
     {
       "id": "tmdb-3894",

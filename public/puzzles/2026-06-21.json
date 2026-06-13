@@ -44,9 +44,7 @@
       "id": "tmdb-3895",
       "name": "Michael Caine",
       "filmId": "interstellar",
-      "alsoIn": [
-        "inception"
-      ]
+      "alsoIn": ["inception"]
     },
     {
       "id": "tmdb-287",

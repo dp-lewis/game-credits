@@ -54,9 +54,7 @@
       "id": "tmdb-2524",
       "name": "Tom Hardy",
       "filmId": "the-revenant",
-      "alsoIn": [
-        "inception"
-      ]
+      "alsoIn": ["inception"]
     },
     {
       "id": "tmdb-24045",
@@ -67,17 +65,13 @@
       "id": "tmdb-6193",
       "name": "Leonardo DiCaprio",
       "filmId": "the-revenant",
-      "alsoIn": [
-        "inception"
-      ]
+      "alsoIn": ["inception"]
     },
     {
       "id": "tmdb-526",
       "name": "Lukas Haas",
       "filmId": "the-revenant",
-      "alsoIn": [
-        "inception"
-      ]
+      "alsoIn": ["inception"]
     },
     {
       "id": "tmdb-4495",

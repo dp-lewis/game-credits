@@ -168,6 +168,36 @@ intents:
           - curation-actor-prominence
         run_id: run-game-credits-010
         completed_at: 2026-06-13T11:49:21.358Z
+  - id: call-sheet-fixes
+    title: Call Sheet — Fixes
+    status: completed
+    created: 2026-06-13T11:58:54Z
+    completed_at: 2026-06-13T12:13:30Z
+    work_items:
+      - id: fix-dark-mode-contrast
+        title: Fix Dark-Mode Contrast
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-011
+        completed_at: 2026-06-13T20:37:40.873Z
+      - id: fix-grid-wrap-layout
+        title: Fix Grid Wrap Layout
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-011
+        completed_at: 2026-06-13T20:37:40.873Z
+      - id: enforce-three-film-rotation
+        title: Enforce Three-Film Rotation
+        status: completed
+        complexity: medium
+        mode: confirm
+        depends_on: []
+        run_id: run-game-credits-011
+        completed_at: 2026-06-13T20:37:40.873Z
 runs:
   active: []
   completed:
@@ -269,3 +299,17 @@ runs:
           mode: autopilot
       started: 2026-06-13T11:48:24.432Z
       completed: 2026-06-13T11:49:21.358Z
+    - id: run-game-credits-011
+      scope: wide
+      work_items:
+        - id: fix-dark-mode-contrast
+          intent: call-sheet-fixes
+          mode: autopilot
+        - id: fix-grid-wrap-layout
+          intent: call-sheet-fixes
+          mode: autopilot
+        - id: enforce-three-film-rotation
+          intent: call-sheet-fixes
+          mode: confirm
+      started: 2026-06-13T12:03:02.965Z
+      completed: 2026-06-13T20:37:40.873Z

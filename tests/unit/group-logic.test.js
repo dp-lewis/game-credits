@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { gradeGroups } from '../../src/lib/group-logic.js';
 import { buildAnswerKey } from '../../src/lib/game-logic.js';
 import { validatePuzzle } from '../../src/lib/puzzle-loader.js';
-import fourFilm from '../../public/puzzles/2026-06-13.json';
+import fourFilm from '../fixtures/four-film-puzzle.json';
 
 const puzzle = validatePuzzle(fourFilm);
 const answerKey = buildAnswerKey(puzzle);
