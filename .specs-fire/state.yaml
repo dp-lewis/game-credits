@@ -14,7 +14,8 @@ workspace:
 intents:
   - id: call-sheet
     title: Call Sheet
-    status: in_progress
+    status: completed
+    completed_at: 2026-06-13T11:38:11Z
     work_items:
       - id: project-scaffold
         title: Project Scaffold
