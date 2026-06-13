@@ -1,0 +1,93 @@
+{
+  "id": "2026-06-19",
+  "date": "2026-06-19",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "inception",
+      "title": "Inception",
+      "year": 2010
+    },
+    {
+      "id": "the-big-short",
+      "title": "The Big Short",
+      "year": 2015
+    },
+    {
+      "id": "the-revenant",
+      "title": "The Revenant",
+      "year": 2015
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-95697",
+      "name": "Dileep Rao",
+      "filmId": "inception"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "the-big-short"
+    },
+    {
+      "id": "tmdb-3899",
+      "name": "Ken Watanabe",
+      "filmId": "inception"
+    },
+    {
+      "id": "tmdb-30614",
+      "name": "Ryan Gosling",
+      "filmId": "the-big-short"
+    },
+    {
+      "id": "tmdb-27578",
+      "name": "Elliot Page",
+      "filmId": "inception"
+    },
+    {
+      "id": "tmdb-93210",
+      "name": "Domhnall Gleeson",
+      "filmId": "the-revenant"
+    },
+    {
+      "id": "tmdb-2524",
+      "name": "Tom Hardy",
+      "filmId": "the-revenant",
+      "alsoIn": [
+        "inception"
+      ]
+    },
+    {
+      "id": "tmdb-24045",
+      "name": "Joseph Gordon-Levitt",
+      "filmId": "inception"
+    },
+    {
+      "id": "tmdb-6193",
+      "name": "Leonardo DiCaprio",
+      "filmId": "the-revenant",
+      "alsoIn": [
+        "inception"
+      ]
+    },
+    {
+      "id": "tmdb-526",
+      "name": "Lukas Haas",
+      "filmId": "the-revenant",
+      "alsoIn": [
+        "inception"
+      ]
+    },
+    {
+      "id": "tmdb-4495",
+      "name": "Steve Carell",
+      "filmId": "the-big-short"
+    },
+    {
+      "id": "tmdb-3894",
+      "name": "Christian Bale",
+      "filmId": "the-big-short"
+    }
+  ]
+}

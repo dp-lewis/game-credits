@@ -15,7 +15,8 @@ intents:
   - id: call-sheet
     title: Call Sheet
     status: completed
-    completed_at: 2026-06-13T11:38:11Z
+    completed_at: 2026-06-13T11:49:40Z
+    reopened_at: 2026-06-13T11:47:36Z
     work_items:
       - id: project-scaffold
         title: Project Scaffold
@@ -158,6 +159,15 @@ intents:
           - tmdb-curation-script
         run_id: run-game-credits-009
         completed_at: 2026-06-13T11:34:25.759Z
+      - id: seed-week-puzzles
+        title: Seed a Week of Real Puzzles
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - curation-actor-prominence
+        run_id: run-game-credits-010
+        completed_at: 2026-06-13T11:49:21.358Z
 runs:
   active: []
   completed:
@@ -251,3 +261,11 @@ runs:
           mode: autopilot
       started: 2026-06-13T11:33:48.454Z
       completed: 2026-06-13T11:34:25.759Z
+    - id: run-game-credits-010
+      scope: single
+      work_items:
+        - id: seed-week-puzzles
+          intent: call-sheet
+          mode: autopilot
+      started: 2026-06-13T11:48:24.432Z
+      completed: 2026-06-13T11:49:21.358Z

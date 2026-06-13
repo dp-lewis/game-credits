@@ -12,11 +12,58 @@
     "year": 2014,
     "tmdbId": 157336
   },
-  { "id": "dunkirk", "title": "Dunkirk", "year": 2017, "tmdbId": 374720 },
   {
     "id": "oppenheimer",
     "title": "Oppenheimer",
     "year": 2023,
     "tmdbId": 872585
+  },
+  {
+    "id": "the-departed",
+    "title": "The Departed",
+    "year": 2006,
+    "tmdbId": 1422
+  },
+  {
+    "id": "the-wolf-of-wall-street",
+    "title": "The Wolf of Wall Street",
+    "year": 2013,
+    "tmdbId": 106646
+  },
+  {
+    "id": "once-upon-a-time-in-hollywood",
+    "title": "Once Upon a Time in Hollywood",
+    "year": 2019,
+    "tmdbId": 466272
+  },
+  {
+    "id": "oceans-eleven",
+    "title": "Ocean's Eleven",
+    "year": 2001,
+    "tmdbId": 161
+  },
+  {
+    "id": "the-big-short",
+    "title": "The Big Short",
+    "year": 2015,
+    "tmdbId": 318846
+  },
+  {
+    "id": "django-unchained",
+    "title": "Django Unchained",
+    "year": 2012,
+    "tmdbId": 68718
+  },
+  {
+    "id": "inglourious-basterds",
+    "title": "Inglourious Basterds",
+    "year": 2009,
+    "tmdbId": 16869
+  },
+  {
+    "id": "the-revenant",
+    "title": "The Revenant",
+    "year": 2015,
+    "tmdbId": 281957
   }
 ]

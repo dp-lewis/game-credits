@@ -46,6 +46,7 @@ function parseArgs(argv) {
     offline: false,
     dryRun: false,
     yes: false,
+    salt: 0,
     out: path.join(ROOT, 'public/puzzles'),
     manifest: path.join(ROOT, 'public/puzzles/manifest.json'),
   };
@@ -57,6 +58,9 @@ function parseArgs(argv) {
     else if (a === '--offline') args.offline = true;
     else if (a === '--dry-run') args.dryRun = true;
     else if (a === '--yes' || a === '-y') args.yes = true;
+    // Vary the film selection for a date without changing the date (lets a batch
+    // force distinct trios across days).
+    else if (a === '--salt') args.salt = parseInt(argv[++i], 10) || 0;
     else if (a === '--out') args.out = path.resolve(argv[++i]);
     else if (a === '--manifest') args.manifest = path.resolve(argv[++i]);
   }
@@ -126,7 +130,8 @@ async function main() {
   }
 
   const pool = await loadPool(args);
-  const rng = mulberry32(seedFromDate(args.date));
+  const seedKey = args.salt ? `${args.date}#${args.salt}` : args.date;
+  const rng = mulberry32(seedFromDate(seedKey));
 
   // Try a few film selections (shuffled by the date seed) until one assembles.
   let puzzle = null;
