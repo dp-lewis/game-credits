@@ -58,6 +58,10 @@ npm run build:puzzle -- --date 2026-06-20 --films 3 --group-size 4 --offline --d
 TMDB_API_KEY=… npm run build:puzzle -- --date 2026-06-20 --films 3
 ```
 
+For live mode, put your key in a gitignored `.env` (copy `.env.example`) and the
+script picks it up automatically — no need to prefix the command. Get a free TMDB
+v3 key at <https://www.themoviedb.org/settings/api>.
+
 Drop `--dry-run` to write the puzzle (you'll be asked to approve the preview;
 `--yes` skips the prompt). See `docs/puzzle-schema.md` for details and the
 uniqueness algorithm.

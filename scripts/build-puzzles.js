@@ -29,6 +29,16 @@ import { fetchFilmCast } from './lib/tmdb.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
+// Load a gitignored .env as a fallback so TMDB_API_KEY needn't be exported each
+// time. An explicit environment variable still takes precedence.
+if (!process.env.TMDB_API_KEY) {
+  try {
+    process.loadEnvFile(path.join(ROOT, '.env'));
+  } catch {
+    // No .env — fine (offline mode, or the key is already in the environment).
+  }
+}
+
 function parseArgs(argv) {
   const args = {
     films: 3,
