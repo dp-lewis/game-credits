@@ -4,9 +4,11 @@ title: Archive Theme Index
 intent: archive-themes-preview
 complexity: medium
 mode: autopilot
-status: pending
+status: completed
 depends_on: []
 created: 2026-06-14T10:00:00Z
+run_id: run-game-credits-025
+completed_at: 2026-06-14T14:28:59.443Z
 ---
 
 # Work Item: Archive Theme Index

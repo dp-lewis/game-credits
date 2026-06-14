@@ -1,8 +1,9 @@
 ---
 id: archive-themes-preview
 title: Archive Themes and Tomorrow Preview
-status: in_progress
+status: completed
 created: 2026-06-14T10:00:00Z
+completed_at: 2026-06-14T14:29:23.494Z
 ---
 
 # Intent: Archive Themes and Tomorrow Preview
