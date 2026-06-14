@@ -54,7 +54,7 @@ export class CallSheetBoard extends LitElement {
       margin-bottom: 0.75rem;
     }
     .life.on {
-      color: var(--cs-wrong, #c53030);
+      color: var(--cs-lives, #d9756e);
     }
     .life.off {
       color: var(--cs-border, #ccc);
@@ -95,9 +95,10 @@ export class CallSheetBoard extends LitElement {
       text-align: center;
       padding: 0.4rem 0.3rem;
       border-radius: 0.5rem;
-      border: 2px solid var(--cs-border, #ccc);
+      border: none;
+      /* Solid pastel fill (set per column below) + constant dark text. */
       background: var(--cs-card, #fff);
-      color: inherit;
+      color: var(--cs-tile-fg, #1a1a1a);
       font-size: 0.9rem;
       line-height: 1.15;
       min-height: 2.5rem;
@@ -116,30 +117,15 @@ export class CallSheetBoard extends LitElement {
       font-weight: 700;
     }
     .head.g0 {
-      border-color: var(--cs-group-0);
-    }
-    .head.g1 {
-      border-color: var(--cs-group-1);
-    }
-    .head.g2 {
-      border-color: var(--cs-group-2);
-    }
-    .head.g3 {
-      border-color: var(--cs-group-3);
-    }
-    .head.solved {
-      color: #fff;
-    }
-    .head.solved.g0 {
       background: var(--cs-group-0);
     }
-    .head.solved.g1 {
+    .head.g1 {
       background: var(--cs-group-1);
     }
-    .head.solved.g2 {
+    .head.g2 {
       background: var(--cs-group-2);
     }
-    .head.solved.g3 {
+    .head.g3 {
       background: var(--cs-group-3);
     }
 

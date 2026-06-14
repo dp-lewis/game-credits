@@ -31,10 +31,11 @@ export class CallSheetActor extends LitElement {
       font: inherit;
       min-height: 3rem;
       padding: 0.5rem;
-      border: 2px solid var(--cs-border, #ddd);
+      border: none;
       border-radius: 0.6rem;
       background: var(--cs-card, #fff);
-      color: inherit;
+      /* Constant dark text — stays legible on the light pastels in any scheme. */
+      color: var(--cs-tile-fg, #1a1a1a);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -48,25 +49,21 @@ export class CallSheetActor extends LitElement {
       cursor: default;
     }
 
-    /* Assigned-bucket colours (left accent + tint). */
+    /* Assigned-column colour — solid pastel fill. */
     button.g0 {
-      border-color: var(--cs-group-0);
-      box-shadow: inset 0.35rem 0 0 var(--cs-group-0);
+      background: var(--cs-group-0);
     }
     button.g1 {
-      border-color: var(--cs-group-1);
-      box-shadow: inset 0.35rem 0 0 var(--cs-group-1);
+      background: var(--cs-group-1);
     }
     button.g2 {
-      border-color: var(--cs-group-2);
-      box-shadow: inset 0.35rem 0 0 var(--cs-group-2);
+      background: var(--cs-group-2);
     }
     button.g3 {
-      border-color: var(--cs-group-3);
-      box-shadow: inset 0.35rem 0 0 var(--cs-group-3);
+      background: var(--cs-group-3);
     }
 
-    /* Pending swap pick — a clear ring independent of the column colour. */
+    /* Pending swap pick — a clear ring on top of the pastel fill. */
     button.selected {
       outline: 3px solid var(--cs-accent, #2b6cb0);
       outline-offset: 1px;

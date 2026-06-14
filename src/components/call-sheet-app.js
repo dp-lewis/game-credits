@@ -24,18 +24,11 @@ export class CallSheetApp extends LitElement {
       display: block;
       max-width: 32rem;
       margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-
-    h1 {
-      margin: 0 0 0.25rem;
-      font-size: clamp(2rem, 8vw, 3rem);
-      letter-spacing: 0.02em;
-      text-align: center;
+      padding: 1.25rem 1rem 2rem;
     }
 
     .tagline {
-      margin: 0 0 1.5rem;
+      margin: 0 0 1.25rem;
       color: var(--cs-muted, #555);
       text-align: center;
     }
@@ -51,7 +44,7 @@ export class CallSheetApp extends LitElement {
 
     .nav {
       text-align: center;
-      margin: 0 0 1.5rem;
+      margin: 1.5rem 0 0;
     }
     .nav a {
       color: var(--cs-accent, #2b6cb0);
@@ -136,9 +129,7 @@ export class CallSheetApp extends LitElement {
 
   render() {
     return html`
-      <h1>Call Sheet</h1>
       <p class="tagline">Sort the scrambled cast back into their films.</p>
-      <p class="nav"><a href="archive.html">Archive ▸</a></p>
       ${this._isReplay && this._puzzle
         ? html`<p class="practice">
             Practice mode — this play won't affect your streak.
@@ -164,6 +155,7 @@ export class CallSheetApp extends LitElement {
             @game-over=${this._onGameOver}
           ></call-sheet-board>`
         : ''}
+      <p class="nav"><a href="archive.html">Archive ▸</a></p>
     `;
   }
 }

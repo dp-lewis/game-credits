@@ -306,8 +306,9 @@ intents:
         completed_at: 2026-06-14T03:45:09.009Z
   - id: local-ci-gate
     title: Local CI Parity Gate
-    status: in_progress
+    status: completed
     created: 2026-06-14T04:00:00Z
+    completed_at: 2026-06-14T03:56:35.001Z
     work_items:
       - id: add-check-gate-script
         title: Add a check Script Mirroring CI
@@ -317,6 +318,43 @@ intents:
         depends_on: []
         run_id: run-game-credits-019
         completed_at: 2026-06-14T03:56:34.993Z
+  - id: pastel-layout-refresh
+    title: Pastel Layout Refresh
+    status: in_progress
+    created: 2026-06-14T04:10:00Z
+    work_items:
+      - id: pastel-tile-theme
+        title: Pastel Solid Tiles
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-020
+        completed_at: 2026-06-14T06:35:28.791Z
+      - id: complement-accent-colours
+        title: Complement Submit and Lives Colours
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on:
+          - pastel-tile-theme
+        run_id: run-game-credits-021
+        completed_at: 2026-06-14T06:40:39.911Z
+      - id: tighten-page-layout
+        title: Tighten Page Layout
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-022
+        completed_at: 2026-06-14T06:44:22.709Z
+      - id: lock-completed-replays
+        title: Lock Completed Replays
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - tighten-page-layout
 runs:
   active: []
   completed:
@@ -505,3 +543,27 @@ runs:
           mode: autopilot
       started: 2026-06-14T03:55:18.945Z
       completed: 2026-06-14T03:56:34.993Z
+    - id: run-game-credits-020
+      scope: single
+      work_items:
+        - id: pastel-tile-theme
+          intent: pastel-layout-refresh
+          mode: autopilot
+      started: 2026-06-14T06:31:31.697Z
+      completed: 2026-06-14T06:35:28.791Z
+    - id: run-game-credits-021
+      scope: single
+      work_items:
+        - id: complement-accent-colours
+          intent: pastel-layout-refresh
+          mode: autopilot
+      started: 2026-06-14T06:39:22.204Z
+      completed: 2026-06-14T06:40:39.911Z
+    - id: run-game-credits-022
+      scope: single
+      work_items:
+        - id: tighten-page-layout
+          intent: pastel-layout-refresh
+          mode: autopilot
+      started: 2026-06-14T06:42:20.597Z
+      completed: 2026-06-14T06:44:22.709Z
