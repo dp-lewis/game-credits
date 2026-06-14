@@ -60,9 +60,9 @@ test('play the 3-film puzzle through to a win via select-then-swap', async ({
   await expect(page.locator('call-sheet-actor span.lock')).toHaveCount(12);
   // Game over: Submit is gone and there's no separate result/Copy-result card.
   await expect(page.getByRole('button', { name: 'Submit' })).toHaveCount(0);
-  await expect(
-    page.getByRole('button', { name: 'Copy result' })
-  ).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Copy result' })).toHaveCount(
+    0
+  );
 
   // A `?puzzle=` replay starts a fresh board on reload (it is not restored).
   await page.reload();

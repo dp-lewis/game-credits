@@ -114,7 +114,9 @@ export class CallSheetActor extends LitElement {
         @click=${this._pick}
       >
         <span class="name">${this.actor.name}</span>
-        ${this.ticked ? html`<span class="lock" aria-label="correct">✓</span>` : ''}
+        ${this.ticked
+          ? html`<span class="lock" aria-label="correct">✓</span>`
+          : ''}
       </button>
     `;
   }

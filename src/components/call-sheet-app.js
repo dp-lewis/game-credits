@@ -150,7 +150,8 @@ export class CallSheetApp extends LitElement {
       ${this._error ? html`<p class="status error">${this._error}</p>` : ''}
       ${this._puzzle && this._played
         ? html`<p class="status">
-              You've already played this puzzle. Come back tomorrow for a new one.
+              You've already played this puzzle. Come back tomorrow for a new
+              one.
             </p>
             <call-sheet-board
               .puzzle=${this._puzzle}

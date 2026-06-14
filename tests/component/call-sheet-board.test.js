@@ -21,7 +21,8 @@ async function mountBoard() {
   return el;
 }
 
-const chip = (b, id) => b.shadowRoot.querySelector(`call-sheet-actor[data-actor="${id}"]`);
+const chip = (b, id) =>
+  b.shadowRoot.querySelector(`call-sheet-actor[data-actor="${id}"]`);
 const isTicked = (b, id) => chip(b, id).ticked === true;
 
 const submitBtn = (b) => b.shadowRoot.querySelector('button.submit');

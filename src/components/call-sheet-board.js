@@ -445,9 +445,7 @@ export class CallSheetBoard extends LitElement {
 
     // Target: each column holds its resolved film's cast, in stable order.
     const target = columnFilm.map((filmId) =>
-      this.puzzle.actors
-        .filter((a) => a.filmId === filmId)
-        .map((a) => a.id)
+      this.puzzle.actors.filter((a) => a.filmId === filmId).map((a) => a.id)
     );
     this._bucketFilm = Object.fromEntries(columnFilm.map((f, c) => [c, f]));
     this._revealTicks = ticks;
@@ -490,7 +488,8 @@ export class CallSheetBoard extends LitElement {
 
     const usedCols = new Set();
     for (const { col, film } of candidates) {
-      if (filmsByCol[col] || usedCols.has(col) || takenFilms.has(film)) continue;
+      if (filmsByCol[col] || usedCols.has(col) || takenFilms.has(film))
+        continue;
       filmsByCol[col] = film;
       usedCols.add(col);
       takenFilms.add(film);
@@ -527,10 +526,7 @@ export class CallSheetBoard extends LitElement {
   render() {
     if (!this.puzzle) return html``;
     return html`
-      <section
-        @actor-pick=${this._onPick}
-        style="--cols: ${this._numGroups}"
-      >
+      <section @actor-pick=${this._onPick} style="--cols: ${this._numGroups}">
         ${this._status === 'revealed'
           ? ''
           : html`<div class="lives" aria-label="Lives remaining">
@@ -548,7 +544,6 @@ export class CallSheetBoard extends LitElement {
         </p>
 
         ${this._renderHeaders()} ${this._renderCells()}
-
         ${this._status === 'playing'
           ? html`<button class="submit" @click=${this._submit}>Submit</button>`
           : ''}
@@ -559,11 +554,7 @@ export class CallSheetBoard extends LitElement {
 
   _renderHeaders() {
     // The header row carries the per-group feedback, so it is the live region.
-    return html`<div
-      class="headers"
-      role="status"
-      aria-live="polite"
-    >
+    return html`<div class="headers" role="status" aria-live="polite">
       ${Array.from({ length: this._numGroups }, (_, c) => {
         // Reveal all titles at game over; during play only solved columns.
         const titled = this._revealed || this._solved.has(c);
@@ -579,7 +570,9 @@ export class CallSheetBoard extends LitElement {
         return html`<div class="head g${c}">
           <span class="label">Movie ${c + 1}</span>
           ${progress
-            ? html`<span class="count">${progress.count}/${progress.total}</span>`
+            ? html`<span class="count"
+                >${progress.count}/${progress.total}</span
+              >`
             : ''}
         </div>`;
       })}
