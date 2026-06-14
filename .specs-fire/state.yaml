@@ -304,6 +304,19 @@ intents:
           - board-result-reveal
         run_id: run-game-credits-018
         completed_at: 2026-06-14T03:45:09.009Z
+  - id: local-ci-gate
+    title: Local CI Parity Gate
+    status: in_progress
+    created: 2026-06-14T04:00:00Z
+    work_items:
+      - id: add-check-gate-script
+        title: Add a check Script Mirroring CI
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-019
+        completed_at: 2026-06-14T03:56:34.993Z
 runs:
   active: []
   completed:
@@ -484,3 +497,11 @@ runs:
           mode: autopilot
       started: 2026-06-14T03:43:45.972Z
       completed: 2026-06-14T03:45:09.009Z
+    - id: run-game-credits-019
+      scope: single
+      work_items:
+        - id: add-check-gate-script
+          intent: local-ci-gate
+          mode: autopilot
+      started: 2026-06-14T03:55:18.945Z
+      completed: 2026-06-14T03:56:34.993Z
