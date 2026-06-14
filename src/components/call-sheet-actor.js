@@ -6,15 +6,16 @@ import { LitElement, html, css } from 'lit';
  * Tapping the chip emits `actor-pick` `{ actorId }`; the board runs select-then-
  * swap (first tap selects, second tap swaps the two). The chip always shows its
  * column colour via `bucketIndex`, a `selected` ring while it's the pending pick,
- * and a locked state once its column (group) is solved.
+ * a `ticked` ✓ when it's in its correct movie, and a `locked` (disabled) state.
  *
- * Properties: `actor`, `bucketIndex` (number | null), `selected`, `locked`.
+ * Properties: `actor`, `bucketIndex` (number | null), `selected`, `ticked`, `locked`.
  */
 export class CallSheetActor extends LitElement {
   static properties = {
     actor: { attribute: false },
     bucketIndex: { attribute: false },
     selected: { type: Boolean },
+    ticked: { type: Boolean },
     locked: { type: Boolean },
   };
 
@@ -113,7 +114,7 @@ export class CallSheetActor extends LitElement {
         @click=${this._pick}
       >
         <span class="name">${this.actor.name}</span>
-        ${this.locked ? html`<span class="lock">✓</span>` : ''}
+        ${this.ticked ? html`<span class="lock" aria-label="correct">✓</span>` : ''}
       </button>
     `;
   }

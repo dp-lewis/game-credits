@@ -14,11 +14,15 @@ const GROUPS = [
 
 async function mountBoard() {
   const el = document.createElement('call-sheet-board');
+  el.revealDelayMs = 0; // no end-game beat in tests
   el.puzzle = puzzle;
   document.body.appendChild(el);
   await el.updateComplete;
   return el;
 }
+
+const chip = (b, id) => b.shadowRoot.querySelector(`call-sheet-actor[data-actor="${id}"]`);
+const isTicked = (b, id) => chip(b, id).ticked === true;
 
 const submitBtn = (b) => b.shadowRoot.querySelector('button.submit');
 const headers = (b) => [...b.shadowRoot.querySelectorAll('.head')];
@@ -203,6 +207,87 @@ describe('<call-sheet-board> column board', () => {
       await clickActor(board, 'clooney');
       expect(board._selected).toBe('nicholson'); // unchanged
       expect(board._columnOf('clooney')).toBe(0); // still locked in place
+    });
+  });
+
+  describe('game-over reveal', () => {
+    it('win: ticks every chip and reveals every movie title', async () => {
+      const board = await mountBoard();
+      await setColumns(board, GROUPS);
+      submitBtn(board).click();
+      await board._revealDone;
+      await board.updateComplete;
+
+      expect(board._status).toBe('won');
+      expect(board._revealed).toBe(true);
+      expect(puzzle.actors.every((a) => isTicked(board, a.id))).toBe(true);
+      expect(headers(board).every((h) => h.querySelector('.title'))).toBe(true);
+    });
+
+    it('loss: moves misplaced actors into their correct movies, ticking only the right picks', async () => {
+      const board = await mountBoard();
+      await setColumns(board, [
+        GROUPS[0], // Ocean's — solved, stays
+        ['nicholson', 'wahlberg', 'farmiga', 'hardy'], // 3 Departed + Inception trap
+        ['dicaprio', 'gordon-levitt', 'robbie', 'pacino'], // modal OUATIH
+        ['page', 'watanabe', 'russell', 'olyphant'], // modal Inception
+      ]);
+      board._lives = 1; // next wrong submit ends the game
+      submitBtn(board).click();
+      await board._revealDone;
+      await board.updateComplete;
+
+      expect(board._status).toBe('lost');
+      expect(board._revealed).toBe(true);
+
+      // Every actor now sits in its correct movie column.
+      for (const a of puzzle.actors) {
+        expect(board._bucketFilm[board._columnOf(a.id)]).toBe(a.filmId);
+      }
+
+      // Ticks only on the picks the player had in the right movie.
+      for (const id of [
+        'clooney',
+        'nicholson',
+        'farmiga',
+        'robbie',
+        'pacino',
+        'page',
+        'watanabe',
+      ]) {
+        expect(isTicked(board, id)).toBe(true);
+      }
+      for (const id of [
+        'hardy',
+        'dicaprio',
+        'gordon-levitt',
+        'russell',
+        'olyphant',
+      ]) {
+        expect(isTicked(board, id)).toBe(false);
+      }
+
+      // All movies revealed in the headers.
+      expect(headers(board).every((h) => h.querySelector('.title'))).toBe(true);
+    });
+
+    it('static reveal renders the solved board — titles, no ticks, no submit/lives', async () => {
+      const el = document.createElement('call-sheet-board');
+      el.puzzle = puzzle;
+      el.reveal = true;
+      document.body.appendChild(el);
+      await el.updateComplete;
+
+      expect(el._status).toBe('revealed');
+      for (const a of puzzle.actors) {
+        expect(el._bucketFilm[el._columnOf(a.id)]).toBe(a.filmId);
+      }
+      expect(puzzle.actors.every((a) => isTicked(el, a.id) === false)).toBe(
+        true
+      );
+      expect(el.shadowRoot.querySelector('button.submit')).toBeNull();
+      expect(el.shadowRoot.querySelector('.lives')).toBeNull();
+      expect(headers(el).every((h) => h.querySelector('.title'))).toBe(true);
     });
   });
 });

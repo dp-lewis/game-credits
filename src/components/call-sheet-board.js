@@ -5,6 +5,9 @@ import { gradeGroups } from '../lib/group-logic.js';
 import { shuffle } from '../lib/shuffle.js';
 import './call-sheet-actor.js';
 
+// How long the end-game reveal takes to slide actors into their correct movies.
+const REVEAL_MOVE_MS = 1000;
+
 /**
  * `<call-sheet-board>` — the column group board.
  *
@@ -14,15 +17,20 @@ import './call-sheet-actor.js';
  * actor to select it, tap another cell to swap the two (animated). Submitting
  * grades each column by membership (`gradeGroups`): a column whose members share
  * a film locks and reveals that film's title; a wrong/partial submit costs a
- * life and shows per-group progress (e.g. `Grp1 4/4 ✓ · Grp2 3/4 · Grp3 1/4`);
- * out of lives reveals the full solution. Emits `game-over` for the result/share
- * layer.
+ * life and shows per-group progress (e.g. `Movie 1 4/4 ✓ · Movie 2 3/4`). At game
+ * over the board reveals the result in place: a win ticks every chip; a loss pauses,
+ * reveals every title, and animates the misplaced actors into their correct movies,
+ * ticking the picks the player got right. Emits `game-over` for the app layer.
  *
- * Property: `puzzle` (a validated Puzzle).
+ * Properties: `puzzle` (a validated Puzzle); `reveal` (show the solved solution
+ * directly, for the already-played view).
  */
 export class CallSheetBoard extends LitElement {
   static properties = {
     puzzle: { attribute: false },
+    // When set, render the solved solution directly (no play) — used by the
+    // already-played view to reveal the answer without a game.
+    reveal: { attribute: false },
     _columns: { state: true },
     _selected: { state: true },
     _solved: { state: true },
@@ -30,6 +38,8 @@ export class CallSheetBoard extends LitElement {
     _lives: { state: true },
     _status: { state: true },
     _progress: { state: true },
+    _revealed: { state: true },
+    _revealTicks: { state: true },
   };
 
   static styles = css`
@@ -156,38 +166,6 @@ export class CallSheetBoard extends LitElement {
       cursor: default;
     }
 
-    .solution {
-      list-style: none;
-      margin: 1rem 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0.4rem;
-    }
-    .solution li {
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.6rem;
-      color: #fff;
-    }
-    .solution .g0 {
-      background: var(--cs-group-0);
-    }
-    .solution .g1 {
-      background: var(--cs-group-1);
-    }
-    .solution .g2 {
-      background: var(--cs-group-2);
-    }
-    .solution .g3 {
-      background: var(--cs-group-3);
-    }
-    .solution .title {
-      font-weight: 700;
-    }
-    .solution .cast {
-      font-size: 0.9rem;
-      opacity: 0.95;
-    }
-
     .banner {
       text-align: center;
       margin: 1rem 0 0;
@@ -210,11 +188,17 @@ export class CallSheetBoard extends LitElement {
     this._lives = 0;
     this._status = 'playing';
     this._progress = null;
+    this._revealed = false;
+    this._revealTicks = new Set();
     this._answerKey = {};
     this._filmTitle = {};
     this._numGroups = 0;
     this._groupSize = 0;
     this._announce = '';
+    // The beat before the loss reveal animates; overridable so tests run fast.
+    this.revealDelayMs = 1000;
+    // Resolves when an in-flight reveal finishes (for tests to await).
+    this._revealDone = Promise.resolve();
   }
 
   willUpdate(changed) {
@@ -236,8 +220,33 @@ export class CallSheetBoard extends LitElement {
       this._lives = this.puzzle.maxMistakes;
       this._status = 'playing';
       this._progress = null;
+      this._revealed = false;
+      this._revealTicks = new Set();
       this._announce = '';
     }
+    // Static reveal: show the solved solution directly (no game played).
+    if (
+      (changed.has('reveal') || changed.has('puzzle')) &&
+      this.reveal &&
+      this.puzzle &&
+      !this._revealed
+    ) {
+      this._showStaticReveal();
+    }
+  }
+
+  /** Render the solution outright (titles + cast in place), no ticks, no play. */
+  _showStaticReveal() {
+    this._status = 'revealed';
+    this._columns = this.puzzle.films.map((film) =>
+      this.puzzle.actors.filter((a) => a.filmId === film.id).map((a) => a.id)
+    );
+    this._bucketFilm = Object.fromEntries(
+      this.puzzle.films.map((film, c) => [c, film.id])
+    );
+    this._revealTicks = new Set();
+    this._revealed = true;
+    this._selected = null;
   }
 
   _actorById(id) {
@@ -328,7 +337,8 @@ export class CallSheetBoard extends LitElement {
   }
 
   // FLIP: each moved chip starts at its old position and animates back to rest.
-  _flip(before) {
+  // Snappy for in-play swaps; slowed for the end-game reveal move.
+  _flip(before, duration = 180, easing = 'ease') {
     for (const id of Object.keys(before)) {
       const from = before[id];
       const el = this._chipEl(id);
@@ -339,7 +349,7 @@ export class CallSheetBoard extends LitElement {
       if (dx === 0 && dy === 0) continue;
       el.animate(
         [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'none' }],
-        { duration: 180, easing: 'ease' }
+        { duration, easing }
       );
     }
   }
@@ -373,6 +383,7 @@ export class CallSheetBoard extends LitElement {
     if (grade.allSolved) {
       this._status = 'won';
       this._emitGameOver(grade);
+      this._revealDone = this._revealWin();
       return;
     }
 
@@ -381,7 +392,119 @@ export class CallSheetBoard extends LitElement {
       this._lives = 0;
       this._status = 'lost';
       this._emitGameOver(grade);
+      this._revealDone = this._revealLoss();
     }
+  }
+
+  _prefersReducedMotion() {
+    return (
+      typeof matchMedia === 'function' &&
+      matchMedia('(prefers-reduced-motion: reduce)').matches
+    );
+  }
+
+  /** Win: every chip is correct — tick them all (with a light cascade). */
+  async _revealWin() {
+    this._revealTicks = new Set(this.puzzle.actors.map((a) => a.id));
+    this._revealed = true;
+    await this.updateComplete;
+    if (this._prefersReducedMotion()) return;
+    this.puzzle.actors.forEach((actor, i) => {
+      const el = this._chipEl(actor.id);
+      if (!el || typeof el.animate !== 'function') return;
+      el.animate(
+        [
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.06)' },
+          { transform: 'scale(1)' },
+        ],
+        { duration: 260, delay: i * 45, easing: 'ease' }
+      );
+    });
+  }
+
+  /**
+   * Loss/partial: pause, reveal every movie, then FLIP the misplaced actors into
+   * their correct columns. Player-correct actors keep a tick; movers go blank.
+   */
+  async _revealLoss() {
+    const reduce = this._prefersReducedMotion();
+    if (!reduce && this.revealDelayMs > 0) {
+      await new Promise((r) => setTimeout(r, this.revealDelayMs));
+    }
+
+    const columnFilm = this._resolveColumnFilms();
+    // A pick was right when its film matches the film of the column it sat in.
+    const ticks = new Set(
+      this.puzzle.actors
+        .map((a) => a.id)
+        .filter((id) => this._answerKey[id] === columnFilm[this._columnOf(id)])
+    );
+
+    const before = reduce || !this.shadowRoot ? null : this._captureRects();
+
+    // Target: each column holds its resolved film's cast, in stable order.
+    const target = columnFilm.map((filmId) =>
+      this.puzzle.actors
+        .filter((a) => a.filmId === filmId)
+        .map((a) => a.id)
+    );
+    this._bucketFilm = Object.fromEntries(columnFilm.map((f, c) => [c, f]));
+    this._revealTicks = ticks;
+    this._revealed = true;
+    this._columns = target;
+
+    await this.updateComplete;
+    if (before) this._flip(before, REVEAL_MOVE_MS, 'ease-in-out');
+  }
+
+  /**
+   * Assign a film to every column for the reveal: solved columns keep theirs;
+   * each remaining column takes its modal remaining film (matching the n/4 hint),
+   * resolving ties greedily by descending count so it stays a bijection.
+   */
+  _resolveColumnFilms() {
+    const filmsByCol = new Array(this._numGroups).fill(null);
+    const takenFilms = new Set();
+    for (let c = 0; c < this._numGroups; c++) {
+      if (this._solved.has(c)) {
+        filmsByCol[c] = this._bucketFilm[c];
+        takenFilms.add(this._bucketFilm[c]);
+      }
+    }
+
+    // Candidate (col, film, count) for every unsolved column, best first.
+    const candidates = [];
+    for (let c = 0; c < this._numGroups; c++) {
+      if (filmsByCol[c]) continue;
+      const counts = {};
+      for (const id of this._columns[c]) {
+        const film = this._answerKey[id];
+        counts[film] = (counts[film] || 0) + 1;
+      }
+      for (const film of this.puzzle.films.map((f) => f.id)) {
+        candidates.push({ col: c, film, count: counts[film] || 0 });
+      }
+    }
+    candidates.sort((a, b) => b.count - a.count);
+
+    const usedCols = new Set();
+    for (const { col, film } of candidates) {
+      if (filmsByCol[col] || usedCols.has(col) || takenFilms.has(film)) continue;
+      filmsByCol[col] = film;
+      usedCols.add(col);
+      takenFilms.add(film);
+    }
+    return filmsByCol;
+  }
+
+  _captureRects() {
+    const rects = {};
+    for (const actor of this.puzzle.actors) {
+      const r = this._rectOf(actor.id);
+      if (r) rects[actor.id] = r;
+    }
+    return rects;
   }
 
   _emitGameOver(grade) {
@@ -408,15 +531,17 @@ export class CallSheetBoard extends LitElement {
         @actor-pick=${this._onPick}
         style="--cols: ${this._numGroups}"
       >
-        <div class="lives" aria-label="Lives remaining">
-          ${Array.from(
-            { length: this.puzzle.maxMistakes },
-            (_, i) =>
-              html`<span class="life ${i < this._lives ? 'on' : 'off'}"
-                >●</span
-              >`
-          )}
-        </div>
+        ${this._status === 'revealed'
+          ? ''
+          : html`<div class="lives" aria-label="Lives remaining">
+              ${Array.from(
+                { length: this.puzzle.maxMistakes },
+                (_, i) =>
+                  html`<span class="life ${i < this._lives ? 'on' : 'off'}"
+                    >●</span
+                  >`
+              )}
+            </div>`}
 
         <p class="a11y-status" role="status" aria-live="polite">
           ${this._announce}
@@ -424,15 +549,10 @@ export class CallSheetBoard extends LitElement {
 
         ${this._renderHeaders()} ${this._renderCells()}
 
-        <button
-          class="submit"
-          ?disabled=${this._status !== 'playing'}
-          @click=${this._submit}
-        >
-          Submit
-        </button>
-
-        ${this._renderBanner()} ${this._renderSolution()}
+        ${this._status === 'playing'
+          ? html`<button class="submit" @click=${this._submit}>Submit</button>`
+          : ''}
+        ${this._renderBanner()}
       </section>
     `;
   }
@@ -445,11 +565,14 @@ export class CallSheetBoard extends LitElement {
       aria-live="polite"
     >
       ${Array.from({ length: this._numGroups }, (_, c) => {
-        const solved = this._solved.has(c);
-        if (solved) {
+        // Reveal all titles at game over; during play only solved columns.
+        const titled = this._revealed || this._solved.has(c);
+        if (titled) {
           return html`<div class="head g${c} solved">
             <span class="title">${this._filmTitle[this._bucketFilm[c]]}</span>
-            <span class="tick" aria-label="solved">✓</span>
+            ${this._solved.has(c) || this._status === 'won'
+              ? html`<span class="tick" aria-label="solved">✓</span>`
+              : ''}
           </div>`;
         }
         const progress = this._progress?.[c];
@@ -473,7 +596,9 @@ export class CallSheetBoard extends LitElement {
         (actor) => actor.id,
         (actor) => {
           const pos = place[actor.id];
-          const locked = this._solved.has(pos.col);
+          const ticked = this._revealed
+            ? this._revealTicks.has(actor.id)
+            : this._solved.has(pos.col);
           return html`<li
             class="cell"
             style="grid-column: ${pos.col + 1}; grid-row: ${pos.row + 1};"
@@ -483,7 +608,8 @@ export class CallSheetBoard extends LitElement {
               .actor=${actor}
               .bucketIndex=${pos.col}
               ?selected=${this._selected === actor.id}
-              ?locked=${locked || this._status !== 'playing'}
+              ?ticked=${ticked}
+              ?locked=${this._solved.has(pos.col) || this._status !== 'playing'}
             ></call-sheet-actor>
           </li>`;
         }
@@ -494,7 +620,7 @@ export class CallSheetBoard extends LitElement {
   _renderBanner() {
     if (this._status === 'won') {
       return html`<p class="banner won" role="status">
-        Solved! You found every group. 🎬
+        Solved! You found every movie. 🎬
       </p>`;
     }
     if (this._status === 'lost') {
@@ -503,22 +629,6 @@ export class CallSheetBoard extends LitElement {
       </p>`;
     }
     return '';
-  }
-
-  _renderSolution() {
-    if (this._status !== 'lost') return '';
-    return html`<ul class="solution">
-      ${this.puzzle.films.map((film, i) => {
-        const names = this.puzzle.actors
-          .filter((a) => a.filmId === film.id)
-          .map((a) => a.name)
-          .join(', ');
-        return html`<li class="g${i}">
-          <span class="title">${film.title}</span>
-          <span class="cast"> — ${names}</span>
-        </li>`;
-      })}
-    </ul>`;
   }
 }
 

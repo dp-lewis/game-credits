@@ -55,10 +55,14 @@ test('play the 3-film puzzle through to a win via select-then-swap', async ({
 
   await page.getByRole('button', { name: 'Submit' }).click();
 
-  // Result view with a spoiler-free share grid, confirming a clean win.
-  await expect(page.getByRole('button', { name: 'Copy result' })).toBeVisible();
-  await expect(page.getByText('Call Sheet 2026-06-14')).toBeVisible();
-  await expect(page.getByText(/Solved 3\/3 with 0 mistakes/)).toBeVisible();
+  // The board reveals the win in place: a banner and a tick on every chip.
+  await expect(page.getByText(/Solved! You found every movie/i)).toBeVisible();
+  await expect(page.locator('call-sheet-actor span.lock')).toHaveCount(12);
+  // Game over: Submit is gone and there's no separate result/Copy-result card.
+  await expect(page.getByRole('button', { name: 'Submit' })).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Copy result' })
+  ).toHaveCount(0);
 
   // A `?puzzle=` replay starts a fresh board on reload (it is not restored).
   await page.reload();

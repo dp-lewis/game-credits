@@ -5,7 +5,6 @@ import { resolvePuzzleId } from '../lib/puzzle-schedule.js';
 import { createProgressStore } from '../lib/progress-store.js';
 import { safeStorage } from '../lib/safe-storage.js';
 import './call-sheet-board.js';
-import './call-sheet-result.js';
 
 /**
  * `<call-sheet-app>` — root application shell. Loads today's puzzle and renders
@@ -17,9 +16,7 @@ export class CallSheetApp extends LitElement {
     _puzzle: { state: true },
     _error: { state: true },
     _loading: { state: true },
-    _gameOver: { state: true },
     _played: { state: true },
-    _streak: { state: true },
   };
 
   static styles = css`
@@ -74,18 +71,17 @@ export class CallSheetApp extends LitElement {
     this._puzzle = null;
     this._error = '';
     this._loading = true;
-    this._gameOver = null;
     this._played = false;
-    this._streak = 0;
     this._isReplay = false;
     this._store = createProgressStore(safeStorage());
   }
 
   _onGameOver(event) {
     const detail = event.detail;
+    // The board reveals the result itself; the app only records the outcome.
     // Only the official daily play moves the streak; a `?puzzle=` replay is practice.
     const updateStreak = !this._isReplay && this._puzzle.id === todayKey();
-    const { current } = this._store.recordResult(
+    this._store.recordResult(
       this._puzzle.id,
       {
         status: detail.status,
@@ -95,8 +91,6 @@ export class CallSheetApp extends LitElement {
       },
       { updateStreak }
     );
-    this._streak = current;
-    this._gameOver = detail;
   }
 
   connectedCallback() {
@@ -131,13 +125,6 @@ export class CallSheetApp extends LitElement {
         const prior = this._store.getDay(this._puzzle.id);
         if (prior) {
           this._played = true;
-          this._streak = this._store.getStreaks().current;
-          this._gameOver = {
-            status: prior.status,
-            mistakes: prior.mistakes,
-            groupsSolved: prior.groupsSolved,
-            totalGroups: prior.totalGroups,
-          };
         }
       }
     } catch (err) {
@@ -161,27 +148,20 @@ export class CallSheetApp extends LitElement {
         ? html`<p class="status">Loading today's puzzle…</p>`
         : ''}
       ${this._error ? html`<p class="status error">${this._error}</p>` : ''}
-      ${this._played
+      ${this._puzzle && this._played
         ? html`<p class="status">
-            You've already played this puzzle. Come back tomorrow for a new one.
-          </p>`
+              You've already played this puzzle. Come back tomorrow for a new one.
+            </p>
+            <call-sheet-board
+              .puzzle=${this._puzzle}
+              .reveal=${true}
+            ></call-sheet-board>`
         : ''}
       ${this._puzzle && !this._played
         ? html`<call-sheet-board
             .puzzle=${this._puzzle}
             @game-over=${this._onGameOver}
           ></call-sheet-board>`
-        : ''}
-      ${this._gameOver
-        ? html`<call-sheet-result
-            .puzzleId=${this._puzzle.id}
-            .status=${this._gameOver.status}
-            .mistakes=${this._gameOver.mistakes}
-            .maxMistakes=${this._gameOver.maxMistakes}
-            .groupsSolved=${this._gameOver.groupsSolved}
-            .totalGroups=${this._gameOver.totalGroups}
-            .streak=${this._streak}
-          ></call-sheet-result>`
         : ''}
     `;
   }

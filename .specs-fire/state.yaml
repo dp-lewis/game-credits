@@ -272,6 +272,38 @@ intents:
           - per-group-progress
         run_id: run-game-credits-016
         completed_at: 2026-06-14T02:58:22.776Z
+  - id: game-over-board-reveal
+    title: Game-Over Board Reveal
+    status: completed
+    created: 2026-06-14T03:10:00Z
+    completed_at: 2026-06-14T03:50:00Z
+    work_items:
+      - id: board-result-reveal
+        title: In-Board Result Reveal
+        status: completed
+        complexity: high
+        mode: confirm
+        depends_on: []
+        run_id: run-game-credits-017
+        completed_at: 2026-06-14T03:40:31.318Z
+      - id: retire-result-card
+        title: Retire Result Card and Wire App
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - board-result-reveal
+        run_id: run-game-credits-017
+        completed_at: 2026-06-14T03:40:31.318Z
+      - id: slow-reveal-transition
+        title: Slow the Reveal Transition
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on:
+          - board-result-reveal
+        run_id: run-game-credits-018
+        completed_at: 2026-06-14T03:45:09.009Z
 runs:
   active: []
   completed:
@@ -433,3 +465,22 @@ runs:
           mode: autopilot
       started: 2026-06-14T02:54:46.568Z
       completed: 2026-06-14T02:58:22.776Z
+    - id: run-game-credits-017
+      scope: wide
+      work_items:
+        - id: board-result-reveal
+          intent: game-over-board-reveal
+          mode: confirm
+        - id: retire-result-card
+          intent: game-over-board-reveal
+          mode: autopilot
+      started: 2026-06-14T03:27:02.290Z
+      completed: 2026-06-14T03:40:31.318Z
+    - id: run-game-credits-018
+      scope: single
+      work_items:
+        - id: slow-reveal-transition
+          intent: game-over-board-reveal
+          mode: autopilot
+      started: 2026-06-14T03:43:45.972Z
+      completed: 2026-06-14T03:45:09.009Z
