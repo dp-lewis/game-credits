@@ -33,6 +33,17 @@ export class CallSheetApp extends LitElement {
       text-align: center;
     }
 
+    .theme {
+      text-align: center;
+      margin: 0 0 1rem;
+      color: var(--cs-muted, #555);
+      font-size: 0.95rem;
+    }
+    .theme strong {
+      color: var(--cs-fg, #1a1a1a);
+      font-weight: 600;
+    }
+
     .status {
       text-align: center;
       color: var(--cs-muted, #555);
@@ -137,6 +148,11 @@ export class CallSheetApp extends LitElement {
         ? html`<p class="status">Loading today's puzzle…</p>`
         : ''}
       ${this._error ? html`<p class="status error">${this._error}</p>` : ''}
+      ${this._puzzle?.theme
+        ? html`<p class="theme">
+            Theme: <strong>${this._puzzle.theme}</strong>
+          </p>`
+        : ''}
       ${this._puzzle && this._played
         ? html`<p class="status">
               ${this._isReplay

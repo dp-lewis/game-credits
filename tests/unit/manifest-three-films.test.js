@@ -14,10 +14,15 @@ describe('live puzzle rotation', () => {
     expect(manifest.length).toBeGreaterThan(0);
   });
 
-  it.each(manifest)('puzzle %s is valid and has exactly 3 films', (id) => {
-    const puzzle = validatePuzzle(
-      JSON.parse(readFileSync(`public/puzzles/${id}.json`, 'utf8'))
-    );
-    expect(puzzle.films).toHaveLength(3);
-  });
+  it.each(manifest)(
+    'puzzle %s is valid, has exactly 3 films, and is themed',
+    (id) => {
+      const puzzle = validatePuzzle(
+        JSON.parse(readFileSync(`public/puzzles/${id}.json`, 'utf8'))
+      );
+      expect(puzzle.films).toHaveLength(3);
+      expect(typeof puzzle.theme).toBe('string');
+      expect(puzzle.theme.length).toBeGreaterThan(0);
+    }
+  );
 });

@@ -24,6 +24,7 @@ import { assemblePuzzle } from '../src/lib/curation.js';
 import { validatePuzzle } from '../src/lib/puzzle-loader.js';
 import { mulberry32, shuffle } from '../src/lib/shuffle.js';
 import { isValidDateKey } from '../src/lib/date-key.js';
+import { selectCluster } from '../src/lib/theme-select.js';
 import { fetchFilmCast } from './lib/tmdb.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -61,6 +62,11 @@ function parseArgs(argv) {
     // Vary the film selection for a date without changing the date (lets a batch
     // force distinct trios across days).
     else if (a === '--salt') args.salt = parseInt(argv[++i], 10) || 0;
+    // Force a specific theme cluster (id from tmdb-themes.json).
+    else if (a === '--theme') args.theme = argv[++i];
+    // Skip these theme ids in the seeded default pick (comma-separated).
+    else if (a === '--avoid')
+      args.avoid = (argv[++i] || '').split(',').filter(Boolean);
     else if (a === '--out') args.out = path.resolve(argv[++i]);
     else if (a === '--manifest') args.manifest = path.resolve(argv[++i]);
   }
@@ -77,16 +83,28 @@ function seedFromDate(date) {
   return h >>> 0;
 }
 
-async function loadPool(args) {
+async function loadPool(args, seed) {
   if (args.offline) {
     const file = path.join(__dirname, 'fixtures/sample-casts.json');
-    return JSON.parse(fs.readFileSync(file, 'utf8'));
+    return {
+      films: JSON.parse(fs.readFileSync(file, 'utf8')),
+      theme: undefined,
+    };
   }
-  const films = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'lib/tmdb-films.json'), 'utf8')
+  const clusters = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'lib/tmdb-themes.json'), 'utf8')
   );
-  console.log(`Fetching ${films.length} casts from TMDB…`);
-  return Promise.all(films.map((f) => fetchFilmCast(f)));
+  const cluster = selectCluster(clusters, {
+    themeId: args.theme,
+    seed,
+    avoid: args.avoid,
+  });
+  if (!cluster) throw new Error('No theme clusters available.');
+  console.log(
+    `Theme: ${cluster.theme} — fetching ${cluster.films.length} casts from TMDB…`
+  );
+  const films = await Promise.all(cluster.films.map((f) => fetchFilmCast(f)));
+  return { films, theme: cluster.theme };
 }
 
 function previewPuzzle(puzzle) {
@@ -96,7 +114,7 @@ function previewPuzzle(puzzle) {
     byFilm.get(a.filmId).push(a.name + trap);
   }
   console.log(
-    `\nPuzzle ${puzzle.id} — ${puzzle.films.length} films, ${puzzle.actors.length} actors\n`
+    `\nPuzzle ${puzzle.id}${puzzle.theme ? ` — theme: ${puzzle.theme}` : ''} — ${puzzle.films.length} films, ${puzzle.actors.length} actors\n`
   );
   for (const f of puzzle.films) {
     console.log(`  ${f.title}${f.year ? ` (${f.year})` : ''}`);
@@ -129,9 +147,10 @@ async function main() {
     process.exit(1);
   }
 
-  const pool = await loadPool(args);
   const seedKey = args.salt ? `${args.date}#${args.salt}` : args.date;
-  const rng = mulberry32(seedFromDate(seedKey));
+  const seed = seedFromDate(seedKey);
+  const { films: pool, theme } = await loadPool(args, seed);
+  const rng = mulberry32(seed);
 
   // Try a few film selections (shuffled by the date seed) until one assembles.
   let puzzle = null;
@@ -151,6 +170,9 @@ async function main() {
     );
     process.exit(1);
   }
+
+  // Stamp the theme (flavour label) onto the puzzle.
+  if (theme) puzzle.theme = theme;
 
   // Sanity: the engine output must satisfy the runtime schema.
   validatePuzzle(puzzle);

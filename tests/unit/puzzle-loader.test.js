@@ -38,6 +38,19 @@ describe('validatePuzzle', () => {
     expect(validatePuzzle(data).date).toBe('sample');
   });
 
+  it('keeps an optional theme and omits it when absent', () => {
+    const data = clone(sample);
+    data.theme = 'Christopher Nolan';
+    expect(validatePuzzle(data).theme).toBe('Christopher Nolan');
+    expect('theme' in validatePuzzle(clone(sample))).toBe(false);
+  });
+
+  it('rejects a non-string theme', () => {
+    const data = clone(sample);
+    data.theme = 42;
+    expect(() => validatePuzzle(data)).toThrow(PuzzleValidationError);
+  });
+
   it.each([null, undefined, 42, 'nope', []])(
     'rejects non-object input: %s',
     (bad) => {

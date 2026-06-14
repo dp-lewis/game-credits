@@ -1,5 +1,10 @@
 [
-  { "id": "inception", "title": "Inception", "year": 2010, "tmdbId": 27205 },
+  {
+    "id": "inception",
+    "title": "Inception",
+    "year": 2010,
+    "tmdbId": 27205
+  },
   {
     "id": "the-dark-knight",
     "title": "The Dark Knight",
@@ -19,34 +24,58 @@
     "tmdbId": 872585
   },
   {
-    "id": "the-departed",
-    "title": "The Departed",
+    "id": "the-prestige",
+    "title": "The Prestige",
     "year": 2006,
-    "tmdbId": 1422
+    "tmdbId": 1124
   },
   {
-    "id": "the-wolf-of-wall-street",
-    "title": "The Wolf of Wall Street",
-    "year": 2013,
-    "tmdbId": 106646
+    "id": "dunkirk",
+    "title": "Dunkirk",
+    "year": 2017,
+    "tmdbId": 374720
   },
   {
-    "id": "once-upon-a-time-in-hollywood",
-    "title": "Once Upon a Time in Hollywood",
-    "year": 2019,
-    "tmdbId": 466272
+    "id": "the-grand-budapest-hotel",
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "tmdbId": 120467
   },
   {
-    "id": "oceans-eleven",
-    "title": "Ocean's Eleven",
+    "id": "the-royal-tenenbaums",
+    "title": "The Royal Tenenbaums",
     "year": 2001,
-    "tmdbId": 161
+    "tmdbId": 9428
   },
   {
-    "id": "the-big-short",
-    "title": "The Big Short",
-    "year": 2015,
-    "tmdbId": 318846
+    "id": "moonrise-kingdom",
+    "title": "Moonrise Kingdom",
+    "year": 2012,
+    "tmdbId": 83666
+  },
+  {
+    "id": "the-life-aquatic-with-steve-zissou",
+    "title": "The Life Aquatic with Steve Zissou",
+    "year": 2004,
+    "tmdbId": 421
+  },
+  {
+    "id": "asteroid-city",
+    "title": "Asteroid City",
+    "year": 2023,
+    "tmdbId": 747188
+  },
+  {
+    "id": "the-french-dispatch",
+    "title": "The French Dispatch",
+    "year": 2021,
+    "tmdbId": 542178
+  },
+  {
+    "id": "pulp-fiction",
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "tmdbId": 680
   },
   {
     "id": "django-unchained",
@@ -61,9 +90,207 @@
     "tmdbId": 16869
   },
   {
+    "id": "once-upon-a-time-in-hollywood",
+    "title": "Once Upon a Time in Hollywood",
+    "year": 2019,
+    "tmdbId": 466272
+  },
+  {
+    "id": "the-hateful-eight",
+    "title": "The Hateful Eight",
+    "year": 2015,
+    "tmdbId": 273248
+  },
+  {
+    "id": "kill-bill-vol-1",
+    "title": "Kill Bill: Vol. 1",
+    "year": 2003,
+    "tmdbId": 24
+  },
+  {
+    "id": "goodfellas",
+    "title": "Goodfellas",
+    "year": 1990,
+    "tmdbId": 769
+  },
+  {
+    "id": "the-departed",
+    "title": "The Departed",
+    "year": 2006,
+    "tmdbId": 1422
+  },
+  {
+    "id": "the-wolf-of-wall-street",
+    "title": "The Wolf of Wall Street",
+    "year": 2013,
+    "tmdbId": 106646
+  },
+  {
+    "id": "casino",
+    "title": "Casino",
+    "year": 1995,
+    "tmdbId": 524
+  },
+  {
+    "id": "the-irishman",
+    "title": "The Irishman",
+    "year": 2019,
+    "tmdbId": 398978
+  },
+  {
+    "id": "gangs-of-new-york",
+    "title": "Gangs of New York",
+    "year": 2002,
+    "tmdbId": 3131
+  },
+  {
+    "id": "fargo",
+    "title": "Fargo",
+    "year": 1996,
+    "tmdbId": 275
+  },
+  {
+    "id": "the-big-lebowski",
+    "title": "The Big Lebowski",
+    "year": 1998,
+    "tmdbId": 115
+  },
+  {
+    "id": "no-country-for-old-men",
+    "title": "No Country for Old Men",
+    "year": 2007,
+    "tmdbId": 6977
+  },
+  {
+    "id": "burn-after-reading",
+    "title": "Burn After Reading",
+    "year": 2008,
+    "tmdbId": 4944
+  },
+  {
+    "id": "hail-caesar",
+    "title": "Hail, Caesar!",
+    "year": 2016,
+    "tmdbId": 270487
+  },
+  {
+    "id": "o-brother-where-art-thou",
+    "title": "O Brother, Where Art Thou?",
+    "year": 2000,
+    "tmdbId": 134
+  },
+  {
+    "id": "iron-man",
+    "title": "Iron Man",
+    "year": 2008,
+    "tmdbId": 1726
+  },
+  {
+    "id": "thor",
+    "title": "Thor",
+    "year": 2011,
+    "tmdbId": 10195
+  },
+  {
+    "id": "captain-america-the-first-avenger",
+    "title": "Captain America: The First Avenger",
+    "year": 2011,
+    "tmdbId": 1771
+  },
+  {
+    "id": "doctor-strange",
+    "title": "Doctor Strange",
+    "year": 2016,
+    "tmdbId": 284052
+  },
+  {
+    "id": "guardians-of-the-galaxy",
+    "title": "Guardians of the Galaxy",
+    "year": 2014,
+    "tmdbId": 118340
+  },
+  {
+    "id": "black-panther",
+    "title": "Black Panther",
+    "year": 2018,
+    "tmdbId": 284054
+  },
+  {
+    "id": "the-avengers",
+    "title": "The Avengers",
+    "year": 2012,
+    "tmdbId": 24428
+  },
+  {
+    "id": "knocked-up",
+    "title": "Knocked Up",
+    "year": 2007,
+    "tmdbId": 4964
+  },
+  {
+    "id": "superbad",
+    "title": "Superbad",
+    "year": 2007,
+    "tmdbId": 8363
+  },
+  {
+    "id": "pineapple-express",
+    "title": "Pineapple Express",
+    "year": 2008,
+    "tmdbId": 10189
+  },
+  {
+    "id": "this-is-the-end",
+    "title": "This Is the End",
+    "year": 2013,
+    "tmdbId": 109414
+  },
+  {
+    "id": "forgetting-sarah-marshall",
+    "title": "Forgetting Sarah Marshall",
+    "year": 2008,
+    "tmdbId": 9870
+  },
+  {
+    "id": "step-brothers",
+    "title": "Step Brothers",
+    "year": 2008,
+    "tmdbId": 12133
+  },
+  {
     "id": "the-revenant",
     "title": "The Revenant",
     "year": 2015,
     "tmdbId": 281957
+  },
+  {
+    "id": "shutter-island",
+    "title": "Shutter Island",
+    "year": 2010,
+    "tmdbId": 11324
+  },
+  {
+    "id": "catch-me-if-you-can",
+    "title": "Catch Me If You Can",
+    "year": 2002,
+    "tmdbId": 640
+  },
+  {
+    "id": "blood-diamond",
+    "title": "Blood Diamond",
+    "year": 2006,
+    "tmdbId": 1372
+  },
+  {
+    "id": "the-aviator",
+    "title": "The Aviator",
+    "year": 2004,
+    "tmdbId": 2567
+  },
+  {
+    "id": "the-great-gatsby",
+    "title": "The Great Gatsby",
+    "year": 2013,
+    "tmdbId": 64682
   }
 ]

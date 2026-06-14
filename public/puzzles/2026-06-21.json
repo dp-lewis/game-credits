@@ -4,82 +4,85 @@
   "maxMistakes": 4,
   "films": [
     {
-      "id": "interstellar",
-      "title": "Interstellar",
-      "year": 2014
+      "id": "this-is-the-end",
+      "title": "This Is the End",
+      "year": 2013
     },
     {
-      "id": "inception",
-      "title": "Inception",
-      "year": 2010
+      "id": "superbad",
+      "title": "Superbad",
+      "year": 2007
     },
     {
-      "id": "the-big-short",
-      "title": "The Big Short",
-      "year": 2015
+      "id": "pineapple-express",
+      "title": "Pineapple Express",
+      "year": 2008
     }
   ],
   "actors": [
     {
-      "id": "tmdb-2524",
-      "name": "Tom Hardy",
-      "filmId": "inception"
+      "id": "tmdb-17051",
+      "name": "James Franco",
+      "filmId": "this-is-the-end",
+      "alsoIn": ["pineapple-express"]
     },
     {
-      "id": "tmdb-30614",
-      "name": "Ryan Gosling",
-      "filmId": "the-big-short"
+      "id": "tmdb-42157",
+      "name": "Ed Begley Jr.",
+      "filmId": "pineapple-express"
     },
     {
-      "id": "tmdb-4495",
-      "name": "Steve Carell",
-      "filmId": "the-big-short"
+      "id": "tmdb-21007",
+      "name": "Jonah Hill",
+      "filmId": "this-is-the-end",
+      "alsoIn": ["superbad"]
     },
     {
-      "id": "tmdb-1813",
-      "name": "Anne Hathaway",
-      "filmId": "interstellar"
+      "id": "tmdb-21163",
+      "name": "Gary Cole",
+      "filmId": "pineapple-express"
     },
     {
-      "id": "tmdb-3895",
-      "name": "Michael Caine",
-      "filmId": "interstellar",
-      "alsoIn": ["inception"]
+      "id": "tmdb-54692",
+      "name": "Martha MacIsaac",
+      "filmId": "superbad"
     },
     {
-      "id": "tmdb-287",
-      "name": "Brad Pitt",
-      "filmId": "the-big-short"
+      "id": "tmdb-4810",
+      "name": "Rosie Perez",
+      "filmId": "pineapple-express"
     },
     {
-      "id": "tmdb-3894",
-      "name": "Christian Bale",
-      "filmId": "the-big-short"
+      "id": "tmdb-19274",
+      "name": "Seth Rogen",
+      "filmId": "this-is-the-end",
+      "alsoIn": ["superbad", "pineapple-express"]
     },
     {
-      "id": "tmdb-6193",
-      "name": "Leonardo DiCaprio",
-      "filmId": "inception"
+      "id": "tmdb-54693",
+      "name": "Emma Stone",
+      "filmId": "superbad"
     },
     {
-      "id": "tmdb-3899",
-      "name": "Ken Watanabe",
-      "filmId": "inception"
+      "id": "tmdb-449",
+      "name": "Jay Baruchel",
+      "filmId": "this-is-the-end"
     },
     {
-      "id": "tmdb-24045",
-      "name": "Joseph Gordon-Levitt",
-      "filmId": "inception"
+      "id": "tmdb-55085",
+      "name": "Amber Heard",
+      "filmId": "pineapple-express"
     },
     {
-      "id": "tmdb-83002",
-      "name": "Jessica Chastain",
-      "filmId": "interstellar"
+      "id": "tmdb-53208",
+      "name": "Aviva Baumann",
+      "filmId": "superbad"
     },
     {
-      "id": "tmdb-10297",
-      "name": "Matthew McConaughey",
-      "filmId": "interstellar"
+      "id": "tmdb-54694",
+      "name": "Clement Blake",
+      "filmId": "superbad"
     }
-  ]
+  ],
+  "theme": "Apatow comedies"
 }
