@@ -29,7 +29,9 @@ export function validatePuzzle(data) {
     throw new PuzzleValidationError('Puzzle must be an object.');
   }
 
-  const { id, date, maxMistakes, films, actors } = /** @type {any} */ (data);
+  const { id, date, maxMistakes, theme, films, actors } = /** @type {any} */ (
+    data
+  );
 
   if (!isNonEmptyString(id)) {
     throw new PuzzleValidationError('Puzzle "id" must be a non-empty string.');
@@ -155,10 +157,18 @@ export function validatePuzzle(data) {
     resolvedMaxMistakes = maxMistakes;
   }
 
+  // theme: optional flavour label; non-empty string when present.
+  if (theme !== undefined && !isNonEmptyString(theme)) {
+    throw new PuzzleValidationError(
+      'Puzzle "theme" must be a non-empty string when provided.'
+    );
+  }
+
   return {
     id,
     date: isNonEmptyString(date) ? date : id,
     maxMistakes: resolvedMaxMistakes,
+    ...(isNonEmptyString(theme) ? { theme } : {}),
     films: films.map((f) => ({
       id: f.id,
       title: f.title,

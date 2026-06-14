@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { validatePuzzle } from '../../src/lib/puzzle-loader.js';
 import fourFilm from '../fixtures/four-film-puzzle.json';
-import threeFilm from '../../public/puzzles/2026-06-14.json';
+import threeFilm from '../fixtures/three-film-puzzle.json';
 import twoFilm from '../fixtures/sample-puzzle.json';
 
 const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -29,11 +29,14 @@ describe('multi-film schema (v2)', () => {
     const puzzle = validatePuzzle(clone(threeFilm));
     expect(puzzle.films).toHaveLength(3);
     expect(puzzle.actors).toHaveLength(12);
-    // Michael Caine is the all-three crossover.
-    expect(puzzle.actors.find((a) => a.id === 'caine').alsoIn).toEqual([
-      'inception',
-      'the-dark-knight',
-    ]);
+    // Exactly 4 actors per film.
+    for (const f of puzzle.films) {
+      expect(puzzle.actors.filter((a) => a.filmId === f.id)).toHaveLength(4);
+    }
+    // At least one crossover trap, and no alsoIn includes the solution film.
+    const traps = puzzle.actors.filter((a) => a.alsoIn?.length);
+    expect(traps.length).toBeGreaterThan(0);
+    for (const a of traps) expect(a.alsoIn).not.toContain(a.filmId);
   });
 
   it('still validates a 2-film puzzle (backward compatible)', () => {

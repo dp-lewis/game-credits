@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 
-// Correct groups for the 3-film puzzle (public/puzzles/2026-06-14.json), by name.
-const GROUPS = [
-  ['Leonardo DiCaprio', 'Joseph Gordon-Levitt', 'Tom Hardy', 'Elliot Page'],
-  ['Christian Bale', 'Heath Ledger', 'Aaron Eckhart', 'Cillian Murphy'],
-  ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain', 'Michael Caine'],
-];
+// Load today's puzzle and derive the correct groups from it, so the test survives
+// regeneration (different films/theme) without edits.
+const puzzle = JSON.parse(
+  readFileSync(new URL('../../public/puzzles/2026-06-14.json', import.meta.url))
+);
+const GROUPS = puzzle.films.map((f) =>
+  puzzle.actors.filter((a) => a.filmId === f.id).map((a) => a.name)
+);
 
 const targetCol = {};
 GROUPS.forEach((group, c) => group.forEach((name) => (targetCol[name] = c)));
@@ -36,6 +39,8 @@ test('play the 3-film puzzle through to a win via select-then-swap', async ({
   await page.goto('/?puzzle=2026-06-14');
 
   await expect(page.getByText(/Practice mode/i)).toBeVisible();
+  // The puzzle's theme is shown up-front as flavour.
+  await expect(page.getByText(puzzle.theme)).toBeVisible();
 
   // Column board: three labelled group columns and the full cast (12 chips).
   await expect(page.getByText('Movie 1', { exact: true })).toBeVisible();
