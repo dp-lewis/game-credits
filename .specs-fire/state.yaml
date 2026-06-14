@@ -320,8 +320,9 @@ intents:
         completed_at: 2026-06-14T03:56:34.993Z
   - id: pastel-layout-refresh
     title: Pastel Layout Refresh
-    status: in_progress
+    status: completed
     created: 2026-06-14T04:10:00Z
+    completed_at: 2026-06-14T08:09:42.367Z
     work_items:
       - id: pastel-tile-theme
         title: Pastel Solid Tiles
@@ -350,11 +351,13 @@ intents:
         completed_at: 2026-06-14T06:44:22.709Z
       - id: lock-completed-replays
         title: Lock Completed Replays
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - tighten-page-layout
+        run_id: run-game-credits-023
+        completed_at: 2026-06-14T08:09:42.358Z
 runs:
   active: []
   completed:
@@ -567,3 +570,11 @@ runs:
           mode: autopilot
       started: 2026-06-14T06:42:20.597Z
       completed: 2026-06-14T06:44:22.709Z
+    - id: run-game-credits-023
+      scope: single
+      work_items:
+        - id: lock-completed-replays
+          intent: pastel-layout-refresh
+          mode: autopilot
+      started: 2026-06-14T08:07:38.012Z
+      completed: 2026-06-14T08:09:42.358Z

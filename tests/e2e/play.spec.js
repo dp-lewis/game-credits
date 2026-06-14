@@ -64,8 +64,8 @@ test('play the 3-film puzzle through to a win via select-then-swap', async ({
     0
   );
 
-  // A `?puzzle=` replay starts a fresh board on reload (it is not restored).
+  // A completed puzzle locks on reload — the revealed board, not a fresh one.
   await page.reload();
-  await expect(page.getByText('Movie 1', { exact: true })).toBeVisible();
-  await expect(page.getByText(/already played/i)).toHaveCount(0);
+  await expect(page.getByText(/already completed/i)).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Submit' })).toHaveCount(0);
 });

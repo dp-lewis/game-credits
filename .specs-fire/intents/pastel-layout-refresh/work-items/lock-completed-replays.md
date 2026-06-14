@@ -4,10 +4,12 @@ title: Lock Completed Replays
 intent: pastel-layout-refresh
 complexity: medium
 mode: autopilot
-status: pending
+status: completed
 depends_on:
   - tighten-page-layout
 created: 2026-06-14T04:10:00Z
+run_id: run-game-credits-023
+completed_at: 2026-06-14T08:09:42.358Z
 ---
 
 # Work Item: Lock Completed Replays

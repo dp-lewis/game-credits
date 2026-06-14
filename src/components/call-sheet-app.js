@@ -112,13 +112,11 @@ export class CallSheetApp extends LitElement {
       this._puzzle = await loadPuzzle(id);
       this._loading = false;
 
-      // Restore a finished day on the official daily path only; a `?puzzle=`
-      // replay always starts on a fresh board.
-      if (!this._isReplay) {
-        const prior = this._store.getDay(this._puzzle.id);
-        if (prior) {
-          this._played = true;
-        }
+      // Any puzzle you've already completed locks to the revealed board — daily
+      // or a `?puzzle=` replay. Only an unplayed puzzle loads a fresh board.
+      const prior = this._store.getDay(this._puzzle.id);
+      if (prior) {
+        this._played = true;
       }
     } catch (err) {
       this._error = "Couldn't load today's puzzle. Please try again later.";
@@ -130,7 +128,7 @@ export class CallSheetApp extends LitElement {
   render() {
     return html`
       <p class="tagline">Sort the scrambled cast back into their films.</p>
-      ${this._isReplay && this._puzzle
+      ${this._isReplay && this._puzzle && !this._played
         ? html`<p class="practice">
             Practice mode — this play won't affect your streak.
           </p>`
@@ -141,8 +139,9 @@ export class CallSheetApp extends LitElement {
       ${this._error ? html`<p class="status error">${this._error}</p>` : ''}
       ${this._puzzle && this._played
         ? html`<p class="status">
-              You've already played this puzzle. Come back tomorrow for a new
-              one.
+              ${this._isReplay
+                ? "You've already completed this puzzle."
+                : "You've already played today's puzzle. Come back tomorrow for a new one."}
             </p>
             <call-sheet-board
               .puzzle=${this._puzzle}
