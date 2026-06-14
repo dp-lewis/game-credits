@@ -7,11 +7,13 @@ import { formatDateKey } from '../lib/date-key.js';
  * behaviour. Today's row links to the official daily game; past rows link to a
  * practice replay.
  *
- * Property `entries`: `{ id, status: 'won'|'lost'|null, mistakes?, isToday }[]`.
+ * Property `entries`: `{ id, theme: string|null, status: 'won'|'lost'|null, mistakes?, isToday }[]`.
+ * Property `preview`: `{ date: string, theme: string } | null` — tomorrow's locked teaser.
  */
 export class CallSheetArchive extends LitElement {
   static properties = {
     entries: { attribute: false },
+    preview: { attribute: false },
   };
 
   static styles = css`
@@ -63,12 +65,37 @@ export class CallSheetArchive extends LitElement {
       border-color: var(--cs-accent, #2b6cb0);
     }
 
+    .preview {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border: 1px dashed var(--cs-border, #ddd);
+      border-radius: 0.6rem;
+      background: var(--cs-surface, #f9f9f9);
+      color: var(--cs-muted, #555);
+      opacity: 0.8;
+      cursor: default;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
     .date {
       font-weight: 600;
     }
     .today {
       color: var(--cs-muted, #555);
       font-weight: 400;
+    }
+    .theme {
+      font-size: 0.82rem;
+      color: var(--cs-muted, #555);
+      font-style: italic;
     }
 
     .state {
@@ -83,6 +110,10 @@ export class CallSheetArchive extends LitElement {
     }
     .lost .icon {
       color: var(--cs-wrong, #c53030);
+    }
+
+    .lock {
+      font-size: 1rem;
     }
 
     .empty {
@@ -111,6 +142,23 @@ export class CallSheetArchive extends LitElement {
     return { cls: 'unplayed', icon: '▢', text: 'play' };
   }
 
+  _renderPreview() {
+    const p = this.preview;
+    if (!p) return '';
+    return html`<li>
+      <div class="preview" aria-label="Tomorrow's puzzle — not yet available">
+        <div class="info">
+          <span class="date"
+            >${formatDateKey(p.date)}
+            <span class="today">· tomorrow</span></span
+          >
+          ${p.theme ? html`<span class="theme">${p.theme}</span>` : ''}
+        </div>
+        <span class="lock" aria-hidden="true">🔒</span>
+      </div>
+    </li>`;
+  }
+
   render() {
     const entries = this.entries || [];
     return html`
@@ -119,18 +167,24 @@ export class CallSheetArchive extends LitElement {
         <a class="today-link" href="index.html">Play today ▸</a>
       </header>
 
-      ${entries.length === 0
+      ${entries.length === 0 && !this.preview
         ? html`<p class="empty">No puzzles available yet.</p>`
         : html`<ul class="list">
+            ${this._renderPreview()}
             ${entries.map((entry) => {
               const s = this._status(entry);
               return html`<li>
                 <a class="row ${s.cls}" href=${this._href(entry)}>
-                  <span class="date"
-                    >${formatDateKey(entry.id)}${entry.isToday
-                      ? html`<span class="today"> · today</span>`
-                      : ''}</span
-                  >
+                  <div class="info">
+                    <span class="date"
+                      >${formatDateKey(entry.id)}${entry.isToday
+                        ? html`<span class="today"> · today</span>`
+                        : ''}</span
+                    >
+                    ${entry.theme
+                      ? html`<span class="theme">${entry.theme}</span>`
+                      : ''}
+                  </div>
                   <span class="state"
                     ><span class="icon">${s.icon}</span> ${s.text}</span
                   >

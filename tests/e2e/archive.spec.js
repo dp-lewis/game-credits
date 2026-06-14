@@ -29,3 +29,31 @@ test('a ?puzzle replay is a fresh, practice board', async ({ page }) => {
   await expect(page.getByText(/Practice mode/i)).toBeVisible();
   await expect(page.getByText('Movie 1', { exact: true })).toBeVisible();
 });
+
+test('archive rows show a theme label', async ({ page }) => {
+  await page.goto('/archive.html');
+
+  // At least the first row should have a theme element.
+  const firstTheme = page.locator('call-sheet-archive .row .theme').first();
+  await expect(firstTheme).toBeVisible();
+  // Theme text should be a non-empty string (any director/era label will do).
+  const themeText = await firstTheme.textContent();
+  expect(themeText?.trim().length).toBeGreaterThan(0);
+});
+
+test('tomorrow locked teaser is shown on the archive page', async ({
+  page,
+}) => {
+  await page.goto('/archive.html');
+
+  // The locked teaser should exist as a non-link .preview div.
+  const teaser = page.locator('call-sheet-archive .preview');
+  await expect(teaser).toBeVisible();
+
+  // It must NOT be an <a> (not playable).
+  const teaserTag = await teaser.evaluate((el) => el.tagName.toLowerCase());
+  expect(teaserTag).not.toBe('a');
+
+  // The lock icon should be present.
+  await expect(teaser.getByText('🔒')).toBeVisible();
+});

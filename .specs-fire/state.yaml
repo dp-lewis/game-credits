@@ -406,17 +406,21 @@ intents:
     work_items:
       - id: archive-theme-index
         title: Archive Theme Index
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on: []
+        run_id: run-game-credits-025
+        completed_at: 2026-06-14T14:29:23.473Z
       - id: archive-themes-and-preview
         title: Archive Themed Rows and Tomorrow Teaser
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - archive-theme-index
+        run_id: run-game-credits-025
+        completed_at: 2026-06-14T14:29:23.473Z
 runs:
   active: []
   completed:
@@ -654,3 +658,14 @@ runs:
           mode: autopilot
       started: 2026-06-14T08:52:27.033Z
       completed: 2026-06-14T09:23:51.544Z
+    - id: run-game-credits-025
+      scope: wide
+      work_items:
+        - id: archive-theme-index
+          intent: archive-themes-preview
+          mode: autopilot
+        - id: archive-themes-and-preview
+          intent: archive-themes-preview
+          mode: autopilot
+      started: 2026-06-14T14:24:01.013Z
+      completed: 2026-06-14T14:29:23.473Z

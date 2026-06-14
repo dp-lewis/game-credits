@@ -43,6 +43,21 @@ function todayKeyUTC(date) {
 }
 
 /**
+ * The date key for the day after `key`.
+ *
+ * @param {string} key  `YYYY-MM-DD`
+ * @returns {string}
+ */
+export function nextDateKey(key) {
+  const ms = Date.parse(`${key}T00:00:00Z`) + 86_400_000;
+  const d = new Date(ms);
+  const y = d.getUTCFullYear();
+  const mo = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const da = String(d.getUTCDate()).padStart(2, '0');
+  return `${y}-${mo}-${da}`;
+}
+
+/**
  * Whole days from `aKey` to `bKey` (`b - a`). Positive when `b` is later.
  *
  * @param {string} aKey

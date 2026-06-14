@@ -137,6 +137,26 @@ function writeManifest(manifestPath, dateId) {
   fs.writeFileSync(manifestPath, JSON.stringify(ids) + '\n');
 }
 
+function upsertArchiveIndex(outDir, dateId, theme) {
+  const indexPath = path.join(outDir, 'index.json');
+  let entries;
+  try {
+    entries = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+  } catch {
+    entries = [];
+  }
+  if (!Array.isArray(entries)) entries = [];
+  const existing = entries.findIndex((e) => e.date === dateId);
+  const entry = { date: dateId, theme: theme || '' };
+  if (existing >= 0) {
+    entries[existing] = entry;
+  } else {
+    entries.push(entry);
+  }
+  entries.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  fs.writeFileSync(indexPath, JSON.stringify(entries, null, 2) + '\n');
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -206,6 +226,7 @@ async function main() {
   const outFile = path.join(args.out, `${args.date}.json`);
   fs.writeFileSync(outFile, JSON.stringify(puzzle, null, 2) + '\n');
   writeManifest(args.manifest, args.date);
+  upsertArchiveIndex(args.out, args.date, puzzle.theme || '');
   console.log(`Wrote ${outFile} and updated the manifest.`);
 }
 
