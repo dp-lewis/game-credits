@@ -20,7 +20,31 @@ describe('gradeGroups', () => {
       correct: true,
       oneAway: false,
       filmId: 'oceans-eleven',
+      correctCount: 4,
     });
+  });
+
+  it('reports per-group progress as the modal-film count', () => {
+    const grade = gradeGroups(
+      [
+        OCEANS, // 4/4 — all Ocean's
+        ['nicholson', 'wahlberg', 'farmiga', 'damon'], // 3/4 — Departed + trap
+        ['clooney', 'roberts', 'nicholson', 'wahlberg'], // 2/4 — split
+        ['clooney', 'nicholson', 'hardy', 'robbie'], // 1/4 — one of each film
+      ],
+      answerKey,
+      4
+    );
+    expect(grade.groups.map((g) => g.correctCount)).toEqual([4, 3, 2, 1]);
+  });
+
+  it('counts a modal film in an under-filled bucket', () => {
+    const { groups } = gradeGroups(
+      [['clooney', 'roberts', 'pitt']], // 3 Ocean's, bucket not full
+      answerKey,
+      4
+    );
+    expect(groups[0].correctCount).toBe(3);
   });
 
   it('solves the whole puzzle when all four groups are right', () => {

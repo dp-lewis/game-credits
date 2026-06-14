@@ -16,7 +16,7 @@ test('archive index lists puzzles and links back to the game (native back button
   // Following a row navigates to the game page...
   await rows.first().click();
   await expect(page).toHaveURL(/index\.html/);
-  await expect(page.getByRole('button', { name: 'Group 1' })).toBeVisible();
+  await expect(page.getByText('Movie 1', { exact: true })).toBeVisible();
 
   // ...and the browser back button returns to the archive (native, no SPA router).
   await page.goBack();
@@ -27,5 +27,5 @@ test('archive index lists puzzles and links back to the game (native back button
 test('a ?puzzle replay is a fresh, practice board', async ({ page }) => {
   await page.goto('/index.html?puzzle=2026-06-15');
   await expect(page.getByText(/Practice mode/i)).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Group 1' })).toBeVisible();
+  await expect(page.getByText('Movie 1', { exact: true })).toBeVisible();
 });

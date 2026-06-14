@@ -240,6 +240,38 @@ intents:
           - archive-view
         run_id: run-game-credits-013
         completed_at: 2026-06-13T21:43:44.704Z
+  - id: call-sheet-board-redesign
+    title: Call Sheet — Board Redesign
+    status: completed
+    created: 2026-06-13T22:01:01Z
+    completed_at: 2026-06-14T03:00:00Z
+    work_items:
+      - id: column-board-redesign
+        title: Column Board Redesign
+        status: completed
+        complexity: high
+        mode: confirm
+        depends_on: []
+        run_id: run-game-credits-014
+        completed_at: 2026-06-14T02:03:22.498Z
+      - id: per-group-progress
+        title: Per-Group Progress Feedback
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - column-board-redesign
+        run_id: run-game-credits-015
+        completed_at: 2026-06-14T02:40:46.000Z
+      - id: header-feedback-movie-labels
+        title: Header Feedback and Movie Labels
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on:
+          - per-group-progress
+        run_id: run-game-credits-016
+        completed_at: 2026-06-14T02:58:22.776Z
 runs:
   active: []
   completed:
@@ -377,3 +409,27 @@ runs:
           mode: autopilot
       started: 2026-06-13T21:41:43.764Z
       completed: 2026-06-13T21:43:44.704Z
+    - id: run-game-credits-014
+      scope: single
+      work_items:
+        - id: column-board-redesign
+          intent: call-sheet-board-redesign
+          mode: confirm
+      started: 2026-06-13T22:08:44.953Z
+      completed: 2026-06-14T02:03:22.498Z
+    - id: run-game-credits-015
+      scope: single
+      work_items:
+        - id: per-group-progress
+          intent: call-sheet-board-redesign
+          mode: autopilot
+      started: 2026-06-14T02:36:54.058Z
+      completed: 2026-06-14T02:40:46.000Z
+    - id: run-game-credits-016
+      scope: single
+      work_items:
+        - id: header-feedback-movie-labels
+          intent: call-sheet-board-redesign
+          mode: autopilot
+      started: 2026-06-14T02:54:46.568Z
+      completed: 2026-06-14T02:58:22.776Z

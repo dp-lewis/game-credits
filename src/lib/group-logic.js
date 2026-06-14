@@ -13,6 +13,7 @@
  * @property {string|null} filmId The shared solution film when correct, else null.
  * @property {boolean} correct    True when all `groupSize` members share a film.
  * @property {boolean} oneAway    True on a near-miss (exactly `groupSize-1` share the modal film).
+ * @property {number} correctCount How many members share the bucket's modal film (its progress toward a group).
  *
  * @typedef {Object} GroupsGrade
  * @property {GroupResult[]} groups Per-bucket results, in input order.
@@ -53,6 +54,7 @@ export function gradeGroups(buckets, answerKey, groupSize) {
       filmId: correct ? modalFilm : null,
       correct,
       oneAway,
+      correctCount: modalCount,
     };
   });
 

@@ -21,17 +21,10 @@ async function mountBoard() {
 }
 
 const submitBtn = (b) => b.shadowRoot.querySelector('button.submit');
-
-function bucketBtn(board, idx) {
-  return [...board.shadowRoot.querySelectorAll('.bucket')].find((b) =>
-    b.textContent.includes(`Group ${idx + 1}`)
-  );
-}
+const headers = (b) => [...b.shadowRoot.querySelectorAll('.head')];
 
 function actorEl(board, id) {
-  return [...board.shadowRoot.querySelectorAll('call-sheet-actor')].find(
-    (a) => a.actor.id === id
-  );
+  return board.shadowRoot.querySelector(`call-sheet-actor[data-actor="${id}"]`);
 }
 
 async function clickActor(board, id) {
@@ -41,33 +34,32 @@ async function clickActor(board, id) {
   await board.updateComplete;
 }
 
-async function assignGroup(board, bucketIdx, actorIds) {
-  bucketBtn(board, bucketIdx).click();
+// Deterministic arrangement: the initial board is shuffled, so tests set the
+// columns directly (same private-state style as the assertions below).
+async function setColumns(board, layout) {
+  board._columns = layout.map((col) => [...col]);
+  board._selected = null;
+  board.requestUpdate();
   await board.updateComplete;
-  for (const id of actorIds) await clickActor(board, id);
-}
-
-async function assignAll(board, layout) {
-  for (let b = 0; b < layout.length; b++)
-    await assignGroup(board, b, layout[b]);
 }
 
 afterEach(() => {
   document.body.innerHTML = '';
 });
 
-describe('<call-sheet-board> v2 (hidden-films groups)', () => {
-  it('disables submit until all buckets are full', async () => {
+describe('<call-sheet-board> column board', () => {
+  it('starts full, so Submit is enabled while playing', async () => {
     const board = await mountBoard();
-    expect(submitBtn(board).disabled).toBe(true);
-    await assignAll(board, GROUPS);
+    // 4 columns × 4 actors, every cell occupied.
+    expect(board._columns.length).toBe(4);
+    expect(board._columns.flat()).toHaveLength(16);
     expect(submitBtn(board).disabled).toBe(false);
   });
 
-  it('wins when every group is correct (any bucket order)', async () => {
+  it('wins when every column is correct (any column order)', async () => {
     const board = await mountBoard();
-    // Put the correct groups in shuffled buckets — grading is by membership.
-    await assignAll(board, [GROUPS[2], GROUPS[0], GROUPS[3], GROUPS[1]]);
+    // Grading is by membership, so column order doesn't matter.
+    await setColumns(board, [GROUPS[2], GROUPS[0], GROUPS[3], GROUPS[1]]);
     submitBtn(board).click();
     await board.updateComplete;
     expect(board._status).toBe('won');
@@ -78,7 +70,7 @@ describe('<call-sheet-board> v2 (hidden-films groups)', () => {
     const board = await mountBoard();
     const events = [];
     board.addEventListener('game-over', (e) => events.push(e.detail));
-    await assignAll(board, GROUPS);
+    await setColumns(board, GROUPS);
     submitBtn(board).click();
     await board.updateComplete;
     expect(events).toHaveLength(1);
@@ -90,9 +82,9 @@ describe('<call-sheet-board> v2 (hidden-films groups)', () => {
     });
   });
 
-  it('locks a correct group, reveals its film, and keeps playing', async () => {
+  it('locks a correct column, reveals its film + tick in the header, and keeps playing', async () => {
     const board = await mountBoard();
-    await assignAll(board, [
+    await setColumns(board, [
       GROUPS[0], // Ocean's — correct
       ['nicholson', 'hardy', 'robbie', 'dicaprio'],
       ['wahlberg', 'gordon-levitt', 'pacino', 'watanabe'],
@@ -104,34 +96,50 @@ describe('<call-sheet-board> v2 (hidden-films groups)', () => {
     expect(board._solved.has(0)).toBe(true);
     expect(board._status).toBe('playing');
     expect(board._lives).toBe(puzzle.maxMistakes - 1);
-    expect(board.shadowRoot.querySelector('.solved').textContent).toContain(
-      "Ocean's Eleven"
-    );
+    const solvedHead = headers(board)[0];
+    expect(solvedHead.textContent).toContain("Ocean's Eleven");
+    expect(solvedHead.querySelector('.tick')).not.toBeNull();
   });
 
-  it('shows "One away…" on a near-miss', async () => {
+  it('shows per-group progress (n/4) inside the headers after a submit', async () => {
     const board = await mountBoard();
-    await assignAll(board, [
-      ['nicholson', 'wahlberg', 'farmiga', 'damon'], // 3 Departed + Damon (trap)
-      ['clooney', 'roberts', 'pitt', 'dicaprio'], // 3 Ocean's + DiCaprio
-      ['hardy', 'gordon-levitt', 'page', 'robbie'], // 3 Inception + Robbie
-      ['watanabe', 'pacino', 'russell', 'olyphant'], // 3 OUATIH + Watanabe
+    await setColumns(board, [
+      GROUPS[0], // 4/4 — Ocean's, correct
+      ['nicholson', 'wahlberg', 'farmiga', 'hardy'], // 3/4 — 3 Departed + trap
+      ['dicaprio', 'gordon-levitt', 'robbie', 'pacino'], // 2/4 — 2 OUATIH modal
+      ['page', 'watanabe', 'russell', 'olyphant'], // 2/4 — split
     ]);
     submitBtn(board).click();
     await board.updateComplete;
 
     expect(board._status).toBe('playing');
     expect(board._lives).toBe(puzzle.maxMistakes - 1);
-    expect(board._oneAway.size).toBeGreaterThan(0);
-    expect(board.shadowRoot.querySelector('.hint').textContent).toContain(
-      'One away'
-    );
+    // State carries the per-group counts...
+    expect(board._progress.map((p) => p.count)).toEqual([4, 3, 2, 2]);
+    expect(board._progress[0].solved).toBe(true);
+
+    // ...and each header shows its own count (or the title + tick when solved).
+    const heads = headers(board);
+    expect(heads[0].textContent).toContain("Ocean's Eleven");
+    expect(heads[0].querySelector('.tick')).not.toBeNull();
+    expect(heads[1].textContent).toContain('Movie 2');
+    expect(heads[1].querySelector('.count').textContent).toBe('3/4');
+    expect(heads[2].querySelector('.count').textContent).toBe('2/4');
+  });
+
+  it('headers read "Movie n" with no count before the first submit', async () => {
+    const board = await mountBoard();
+    expect(board._progress).toBe(null);
+    const heads = headers(board);
+    expect(heads[0].textContent).toContain('Movie 1');
+    expect(heads[0].querySelector('.count')).toBeNull();
+    expect(heads.every((h) => !h.textContent.includes('/'))).toBe(true);
   });
 
   it('loses after exhausting all lives', async () => {
     const board = await mountBoard();
-    // Four 2+2 buckets: never correct, never one-away.
-    await assignAll(board, [
+    // Four 2+2 columns: never correct, never one-away.
+    await setColumns(board, [
       ['clooney', 'roberts', 'nicholson', 'wahlberg'],
       ['pitt', 'damon', 'farmiga', 'dicaprio'],
       ['hardy', 'gordon-levitt', 'robbie', 'pacino'],
@@ -143,5 +151,58 @@ describe('<call-sheet-board> v2 (hidden-films groups)', () => {
     }
     expect(board._status).toBe('lost');
     expect(board._lives).toBe(0);
+  });
+
+  describe('select-then-swap', () => {
+    it('selecting one actor then tapping another swaps their columns', async () => {
+      const board = await mountBoard();
+      await setColumns(board, GROUPS);
+      expect(board._columnOf('clooney')).toBe(0);
+      expect(board._columnOf('nicholson')).toBe(1);
+
+      await clickActor(board, 'clooney'); // select (col 0)
+      expect(board._selected).toBe('clooney');
+      await clickActor(board, 'nicholson'); // swap target (col 1)
+
+      expect(board._selected).toBe(null);
+      expect(board._columnOf('clooney')).toBe(1);
+      expect(board._columnOf('nicholson')).toBe(0);
+    });
+
+    it('tapping the selected actor again deselects it', async () => {
+      const board = await mountBoard();
+      await setColumns(board, GROUPS);
+      await clickActor(board, 'clooney');
+      expect(board._selected).toBe('clooney');
+      await clickActor(board, 'clooney');
+      expect(board._selected).toBe(null);
+      // No movement occurred.
+      expect(board._columnOf('clooney')).toBe(0);
+    });
+
+    it('locked actors in a solved column cannot be selected or moved', async () => {
+      const board = await mountBoard();
+      await setColumns(board, [
+        GROUPS[0], // solve column 0
+        ['nicholson', 'hardy', 'robbie', 'dicaprio'],
+        ['wahlberg', 'gordon-levitt', 'pacino', 'watanabe'],
+        ['farmiga', 'page', 'russell', 'olyphant'],
+      ]);
+      submitBtn(board).click();
+      await board.updateComplete;
+      expect(board._solved.has(0)).toBe(true);
+
+      // Locked actor's chip is disabled and emits nothing → no selection.
+      await clickActor(board, 'clooney');
+      expect(board._selected).toBe(null);
+
+      // It also can't be used as a swap target: select an unlocked actor,
+      // then tap the locked one — nothing moves.
+      await clickActor(board, 'nicholson');
+      expect(board._selected).toBe('nicholson');
+      await clickActor(board, 'clooney');
+      expect(board._selected).toBe('nicholson'); // unchanged
+      expect(board._columnOf('clooney')).toBe(0); // still locked in place
+    });
   });
 });

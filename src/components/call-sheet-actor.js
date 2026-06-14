@@ -1,18 +1,20 @@
 import { LitElement, html, css } from 'lit';
 
 /**
- * `<call-sheet-actor>` — one selectable actor chip for the v2 group board.
+ * `<call-sheet-actor>` — one actor chip in the column board.
  *
- * Tapping the chip emits `actor-pick` `{ actorId }`; the board decides what to do
- * (assign to the active bucket, or toggle out). The chip shows its current bucket
- * colour via `bucketIndex` and a locked state once its group is solved.
+ * Tapping the chip emits `actor-pick` `{ actorId }`; the board runs select-then-
+ * swap (first tap selects, second tap swaps the two). The chip always shows its
+ * column colour via `bucketIndex`, a `selected` ring while it's the pending pick,
+ * and a locked state once its column (group) is solved.
  *
- * Properties: `actor`, `bucketIndex` (number | null), `locked`.
+ * Properties: `actor`, `bucketIndex` (number | null), `selected`, `locked`.
  */
 export class CallSheetActor extends LitElement {
   static properties = {
     actor: { attribute: false },
     bucketIndex: { attribute: false },
+    selected: { type: Boolean },
     locked: { type: Boolean },
   };
 
@@ -63,8 +65,15 @@ export class CallSheetActor extends LitElement {
       box-shadow: inset 0.35rem 0 0 var(--cs-group-3);
     }
 
+    /* Pending swap pick — a clear ring independent of the column colour. */
+    button.selected {
+      outline: 3px solid var(--cs-accent, #2b6cb0);
+      outline-offset: 1px;
+    }
+
     button.locked {
       opacity: 0.85;
+      cursor: default;
     }
 
     .lock {
@@ -89,6 +98,7 @@ export class CallSheetActor extends LitElement {
       this.bucketIndex !== null && this.bucketIndex !== undefined;
     const classes = [
       inBucket ? `g${this.bucketIndex}` : '',
+      this.selected ? 'selected' : '',
       this.locked ? 'locked' : '',
     ]
       .filter(Boolean)
@@ -97,7 +107,7 @@ export class CallSheetActor extends LitElement {
     return html`
       <button
         class=${classes}
-        aria-pressed=${inBucket ? 'true' : 'false'}
+        aria-pressed=${this.selected ? 'true' : 'false'}
         aria-label=${this.actor.name}
         ?disabled=${this.locked}
         @click=${this._pick}
