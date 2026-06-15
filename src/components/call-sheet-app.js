@@ -120,6 +120,15 @@ export class CallSheetApp extends LitElement {
         this._loading = false;
         return;
       }
+      // Don't release a future-dated puzzle early — closes the `?puzzle=<future>`
+      // hole. (A static client can't fully trust the local clock; this guards the
+      // id, not clock tampering.)
+      if (id > todayKey()) {
+        this._error =
+          "That puzzle isn't available yet — check back on its day.";
+        this._loading = false;
+        return;
+      }
       this._puzzle = await loadPuzzle(id);
       this._loading = false;
 

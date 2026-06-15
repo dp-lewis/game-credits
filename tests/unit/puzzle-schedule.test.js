@@ -12,8 +12,8 @@ describe('resolvePuzzleId', () => {
     expect(resolvePuzzleId('2026-06-20', IDS)).toBe('2026-06-14');
   });
 
-  it('falls back to the earliest puzzle when today precedes all', () => {
-    expect(resolvePuzzleId('2026-06-01', IDS)).toBe('2026-06-12');
+  it('returns null when every puzzle is in the future (no early release)', () => {
+    expect(resolvePuzzleId('2026-06-01', IDS)).toBeNull();
   });
 
   it('returns null when there are no puzzles', () => {
