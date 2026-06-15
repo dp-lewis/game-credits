@@ -35,3 +35,16 @@ test('movie headers keep dark text on pastel, and submit stays legible, in dark 
   );
   expect(channelSum(submitBg)).toBeLessThan(500);
 });
+
+test("archive's tomorrow teaser uses a dark surface in dark mode", async ({
+  page,
+}) => {
+  await page.goto('/archive.html');
+  const preview = page.locator('.preview');
+  await expect(preview).toBeVisible();
+  // Was an undefined --cs-surface (hardcoded light); now flips to --cs-card.
+  const bg = await preview.evaluate(
+    (el) => getComputedStyle(el).backgroundColor
+  );
+  expect(channelSum(bg)).toBeLessThan(500);
+});

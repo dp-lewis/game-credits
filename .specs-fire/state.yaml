@@ -401,8 +401,9 @@ intents:
         completed_at: 2026-06-14T09:23:51.544Z
   - id: archive-themes-preview
     title: Archive Themes and Tomorrow Preview
-    status: in_progress
+    status: completed
     created: 2026-06-14T10:00:00Z
+    completed_at: 2026-06-14T14:29:23.494Z
     work_items:
       - id: archive-theme-index
         title: Archive Theme Index
@@ -421,6 +422,28 @@ intents:
           - archive-theme-index
         run_id: run-game-credits-025
         completed_at: 2026-06-14T14:29:23.473Z
+  - id: archive-preview-fixes
+    title: Archive Preview Fixes
+    status: completed
+    created: 2026-06-15T09:00:00Z
+    completed_at: 2026-06-15T08:42:09.743Z
+    work_items:
+      - id: fix-preview-dark-mode
+        title: Fix Tomorrow Teaser Dark-Mode Contrast
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-026
+        completed_at: 2026-06-15T08:42:09.743Z
+      - id: block-future-puzzles
+        title: Block Playing Future Puzzles
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-026
+        completed_at: 2026-06-15T08:42:09.743Z
 runs:
   active: []
   completed:
@@ -669,3 +692,14 @@ runs:
           mode: autopilot
       started: 2026-06-14T14:24:01.013Z
       completed: 2026-06-14T14:29:23.473Z
+    - id: run-game-credits-026
+      scope: wide
+      work_items:
+        - id: fix-preview-dark-mode
+          intent: archive-preview-fixes
+          mode: autopilot
+        - id: block-future-puzzles
+          intent: archive-preview-fixes
+          mode: autopilot
+      started: 2026-06-14T20:54:21.895Z
+      completed: 2026-06-15T08:42:09.743Z

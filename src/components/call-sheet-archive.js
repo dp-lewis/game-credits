@@ -73,9 +73,11 @@ export class CallSheetArchive extends LitElement {
       padding: 0.75rem 1rem;
       border: 1px dashed var(--cs-border, #ddd);
       border-radius: 0.6rem;
-      background: var(--cs-surface, #f9f9f9);
+      /* A flipping token so the teaser stays legible in dark mode (was an
+         undefined --cs-surface, which fell back to a hardcoded light colour). */
+      background: var(--cs-card, #fff);
       color: var(--cs-muted, #555);
-      opacity: 0.8;
+      opacity: 0.85;
       cursor: default;
     }
 
