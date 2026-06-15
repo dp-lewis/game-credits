@@ -40,6 +40,7 @@ export class CallSheetBoard extends LitElement {
     _progress: { state: true },
     _revealed: { state: true },
     _revealTicks: { state: true },
+    _activeCell: { state: true },
   };
 
   static styles = css`
@@ -87,7 +88,8 @@ export class CallSheetBoard extends LitElement {
       list-style: none;
       margin: 0 0 1rem;
       padding: 0;
-      grid-auto-rows: 1fr;
+      grid-template-rows: repeat(var(--rows, 4), 1fr);
+      grid-auto-flow: column;
     }
 
     .head {
@@ -181,6 +183,7 @@ export class CallSheetBoard extends LitElement {
     this._numGroups = 0;
     this._groupSize = 0;
     this._announce = '';
+    this._activeCell = { col: 0, row: 0 };
     // The beat before the loss reveal animates; overridable so tests run fast.
     this.revealDelayMs = 1000;
     // Resolves when an in-flight reveal finishes (for tests to await).
@@ -209,6 +212,7 @@ export class CallSheetBoard extends LitElement {
       this._revealed = false;
       this._revealTicks = new Set();
       this._announce = '';
+      this._activeCell = { col: 0, row: 0 };
     }
     // Static reveal: show the solved solution directly (no game played).
     if (
@@ -245,17 +249,6 @@ export class CallSheetBoard extends LitElement {
 
   _isLocked(actorId) {
     return this._solved.has(this._columnOf(actorId));
-  }
-
-  // Map actorId → { col, row } for grid placement.
-  _placement() {
-    const map = {};
-    this._columns.forEach((col, c) =>
-      col.forEach((id, r) => {
-        map[id] = { col: c, row: r };
-      })
-    );
-    return map;
   }
 
   _chipEl(actorId) {
@@ -307,6 +300,7 @@ export class CallSheetBoard extends LitElement {
 
     await this.updateComplete;
     if (before) this._flip(before);
+    this._focusActiveChip();
   }
 
   _locate(actorId) {
@@ -355,6 +349,7 @@ export class CallSheetBoard extends LitElement {
     });
     this._solved = solved;
     this._bucketFilm = bucketFilm;
+    this._resolveActiveCell();
     // Per-group progress: how many of each column belong to its closest film.
     this._progress = grade.groups.map((group, c) => ({
       count: group.correctCount,
@@ -492,6 +487,65 @@ export class CallSheetBoard extends LitElement {
     return rects;
   }
 
+  _onGridKeydown(e) {
+    if (this._status !== 'playing') return;
+    const DIRS = {
+      ArrowUp: 'up',
+      ArrowDown: 'down',
+      ArrowLeft: 'left',
+      ArrowRight: 'right',
+    };
+    const dir = DIRS[e.key];
+    if (!dir) return;
+    e.preventDefault();
+    const { col, row } = this._activeCell;
+    let nextCol = col;
+    let nextRow = row;
+    if (dir === 'up') {
+      nextRow = Math.max(0, row - 1);
+    } else if (dir === 'down') {
+      nextRow = Math.min(this._groupSize - 1, row + 1);
+    } else if (dir === 'left') {
+      for (let c = col - 1; c >= 0; c--) {
+        if (!this._solved.has(c)) {
+          nextCol = c;
+          break;
+        }
+      }
+    } else {
+      for (let c = col + 1; c < this._numGroups; c++) {
+        if (!this._solved.has(c)) {
+          nextCol = c;
+          break;
+        }
+      }
+    }
+    this._activeCell = { col: nextCol, row: nextRow };
+    this.updateComplete.then(() => this._focusActiveChip());
+  }
+
+  _focusActiveChip() {
+    const { col, row } = this._activeCell ?? { col: 0, row: 0 };
+    const id = this._columns[col]?.[row];
+    if (id === null || id === undefined) return;
+    this._chipEl(id)?.focus();
+  }
+
+  _resolveActiveCell() {
+    const { col, row } = this._activeCell;
+    if (!this._solved.has(col)) return;
+    for (let d = 1; d < this._numGroups; d++) {
+      if (col + d < this._numGroups && !this._solved.has(col + d)) {
+        this._activeCell = { col: col + d, row };
+        return;
+      }
+      if (col - d >= 0 && !this._solved.has(col - d)) {
+        this._activeCell = { col: col - d, row };
+        return;
+      }
+    }
+  }
+
   _emitGameOver(grade) {
     this.dispatchEvent(
       new CustomEvent('game-over', {
@@ -512,7 +566,10 @@ export class CallSheetBoard extends LitElement {
   render() {
     if (!this.puzzle) return html``;
     return html`
-      <section @actor-pick=${this._onPick} style="--cols: ${this._numGroups}">
+      <section
+        @actor-pick=${this._onPick}
+        style="--cols: ${this._numGroups}; --rows: ${this._groupSize}"
+      >
         ${this._status === 'revealed'
           ? ''
           : html`<div class="lives" aria-label="Lives remaining">
@@ -566,29 +623,46 @@ export class CallSheetBoard extends LitElement {
   }
 
   _renderCells() {
-    const place = this._placement();
-    // Render from the stable puzzle order so each chip keeps DOM identity across
-    // swaps (only its grid placement changes) — that's what makes FLIP smooth.
-    return html`<ul class="cells">
+    // Render column-major (_columns.flat()) so DOM order = visual order = tab order.
+    // Lit's keyed repeat moves existing nodes on reorder → FLIP still animates.
+    const flatIds = this._columns.flat();
+    return html`<ul
+      class="cells"
+      role="grid"
+      aria-label="Cast grid"
+      aria-colcount="${this._numGroups}"
+      aria-rowcount="${this._groupSize}"
+      @keydown=${this._onGridKeydown}
+    >
       ${repeat(
-        this.puzzle.actors,
-        (actor) => actor.id,
-        (actor) => {
-          const pos = place[actor.id];
+        flatIds,
+        (id) => id,
+        (id, i) => {
+          const col = Math.floor(i / this._groupSize);
+          const row = i % this._groupSize;
+          const actor = this._actorById(id);
+          const isLocked = this._solved.has(col) || this._status !== 'playing';
           const ticked = this._revealed
-            ? this._revealTicks.has(actor.id)
-            : this._solved.has(pos.col);
+            ? this._revealTicks.has(id)
+            : this._solved.has(col);
+          const isActive =
+            this._status === 'playing' &&
+            this._activeCell?.col === col &&
+            this._activeCell?.row === row;
           return html`<li
             class="cell"
-            style="grid-column: ${pos.col + 1}; grid-row: ${pos.row + 1};"
+            role="gridcell"
+            aria-rowindex="${row + 1}"
+            aria-colindex="${col + 1}"
           >
             <call-sheet-actor
-              data-actor=${actor.id}
+              data-actor=${id}
               .actor=${actor}
-              .bucketIndex=${pos.col}
-              ?selected=${this._selected === actor.id}
+              .bucketIndex=${col}
+              ?selected=${this._selected === id}
               ?ticked=${ticked}
-              ?locked=${this._solved.has(pos.col) || this._status !== 'playing'}
+              ?locked=${isLocked}
+              ?active=${isActive}
             ></call-sheet-actor>
           </li>`;
         }

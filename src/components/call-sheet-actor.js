@@ -11,12 +11,19 @@ import { LitElement, html, css } from 'lit';
  * Properties: `actor`, `bucketIndex` (number | null), `selected`, `ticked`, `locked`.
  */
 export class CallSheetActor extends LitElement {
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   static properties = {
     actor: { attribute: false },
     bucketIndex: { attribute: false },
     selected: { type: Boolean },
     ticked: { type: Boolean },
     locked: { type: Boolean },
+    // True for the grid's active cell — gives tabindex=0 (roving tabindex).
+    active: { type: Boolean },
   };
 
   static styles = css`
@@ -105,6 +112,7 @@ export class CallSheetActor extends LitElement {
     return html`
       <button
         class=${classes}
+        tabindex=${this.active ? '0' : '-1'}
         aria-pressed=${this.selected ? 'true' : 'false'}
         aria-label=${this.actor.name}
         ?disabled=${this.locked}

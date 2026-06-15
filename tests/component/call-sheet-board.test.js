@@ -291,4 +291,143 @@ describe('<call-sheet-board> column board', () => {
       expect(headers(el).every((h) => h.querySelector('.title'))).toBe(true);
     });
   });
+
+  describe('keyboard navigation', () => {
+    function keydown(board, key) {
+      const ul = board.shadowRoot.querySelector('ul.cells');
+      ul.dispatchEvent(
+        new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true })
+      );
+    }
+
+    it('initialises _activeCell at {col:0, row:0}', async () => {
+      const board = await mountBoard();
+      expect(board._activeCell).toEqual({ col: 0, row: 0 });
+    });
+
+    it('renders chips in column-major DOM order matching _columns.flat()', async () => {
+      const board = await mountBoard();
+      await setColumns(board, GROUPS);
+      const ids = [
+        ...board.shadowRoot.querySelectorAll('call-sheet-actor'),
+      ].map((el) => el.dataset.actor);
+      expect(ids).toEqual(GROUPS.flat());
+    });
+
+    it('exactly one chip has active=true (tabindex 0 carrier)', async () => {
+      const board = await mountBoard();
+      const actors = [...board.shadowRoot.querySelectorAll('call-sheet-actor')];
+      expect(actors.filter((a) => a.active)).toHaveLength(1);
+    });
+
+    it('ArrowDown moves active row down, clamping at bottom', async () => {
+      const board = await mountBoard();
+      board._activeCell = { col: 0, row: 0 };
+      board.requestUpdate();
+      await board.updateComplete;
+
+      keydown(board, 'ArrowDown');
+      await board.updateComplete;
+      expect(board._activeCell).toEqual({ col: 0, row: 1 });
+
+      board._activeCell = { col: 0, row: 3 }; // last row (groupSize=4)
+      keydown(board, 'ArrowDown');
+      await board.updateComplete;
+      expect(board._activeCell.row).toBe(3); // clamped
+    });
+
+    it('ArrowUp moves active row up, clamping at top', async () => {
+      const board = await mountBoard();
+      board._activeCell = { col: 0, row: 2 };
+      board.requestUpdate();
+      await board.updateComplete;
+
+      keydown(board, 'ArrowUp');
+      await board.updateComplete;
+      expect(board._activeCell).toEqual({ col: 0, row: 1 });
+
+      board._activeCell = { col: 0, row: 0 };
+      keydown(board, 'ArrowUp');
+      await board.updateComplete;
+      expect(board._activeCell.row).toBe(0); // clamped
+    });
+
+    it('ArrowRight moves to next column', async () => {
+      const board = await mountBoard();
+      board._activeCell = { col: 0, row: 1 };
+      board.requestUpdate();
+      await board.updateComplete;
+
+      keydown(board, 'ArrowRight');
+      await board.updateComplete;
+      expect(board._activeCell).toEqual({ col: 1, row: 1 });
+    });
+
+    it('ArrowLeft moves to previous column', async () => {
+      const board = await mountBoard();
+      board._activeCell = { col: 2, row: 0 };
+      board.requestUpdate();
+      await board.updateComplete;
+
+      keydown(board, 'ArrowLeft');
+      await board.updateComplete;
+      expect(board._activeCell).toEqual({ col: 1, row: 0 });
+    });
+
+    it('ArrowRight clamps at last column', async () => {
+      const board = await mountBoard();
+      board._activeCell = { col: 3, row: 0 };
+      board.requestUpdate();
+      await board.updateComplete;
+
+      keydown(board, 'ArrowRight');
+      await board.updateComplete;
+      expect(board._activeCell.col).toBe(3); // clamped
+    });
+
+    it('ArrowRight skips solved columns', async () => {
+      const board = await mountBoard();
+      await setColumns(board, GROUPS);
+      board._activeCell = { col: 0, row: 0 };
+      board._solved = new Set([1]); // column 1 solved
+      board.requestUpdate();
+      await board.updateComplete;
+
+      keydown(board, 'ArrowRight');
+      await board.updateComplete;
+      expect(board._activeCell.col).toBe(2); // skipped col 1
+    });
+
+    it('active cell moves to nearest unlocked column when its column solves', async () => {
+      const board = await mountBoard();
+      // Only column 0 correct, others mixed so the game continues.
+      await setColumns(board, [
+        GROUPS[0], // Ocean's — correct
+        ['nicholson', 'hardy', 'robbie', 'dicaprio'],
+        ['wahlberg', 'gordon-levitt', 'pacino', 'watanabe'],
+        ['farmiga', 'page', 'russell', 'olyphant'],
+      ]);
+      board._activeCell = { col: 0, row: 0 };
+      board.requestUpdate();
+      await board.updateComplete;
+
+      submitBtn(board).click(); // col 0 locks; others still unsolved
+      await board.updateComplete;
+      expect(board._solved.has(0)).toBe(true);
+      expect(board._activeCell.col).not.toBe(0);
+    });
+
+    it('arrow keys have no effect when not playing', async () => {
+      const board = await mountBoard();
+      await setColumns(board, GROUPS);
+      board._status = 'won';
+      board._activeCell = { col: 1, row: 1 };
+      board.requestUpdate();
+      await board.updateComplete;
+
+      keydown(board, 'ArrowRight');
+      await board.updateComplete;
+      expect(board._activeCell).toEqual({ col: 1, row: 1 }); // unchanged
+    });
+  });
 });

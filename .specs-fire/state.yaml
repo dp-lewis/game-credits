@@ -446,22 +446,27 @@ intents:
         completed_at: 2026-06-15T08:42:09.743Z
   - id: keyboard-grid-navigation
     title: Keyboard Grid Navigation
-    status: in_progress
+    status: completed
     created: 2026-06-15T10:30:00Z
+    completed_at: 2026-06-15T09:50:00Z
     work_items:
       - id: predictable-tab-order
         title: Predictable Tab Order
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on: []
+        run_id: run-game-credits-027
+        completed_at: 2026-06-15T09:50:00Z
       - id: arrow-key-grid-nav
         title: Arrow-Key Grid Navigation
-        status: pending
+        status: completed
         complexity: high
         mode: confirm
         depends_on:
           - predictable-tab-order
+        run_id: run-game-credits-027
+        completed_at: 2026-06-15T09:50:00Z
 runs:
   active: []
   completed:
@@ -721,3 +726,14 @@ runs:
           mode: autopilot
       started: 2026-06-14T20:54:21.895Z
       completed: 2026-06-15T08:42:09.743Z
+    - id: run-game-credits-027
+      scope: wide
+      work_items:
+        - id: predictable-tab-order
+          intent: keyboard-grid-navigation
+          mode: autopilot
+        - id: arrow-key-grid-nav
+          intent: keyboard-grid-navigation
+          mode: confirm
+      started: 2026-06-15T09:33:00Z
+      completed: 2026-06-15T09:50:00Z
