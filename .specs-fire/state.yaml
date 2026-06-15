@@ -444,6 +444,24 @@ intents:
         depends_on: []
         run_id: run-game-credits-026
         completed_at: 2026-06-15T08:42:09.743Z
+  - id: keyboard-grid-navigation
+    title: Keyboard Grid Navigation
+    status: in_progress
+    created: 2026-06-15T10:30:00Z
+    work_items:
+      - id: predictable-tab-order
+        title: Predictable Tab Order
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: []
+      - id: arrow-key-grid-nav
+        title: Arrow-Key Grid Navigation
+        status: pending
+        complexity: high
+        mode: confirm
+        depends_on:
+          - predictable-tab-order
 runs:
   active: []
   completed:
