@@ -36,7 +36,7 @@ export class CallSheetActor extends LitElement {
       width: 100%;
       height: 100%;
       font: inherit;
-      min-height: 3rem;
+      min-height: 5rem;
       padding: 0.5rem;
       border: none;
       border-radius: 0.6rem;

@@ -467,6 +467,36 @@ intents:
           - predictable-tab-order
         run_id: run-game-credits-027
         completed_at: 2026-06-15T09:50:00Z
+  - id: board-visual-tweaks
+    title: Board Visual Tweaks
+    status: completed
+    created: 2026-06-16T09:30:00Z
+    completed_at: 2026-06-16T09:46:09Z
+    work_items:
+      - id: rename-submit-check-answer
+        title: Rename Submit to Check Answer
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-028
+        completed_at: 2026-06-16T09:46:09Z
+      - id: lives-below-grid
+        title: Move Lives Below the Grid
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-028
+        completed_at: 2026-06-16T09:46:09Z
+      - id: taller-actor-tiles
+        title: Taller Actor Tiles
+        status: completed
+        complexity: low
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-028
+        completed_at: 2026-06-16T09:46:09Z
 runs:
   active: []
   completed:
@@ -737,3 +767,17 @@ runs:
           mode: confirm
       started: 2026-06-15T09:33:00Z
       completed: 2026-06-15T09:50:00Z
+    - id: run-game-credits-028
+      scope: wide
+      work_items:
+        - id: rename-submit-check-answer
+          intent: board-visual-tweaks
+          mode: autopilot
+        - id: lives-below-grid
+          intent: board-visual-tweaks
+          mode: autopilot
+        - id: taller-actor-tiles
+          intent: board-visual-tweaks
+          mode: autopilot
+      started: 2026-06-16T09:30:00Z
+      completed: 2026-06-16T09:46:09Z

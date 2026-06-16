@@ -570,6 +570,11 @@ export class CallSheetBoard extends LitElement {
         @actor-pick=${this._onPick}
         style="--cols: ${this._numGroups}; --rows: ${this._groupSize}"
       >
+        <p class="a11y-status" role="status" aria-live="polite">
+          ${this._announce}
+        </p>
+
+        ${this._renderHeaders()} ${this._renderCells()}
         ${this._status === 'revealed'
           ? ''
           : html`<div class="lives" aria-label="Lives remaining">
@@ -581,14 +586,10 @@ export class CallSheetBoard extends LitElement {
                   >`
               )}
             </div>`}
-
-        <p class="a11y-status" role="status" aria-live="polite">
-          ${this._announce}
-        </p>
-
-        ${this._renderHeaders()} ${this._renderCells()}
         ${this._status === 'playing'
-          ? html`<button class="submit" @click=${this._submit}>Submit</button>`
+          ? html`<button class="submit" @click=${this._submit}>
+              Check Answer
+            </button>`
           : ''}
         ${this._renderBanner()}
       </section>

@@ -58,13 +58,15 @@ test('play the 3-film puzzle through to a win via select-then-swap', async ({
     }
   }
 
-  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole('button', { name: 'Check Answer' }).click();
 
   // The board reveals the win in place: a banner and a tick on every chip.
   await expect(page.getByText(/Solved! You found every movie/i)).toBeVisible();
   await expect(page.locator('call-sheet-actor span.lock')).toHaveCount(12);
   // Game over: Submit is gone and there's no separate result/Copy-result card.
-  await expect(page.getByRole('button', { name: 'Submit' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Check Answer' })).toHaveCount(
+    0
+  );
   await expect(page.getByRole('button', { name: 'Copy result' })).toHaveCount(
     0
   );
@@ -72,5 +74,7 @@ test('play the 3-film puzzle through to a win via select-then-swap', async ({
   // A completed puzzle locks on reload — the revealed board, not a fresh one.
   await page.reload();
   await expect(page.getByText(/already completed/i)).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Submit' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Check Answer' })).toHaveCount(
+    0
+  );
 });
