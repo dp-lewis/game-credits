@@ -35,7 +35,9 @@ test('a future-dated puzzle is not playable', async ({ page }) => {
   // stays valid regardless of the run date.
   await page.goto('/index.html?puzzle=2099-01-01');
   await expect(page.getByText(/isn't available yet/i)).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Submit' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Check Answer' })).toHaveCount(
+    0
+  );
   await expect(page.locator('call-sheet-board')).toHaveCount(0);
 });
 

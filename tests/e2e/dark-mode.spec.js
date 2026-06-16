@@ -17,7 +17,7 @@ test('movie headers keep dark text on pastel, and submit stays legible, in dark 
   await page.goto('/?puzzle=2026-06-14');
 
   const header = page.locator('.head').filter({ hasText: 'Movie 2' });
-  const submit = page.getByRole('button', { name: 'Submit' });
+  const submit = page.getByRole('button', { name: 'Check Answer' });
   await expect(header).toBeVisible();
   await expect(submit).toBeVisible();
 
