@@ -11,11 +11,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
-    // Multi-page: the game and the archive index are real, separate pages.
+    // Multi-page: the game, the archive index, and the curator preview are real,
+    // separate pages. (preview.html is built but intentionally unlinked.)
     rollupOptions: {
       input: {
         main: resolve(root, 'index.html'),
         archive: resolve(root, 'archive.html'),
+        preview: resolve(root, 'preview.html'),
       },
     },
   },

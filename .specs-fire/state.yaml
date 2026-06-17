@@ -529,6 +529,29 @@ intents:
           - rebuild-tmdb-catalogue
         run_id: run-game-credits-029
         completed_at: 2026-06-17T10:01:27.431Z
+  - id: curator-preview
+    title: Curator Preview Gallery
+    status: completed
+    created: 2026-06-17T11:00:00Z
+    completed_at: 2026-06-17T11:33:00Z
+    work_items:
+      - id: preview-gallery
+        title: Preview Page and Gallery
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on: []
+        run_id: run-game-credits-030
+        completed_at: 2026-06-17T10:21:46.153Z
+      - id: preview-reveal-detail
+        title: Preview Reveal and Trap Detail
+        status: completed
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - preview-gallery
+        run_id: run-game-credits-030
+        completed_at: 2026-06-17T10:21:46.153Z
 runs:
   active: []
   completed:
@@ -827,3 +850,14 @@ runs:
           mode: autopilot
       started: 2026-06-17T07:48:58.095Z
       completed: 2026-06-17T10:01:27.431Z
+    - id: run-game-credits-030
+      scope: wide
+      work_items:
+        - id: preview-gallery
+          intent: curator-preview
+          mode: autopilot
+        - id: preview-reveal-detail
+          intent: curator-preview
+          mode: autopilot
+      started: 2026-06-17T10:18:09.205Z
+      completed: 2026-06-17T10:21:46.153Z
