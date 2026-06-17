@@ -1,7 +1,7 @@
 ---
 id: catalogue-expansion
 title: Catalogue Expansion — 3-Month Variety
-status: in_progress
+status: pending
 created: 2026-06-17T00:00:00Z
 ---
 
