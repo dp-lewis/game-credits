@@ -4,8 +4,9 @@ title: Rebuild TMDB Catalogue
 intent: catalogue-expansion
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [expand-cluster-roster]
+status: in_progress
+depends_on:
+  - expand-cluster-roster
 created: 2026-06-17T00:00:00Z
 ---
 

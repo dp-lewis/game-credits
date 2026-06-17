@@ -4,9 +4,11 @@ title: Expand Cluster Roster
 intent: catalogue-expansion
 complexity: medium
 mode: autopilot
-status: pending
+status: completed
 depends_on: []
 created: 2026-06-17T00:00:00Z
+run_id: run-game-credits-029
+completed_at: 2026-06-17T07:57:14.514Z
 ---
 
 # Work Item: Expand Cluster Roster
