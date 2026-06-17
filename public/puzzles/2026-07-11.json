@@ -1,0 +1,88 @@
+{
+  "id": "2026-07-11",
+  "date": "2026-07-11",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "fight-club",
+      "title": "Fight Club",
+      "year": 1999
+    },
+    {
+      "id": "zodiac",
+      "title": "Zodiac",
+      "year": 2007
+    },
+    {
+      "id": "the-girl-with-the-dragon-tattoo",
+      "title": "The Girl with the Dragon Tattoo",
+      "year": 2011
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-108916",
+      "name": "Rooney Mara",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-7472",
+      "name": "Richmond Arquette",
+      "filmId": "fight-club",
+      "alsoIn": ["zodiac"]
+    },
+    {
+      "id": "tmdb-11085",
+      "name": "Anthony Edwards",
+      "filmId": "zodiac"
+    },
+    {
+      "id": "tmdb-103",
+      "name": "Mark Ruffalo",
+      "filmId": "zodiac"
+    },
+    {
+      "id": "tmdb-3223",
+      "name": "Robert Downey Jr.",
+      "filmId": "zodiac"
+    },
+    {
+      "id": "tmdb-131",
+      "name": "Jake Gyllenhaal",
+      "filmId": "zodiac"
+    },
+    {
+      "id": "tmdb-1640",
+      "name": "Stellan Skarsgård",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-17449",
+      "name": "Bob Stephenson",
+      "filmId": "fight-club",
+      "alsoIn": ["zodiac"]
+    },
+    {
+      "id": "tmdb-7471",
+      "name": "Zach Grenier",
+      "filmId": "fight-club",
+      "alsoIn": ["zodiac"]
+    },
+    {
+      "id": "tmdb-8784",
+      "name": "Daniel Craig",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-290",
+      "name": "Christopher Plummer",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-819",
+      "name": "Edward Norton",
+      "filmId": "fight-club"
+    }
+  ],
+  "theme": "David Fincher"
+}

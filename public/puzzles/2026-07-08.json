@@ -1,0 +1,88 @@
+{
+  "id": "2026-07-08",
+  "date": "2026-07-08",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "goldeneye",
+      "title": "GoldenEye",
+      "year": 1995
+    },
+    {
+      "id": "skyfall",
+      "title": "Skyfall",
+      "year": 2012
+    },
+    {
+      "id": "spectre",
+      "title": "Spectre",
+      "year": 2015
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-11045",
+      "name": "Ola Rapace",
+      "filmId": "skyfall"
+    },
+    {
+      "id": "tmdb-27319",
+      "name": "Christoph Waltz",
+      "filmId": "spectre"
+    },
+    {
+      "id": "tmdb-5469",
+      "name": "Ralph Fiennes",
+      "filmId": "spectre",
+      "alsoIn": ["skyfall"]
+    },
+    {
+      "id": "tmdb-1030261",
+      "name": "Bérénice Marlohe",
+      "filmId": "skyfall"
+    },
+    {
+      "id": "tmdb-517",
+      "name": "Pierce Brosnan",
+      "filmId": "goldeneye"
+    },
+    {
+      "id": "tmdb-48",
+      "name": "Sean Bean",
+      "filmId": "goldeneye"
+    },
+    {
+      "id": "tmdb-121529",
+      "name": "Léa Seydoux",
+      "filmId": "spectre"
+    },
+    {
+      "id": "tmdb-10695",
+      "name": "Izabella Scorupco",
+      "filmId": "goldeneye"
+    },
+    {
+      "id": "tmdb-8784",
+      "name": "Daniel Craig",
+      "filmId": "spectre",
+      "alsoIn": ["skyfall"]
+    },
+    {
+      "id": "tmdb-5309",
+      "name": "Judi Dench",
+      "filmId": "goldeneye",
+      "alsoIn": ["skyfall"]
+    },
+    {
+      "id": "tmdb-3810",
+      "name": "Javier Bardem",
+      "filmId": "skyfall"
+    },
+    {
+      "id": "tmdb-3926",
+      "name": "Albert Finney",
+      "filmId": "skyfall"
+    }
+  ],
+  "theme": "James Bond"
+}

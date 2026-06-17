@@ -1,0 +1,85 @@
+{
+  "id": "2026-08-26",
+  "date": "2026-08-26",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "die-hard",
+      "title": "Die Hard",
+      "year": 1988
+    },
+    {
+      "id": "robocop",
+      "title": "RoboCop",
+      "year": 1987
+    },
+    {
+      "id": "lethal-weapon",
+      "title": "Lethal Weapon",
+      "year": 1987
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-7673",
+      "name": "Bonnie Bedelia",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-62",
+      "name": "Bruce Willis",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-44038",
+      "name": "Nancy Allen",
+      "filmId": "robocop"
+    },
+    {
+      "id": "tmdb-6836",
+      "name": "Dan O'Herlihy",
+      "filmId": "robocop"
+    },
+    {
+      "id": "tmdb-2047",
+      "name": "Danny Glover",
+      "filmId": "lethal-weapon"
+    },
+    {
+      "id": "tmdb-14312",
+      "name": "Mitchell Ryan",
+      "filmId": "lethal-weapon"
+    },
+    {
+      "id": "tmdb-7674",
+      "name": "Alexander Godunov",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-4566",
+      "name": "Alan Rickman",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-27811",
+      "name": "Peter Weller",
+      "filmId": "robocop"
+    },
+    {
+      "id": "tmdb-2048",
+      "name": "Gary Busey",
+      "filmId": "lethal-weapon"
+    },
+    {
+      "id": "tmdb-780",
+      "name": "Ronny Cox",
+      "filmId": "robocop"
+    },
+    {
+      "id": "tmdb-2461",
+      "name": "Mel Gibson",
+      "filmId": "lethal-weapon"
+    }
+  ],
+  "theme": "80s Action"
+}

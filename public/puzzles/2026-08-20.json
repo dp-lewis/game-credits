@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-20",
+  "date": "2026-08-20",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "the-life-aquatic-with-steve-zissou",
+      "title": "The Life Aquatic with Steve Zissou",
+      "year": 2004
+    },
+    {
+      "id": "the-french-dispatch",
+      "title": "The French Dispatch",
+      "year": 2021
+    },
+    {
+      "id": "moonrise-kingdom",
+      "title": "Moonrise Kingdom",
+      "year": 2012
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-5293",
+      "name": "Willem Dafoe",
+      "filmId": "the-life-aquatic-with-steve-zissou"
+    },
+    {
+      "id": "tmdb-1121",
+      "name": "Benicio del Toro",
+      "filmId": "the-french-dispatch"
+    },
+    {
+      "id": "tmdb-1532",
+      "name": "Bill Murray",
+      "filmId": "the-french-dispatch",
+      "alsoIn": ["the-life-aquatic-with-steve-zissou", "moonrise-kingdom"]
+    },
+    {
+      "id": "tmdb-887",
+      "name": "Owen Wilson",
+      "filmId": "the-french-dispatch",
+      "alsoIn": ["the-life-aquatic-with-steve-zissou"]
+    },
+    {
+      "id": "tmdb-929905",
+      "name": "Kara Hayward",
+      "filmId": "moonrise-kingdom"
+    },
+    {
+      "id": "tmdb-5657",
+      "name": "Anjelica Huston",
+      "filmId": "the-life-aquatic-with-steve-zissou"
+    },
+    {
+      "id": "tmdb-62",
+      "name": "Bruce Willis",
+      "filmId": "moonrise-kingdom"
+    },
+    {
+      "id": "tmdb-929906",
+      "name": "Jared Gilman",
+      "filmId": "moonrise-kingdom"
+    },
+    {
+      "id": "tmdb-112",
+      "name": "Cate Blanchett",
+      "filmId": "the-life-aquatic-with-steve-zissou"
+    },
+    {
+      "id": "tmdb-3063",
+      "name": "Tilda Swinton",
+      "filmId": "the-french-dispatch",
+      "alsoIn": ["moonrise-kingdom"]
+    },
+    {
+      "id": "tmdb-4785",
+      "name": "Jeff Goldblum",
+      "filmId": "the-life-aquatic-with-steve-zissou"
+    },
+    {
+      "id": "tmdb-819",
+      "name": "Edward Norton",
+      "filmId": "moonrise-kingdom"
+    }
+  ],
+  "theme": "Wes Anderson"
+}

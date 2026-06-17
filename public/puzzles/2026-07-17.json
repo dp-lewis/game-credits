@@ -1,0 +1,87 @@
+{
+  "id": "2026-07-17",
+  "date": "2026-07-17",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "dunkirk",
+      "title": "Dunkirk",
+      "year": 2017
+    },
+    {
+      "id": "the-prestige",
+      "title": "The Prestige",
+      "year": 2006
+    },
+    {
+      "id": "oppenheimer",
+      "title": "Oppenheimer",
+      "year": 2023
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-11181",
+      "name": "Kenneth Branagh",
+      "filmId": "dunkirk",
+      "alsoIn": ["oppenheimer"]
+    },
+    {
+      "id": "tmdb-3895",
+      "name": "Michael Caine",
+      "filmId": "the-prestige"
+    },
+    {
+      "id": "tmdb-5081",
+      "name": "Emily Blunt",
+      "filmId": "oppenheimer"
+    },
+    {
+      "id": "tmdb-3894",
+      "name": "Christian Bale",
+      "filmId": "the-prestige"
+    },
+    {
+      "id": "tmdb-1373737",
+      "name": "Florence Pugh",
+      "filmId": "oppenheimer"
+    },
+    {
+      "id": "tmdb-2037",
+      "name": "Cillian Murphy",
+      "filmId": "dunkirk",
+      "alsoIn": ["oppenheimer"]
+    },
+    {
+      "id": "tmdb-2524",
+      "name": "Tom Hardy",
+      "filmId": "dunkirk"
+    },
+    {
+      "id": "tmdb-1892",
+      "name": "Matt Damon",
+      "filmId": "oppenheimer"
+    },
+    {
+      "id": "tmdb-6968",
+      "name": "Hugh Jackman",
+      "filmId": "the-prestige"
+    },
+    {
+      "id": "tmdb-15555",
+      "name": "Piper Perabo",
+      "filmId": "the-prestige"
+    },
+    {
+      "id": "tmdb-3223",
+      "name": "Robert Downey Jr.",
+      "filmId": "oppenheimer"
+    },
+    {
+      "id": "tmdb-1687041",
+      "name": "Fionn Whitehead",
+      "filmId": "dunkirk"
+    }
+  ],
+  "theme": "Christopher Nolan"
+}

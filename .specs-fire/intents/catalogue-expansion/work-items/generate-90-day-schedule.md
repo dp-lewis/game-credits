@@ -4,9 +4,12 @@ title: Generate 90-Day Schedule
 intent: catalogue-expansion
 complexity: medium
 mode: autopilot
-status: pending
-depends_on: [rebuild-tmdb-catalogue]
+status: completed
+depends_on:
+  - rebuild-tmdb-catalogue
 created: 2026-06-17T00:00:00Z
+run_id: run-game-credits-029
+completed_at: 2026-06-17T10:01:27.431Z
 ---
 
 # Work Item: Generate 90-Day Schedule

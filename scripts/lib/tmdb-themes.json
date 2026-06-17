@@ -348,5 +348,933 @@
         "tmdbId": 64682
       }
     ]
+  },
+  {
+    "id": "spielberg",
+    "theme": "Steven Spielberg",
+    "style": "troupe",
+    "films": [
+      {
+        "id": "saving-private-ryan",
+        "title": "Saving Private Ryan",
+        "year": 1998,
+        "tmdbId": 857
+      },
+      {
+        "id": "catch-me-if-you-can",
+        "title": "Catch Me If You Can",
+        "year": 2002,
+        "tmdbId": 640
+      },
+      {
+        "id": "bridge-of-spies",
+        "title": "Bridge of Spies",
+        "year": 2015,
+        "tmdbId": 296098
+      },
+      {
+        "id": "the-post",
+        "title": "The Post",
+        "year": 2017,
+        "tmdbId": 446354
+      },
+      {
+        "id": "lincoln",
+        "title": "Lincoln",
+        "year": 2012,
+        "tmdbId": 72976
+      },
+      {
+        "id": "munich",
+        "title": "Munich",
+        "year": 2005,
+        "tmdbId": 612
+      }
+    ]
+  },
+  {
+    "id": "fincher",
+    "theme": "David Fincher",
+    "style": "troupe",
+    "films": [
+      {
+        "id": "fight-club",
+        "title": "Fight Club",
+        "year": 1999,
+        "tmdbId": 550
+      },
+      {
+        "id": "se7en",
+        "title": "Se7en",
+        "year": 1995,
+        "tmdbId": 807
+      },
+      {
+        "id": "the-social-network",
+        "title": "The Social Network",
+        "year": 2010,
+        "tmdbId": 37799
+      },
+      {
+        "id": "gone-girl",
+        "title": "Gone Girl",
+        "year": 2014,
+        "tmdbId": 210577
+      },
+      {
+        "id": "zodiac",
+        "title": "Zodiac",
+        "year": 2007,
+        "tmdbId": 1949
+      },
+      {
+        "id": "the-girl-with-the-dragon-tattoo",
+        "title": "The Girl with the Dragon Tattoo",
+        "year": 2011,
+        "tmdbId": 65754
+      }
+    ]
+  },
+  {
+    "id": "pt-anderson",
+    "theme": "Paul Thomas Anderson",
+    "style": "troupe",
+    "films": [
+      {
+        "id": "boogie-nights",
+        "title": "Boogie Nights",
+        "year": 1997,
+        "tmdbId": 4995
+      },
+      {
+        "id": "magnolia",
+        "title": "Magnolia",
+        "year": 1999,
+        "tmdbId": 334
+      },
+      {
+        "id": "there-will-be-blood",
+        "title": "There Will Be Blood",
+        "year": 2007,
+        "tmdbId": 7345
+      },
+      {
+        "id": "the-master",
+        "title": "The Master",
+        "year": 2012,
+        "tmdbId": 68722
+      },
+      {
+        "id": "inherent-vice",
+        "title": "Inherent Vice",
+        "year": 2014,
+        "tmdbId": 171274
+      },
+      {
+        "id": "phantom-thread",
+        "title": "Phantom Thread",
+        "year": 2017,
+        "tmdbId": 400617
+      }
+    ]
+  },
+  {
+    "id": "ridley-scott",
+    "theme": "Ridley Scott",
+    "style": "troupe",
+    "films": [
+      {
+        "id": "gladiator",
+        "title": "Gladiator",
+        "year": 2000,
+        "tmdbId": 98
+      },
+      {
+        "id": "black-hawk-down",
+        "title": "Black Hawk Down",
+        "year": 2001,
+        "tmdbId": 855
+      },
+      {
+        "id": "american-gangster",
+        "title": "American Gangster",
+        "year": 2007,
+        "tmdbId": 4982
+      },
+      {
+        "id": "the-martian",
+        "title": "The Martian",
+        "year": 2015,
+        "tmdbId": 286217
+      },
+      {
+        "id": "kingdom-of-heaven",
+        "title": "Kingdom of Heaven",
+        "year": 2005,
+        "tmdbId": 1495
+      },
+      {
+        "id": "prometheus",
+        "title": "Prometheus",
+        "year": 2012,
+        "tmdbId": 70981
+      }
+    ]
+  },
+  {
+    "id": "villeneuve",
+    "theme": "Denis Villeneuve",
+    "style": "troupe",
+    "films": [
+      {
+        "id": "prisoners",
+        "title": "Prisoners",
+        "year": 2013,
+        "tmdbId": 146233
+      },
+      {
+        "id": "enemy",
+        "title": "Enemy",
+        "year": 2013,
+        "tmdbId": 223895
+      },
+      {
+        "id": "sicario",
+        "title": "Sicario",
+        "year": 2015,
+        "tmdbId": 273481
+      },
+      {
+        "id": "arrival",
+        "title": "Arrival",
+        "year": 2016,
+        "tmdbId": 329865
+      },
+      {
+        "id": "blade-runner-2049",
+        "title": "Blade Runner 2049",
+        "year": 2017,
+        "tmdbId": 335984
+      },
+      {
+        "id": "dune",
+        "title": "Dune",
+        "year": 2021,
+        "tmdbId": 438631
+      }
+    ]
+  },
+  {
+    "id": "tim-burton",
+    "theme": "Tim Burton",
+    "style": "troupe",
+    "films": [
+      {
+        "id": "batman",
+        "title": "Batman",
+        "year": 1989,
+        "tmdbId": 268
+      },
+      {
+        "id": "batman-returns",
+        "title": "Batman Returns",
+        "year": 1992,
+        "tmdbId": 364
+      },
+      {
+        "id": "edward-scissorhands",
+        "title": "Edward Scissorhands",
+        "year": 1990,
+        "tmdbId": 162
+      },
+      {
+        "id": "big-fish",
+        "title": "Big Fish",
+        "year": 2003,
+        "tmdbId": 587
+      },
+      {
+        "id": "sweeney-todd-the-demon-barber-of-fleet-street",
+        "title": "Sweeney Todd: The Demon Barber of Fleet Street",
+        "year": 2007,
+        "tmdbId": 13885
+      },
+      {
+        "id": "ed-wood",
+        "title": "Ed Wood",
+        "year": 1994,
+        "tmdbId": 522
+      }
+    ]
+  },
+  {
+    "id": "star-wars",
+    "theme": "Star Wars",
+    "style": "franchise",
+    "films": [
+      {
+        "id": "star-wars",
+        "title": "Star Wars",
+        "year": 1977,
+        "tmdbId": 11
+      },
+      {
+        "id": "the-empire-strikes-back",
+        "title": "The Empire Strikes Back",
+        "year": 1980,
+        "tmdbId": 1891
+      },
+      {
+        "id": "return-of-the-jedi",
+        "title": "Return of the Jedi",
+        "year": 1983,
+        "tmdbId": 1892
+      },
+      {
+        "id": "star-wars-the-force-awakens",
+        "title": "Star Wars: The Force Awakens",
+        "year": 2015,
+        "tmdbId": 140607
+      },
+      {
+        "id": "rogue-one-a-star-wars-story",
+        "title": "Rogue One: A Star Wars Story",
+        "year": 2016,
+        "tmdbId": 330459
+      },
+      {
+        "id": "star-wars-the-last-jedi",
+        "title": "Star Wars: The Last Jedi",
+        "year": 2017,
+        "tmdbId": 181808
+      }
+    ]
+  },
+  {
+    "id": "harry-potter",
+    "theme": "Harry Potter",
+    "style": "franchise",
+    "films": [
+      {
+        "id": "harry-potter-and-the-philosopher-s-stone",
+        "title": "Harry Potter and the Philosopher's Stone",
+        "year": 2001,
+        "tmdbId": 671
+      },
+      {
+        "id": "harry-potter-and-the-chamber-of-secrets",
+        "title": "Harry Potter and the Chamber of Secrets",
+        "year": 2002,
+        "tmdbId": 672
+      },
+      {
+        "id": "harry-potter-and-the-prisoner-of-azkaban",
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "year": 2004,
+        "tmdbId": 673
+      },
+      {
+        "id": "harry-potter-and-the-goblet-of-fire",
+        "title": "Harry Potter and the Goblet of Fire",
+        "year": 2005,
+        "tmdbId": 674
+      },
+      {
+        "id": "harry-potter-and-the-order-of-the-phoenix",
+        "title": "Harry Potter and the Order of the Phoenix",
+        "year": 2007,
+        "tmdbId": 675
+      },
+      {
+        "id": "harry-potter-and-the-half-blood-prince",
+        "title": "Harry Potter and the Half-Blood Prince",
+        "year": 2009,
+        "tmdbId": 767
+      }
+    ]
+  },
+  {
+    "id": "lord-of-the-rings",
+    "theme": "The Lord of the Rings",
+    "style": "franchise",
+    "films": [
+      {
+        "id": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "year": 2001,
+        "tmdbId": 120
+      },
+      {
+        "id": "the-lord-of-the-rings-the-two-towers",
+        "title": "The Lord of the Rings: The Two Towers",
+        "year": 2002,
+        "tmdbId": 121
+      },
+      {
+        "id": "the-lord-of-the-rings-the-return-of-the-king",
+        "title": "The Lord of the Rings: The Return of the King",
+        "year": 2003,
+        "tmdbId": 122
+      },
+      {
+        "id": "the-hobbit-an-unexpected-journey",
+        "title": "The Hobbit: An Unexpected Journey",
+        "year": 2012,
+        "tmdbId": 49051
+      },
+      {
+        "id": "the-hobbit-the-desolation-of-smaug",
+        "title": "The Hobbit: The Desolation of Smaug",
+        "year": 2013,
+        "tmdbId": 57158
+      },
+      {
+        "id": "the-hobbit-the-battle-of-the-five-armies",
+        "title": "The Hobbit: The Battle of the Five Armies",
+        "year": 2014,
+        "tmdbId": 122917
+      }
+    ]
+  },
+  {
+    "id": "mission-impossible",
+    "theme": "Mission: Impossible",
+    "style": "franchise",
+    "films": [
+      {
+        "id": "mission-impossible",
+        "title": "Mission: Impossible",
+        "year": 1996,
+        "tmdbId": 954
+      },
+      {
+        "id": "mission-impossible-ii",
+        "title": "Mission: Impossible II",
+        "year": 2000,
+        "tmdbId": 955
+      },
+      {
+        "id": "mission-impossible-iii",
+        "title": "Mission: Impossible III",
+        "year": 2006,
+        "tmdbId": 956
+      },
+      {
+        "id": "mission-impossible-ghost-protocol",
+        "title": "Mission: Impossible - Ghost Protocol",
+        "year": 2011,
+        "tmdbId": 56292
+      },
+      {
+        "id": "mission-impossible-rogue-nation",
+        "title": "Mission: Impossible - Rogue Nation",
+        "year": 2015,
+        "tmdbId": 177677
+      },
+      {
+        "id": "mission-impossible-fallout",
+        "title": "Mission: Impossible - Fallout",
+        "year": 2018,
+        "tmdbId": 353081
+      }
+    ]
+  },
+  {
+    "id": "james-bond",
+    "theme": "James Bond",
+    "style": "franchise",
+    "films": [
+      {
+        "id": "casino-royale",
+        "title": "Casino Royale",
+        "year": 2006,
+        "tmdbId": 36557
+      },
+      {
+        "id": "quantum-of-solace",
+        "title": "Quantum of Solace",
+        "year": 2008,
+        "tmdbId": 10764
+      },
+      {
+        "id": "skyfall",
+        "title": "Skyfall",
+        "year": 2012,
+        "tmdbId": 37724
+      },
+      {
+        "id": "spectre",
+        "title": "Spectre",
+        "year": 2015,
+        "tmdbId": 206647
+      },
+      {
+        "id": "no-time-to-die",
+        "title": "No Time to Die",
+        "year": 2021,
+        "tmdbId": 370172
+      },
+      {
+        "id": "goldeneye",
+        "title": "GoldenEye",
+        "year": 1995,
+        "tmdbId": 710
+      }
+    ]
+  },
+  {
+    "id": "oceans",
+    "theme": "Ocean's",
+    "style": "franchise",
+    "films": [
+      {
+        "id": "ocean-s-eleven",
+        "title": "Ocean's Eleven",
+        "year": 2001,
+        "tmdbId": 161
+      },
+      {
+        "id": "ocean-s-twelve",
+        "title": "Ocean's Twelve",
+        "year": 2004,
+        "tmdbId": 163
+      },
+      {
+        "id": "ocean-s-thirteen",
+        "title": "Ocean's Thirteen",
+        "year": 2007,
+        "tmdbId": 298
+      }
+    ]
+  },
+  {
+    "id": "horror",
+    "theme": "Horror",
+    "style": "genre",
+    "films": [
+      {
+        "id": "get-out",
+        "title": "Get Out",
+        "year": 2017,
+        "tmdbId": 419430
+      },
+      {
+        "id": "nope",
+        "title": "Nope",
+        "year": 2022,
+        "tmdbId": 762504
+      },
+      {
+        "id": "hereditary",
+        "title": "Hereditary",
+        "year": 2018,
+        "tmdbId": 493922
+      },
+      {
+        "id": "a-quiet-place",
+        "title": "A Quiet Place",
+        "year": 2018,
+        "tmdbId": 447332
+      },
+      {
+        "id": "a-quiet-place-part-ii",
+        "title": "A Quiet Place Part II",
+        "year": 2021,
+        "tmdbId": 520763
+      },
+      {
+        "id": "the-conjuring",
+        "title": "The Conjuring",
+        "year": 2013,
+        "tmdbId": 138843
+      }
+    ]
+  },
+  {
+    "id": "action-80s",
+    "theme": "80s Action",
+    "style": "genre",
+    "films": [
+      {
+        "id": "die-hard",
+        "title": "Die Hard",
+        "year": 1988,
+        "tmdbId": 562
+      },
+      {
+        "id": "predator",
+        "title": "Predator",
+        "year": 1987,
+        "tmdbId": 106
+      },
+      {
+        "id": "lethal-weapon",
+        "title": "Lethal Weapon",
+        "year": 1987,
+        "tmdbId": 941
+      },
+      {
+        "id": "robocop",
+        "title": "RoboCop",
+        "year": 1987,
+        "tmdbId": 5548
+      },
+      {
+        "id": "total-recall",
+        "title": "Total Recall",
+        "year": 1990,
+        "tmdbId": 861
+      },
+      {
+        "id": "beverly-hills-cop",
+        "title": "Beverly Hills Cop",
+        "year": 1984,
+        "tmdbId": 90
+      }
+    ]
+  },
+  {
+    "id": "heist",
+    "theme": "Heist",
+    "style": "genre",
+    "films": [
+      {
+        "id": "heat",
+        "title": "Heat",
+        "year": 1995,
+        "tmdbId": 949
+      },
+      {
+        "id": "the-italian-job",
+        "title": "The Italian Job",
+        "year": 2003,
+        "tmdbId": 9654
+      },
+      {
+        "id": "inside-man",
+        "title": "Inside Man",
+        "year": 2006,
+        "tmdbId": 388
+      },
+      {
+        "id": "the-town",
+        "title": "The Town",
+        "year": 2010,
+        "tmdbId": 23168
+      },
+      {
+        "id": "baby-driver",
+        "title": "Baby Driver",
+        "year": 2017,
+        "tmdbId": 339403
+      },
+      {
+        "id": "logan-lucky",
+        "title": "Logan Lucky",
+        "year": 2017,
+        "tmdbId": 399170
+      }
+    ]
+  },
+  {
+    "id": "sci-fi",
+    "theme": "Sci-Fi",
+    "style": "genre",
+    "films": [
+      {
+        "id": "the-matrix",
+        "title": "The Matrix",
+        "year": 1999,
+        "tmdbId": 603
+      },
+      {
+        "id": "aliens",
+        "title": "Aliens",
+        "year": 1986,
+        "tmdbId": 679
+      },
+      {
+        "id": "the-martian",
+        "title": "The Martian",
+        "year": 2015,
+        "tmdbId": 286217
+      },
+      {
+        "id": "edge-of-tomorrow",
+        "title": "Edge of Tomorrow",
+        "year": 2014,
+        "tmdbId": 137113
+      },
+      {
+        "id": "avatar",
+        "title": "Avatar",
+        "year": 2009,
+        "tmdbId": 19995
+      },
+      {
+        "id": "elysium",
+        "title": "Elysium",
+        "year": 2013,
+        "tmdbId": 68724
+      }
+    ]
+  },
+  {
+    "id": "rom-com",
+    "theme": "Rom-Com",
+    "style": "genre",
+    "films": [
+      {
+        "id": "when-harry-met-sally",
+        "title": "When Harry Met Sally...",
+        "year": 1989,
+        "tmdbId": 639
+      },
+      {
+        "id": "notting-hill",
+        "title": "Notting Hill",
+        "year": 1999,
+        "tmdbId": 509
+      },
+      {
+        "id": "four-weddings-and-a-funeral",
+        "title": "Four Weddings and a Funeral",
+        "year": 1994,
+        "tmdbId": 712
+      },
+      {
+        "id": "bridget-jones-s-diary",
+        "title": "Bridget Jones's Diary",
+        "year": 2001,
+        "tmdbId": 634
+      },
+      {
+        "id": "love-actually",
+        "title": "Love Actually",
+        "year": 2003,
+        "tmdbId": 508
+      },
+      {
+        "id": "about-time",
+        "title": "About Time",
+        "year": 2013,
+        "tmdbId": 122906
+      }
+    ]
+  },
+  {
+    "id": "tom-hanks",
+    "theme": "Tom Hanks",
+    "style": "shared-actor",
+    "films": [
+      {
+        "id": "forrest-gump",
+        "title": "Forrest Gump",
+        "year": 1994,
+        "tmdbId": 13
+      },
+      {
+        "id": "cast-away",
+        "title": "Cast Away",
+        "year": 2000,
+        "tmdbId": 8358
+      },
+      {
+        "id": "philadelphia",
+        "title": "Philadelphia",
+        "year": 1993,
+        "tmdbId": 9800
+      },
+      {
+        "id": "the-green-mile",
+        "title": "The Green Mile",
+        "year": 1999,
+        "tmdbId": 497
+      },
+      {
+        "id": "captain-phillips",
+        "title": "Captain Phillips",
+        "year": 2013,
+        "tmdbId": 109424
+      },
+      {
+        "id": "sully",
+        "title": "Sully",
+        "year": 2016,
+        "tmdbId": 363676
+      }
+    ]
+  },
+  {
+    "id": "samuel-l-jackson",
+    "theme": "Samuel L. Jackson",
+    "style": "shared-actor",
+    "films": [
+      {
+        "id": "unbreakable",
+        "title": "Unbreakable",
+        "year": 2000,
+        "tmdbId": 9741
+      },
+      {
+        "id": "split",
+        "title": "Split",
+        "year": 2016,
+        "tmdbId": 358364
+      },
+      {
+        "id": "glass",
+        "title": "Glass",
+        "year": 2019,
+        "tmdbId": 450465
+      },
+      {
+        "id": "a-time-to-kill",
+        "title": "A Time to Kill",
+        "year": 1996,
+        "tmdbId": 1645
+      },
+      {
+        "id": "die-hard-with-a-vengeance",
+        "title": "Die Hard with a Vengeance",
+        "year": 1995,
+        "tmdbId": 1572
+      },
+      {
+        "id": "kong-skull-island",
+        "title": "Kong: Skull Island",
+        "year": 2017,
+        "tmdbId": 293167
+      }
+    ]
+  },
+  {
+    "id": "meryl-streep",
+    "theme": "Meryl Streep",
+    "style": "shared-actor",
+    "films": [
+      {
+        "id": "kramer-vs-kramer",
+        "title": "Kramer vs. Kramer",
+        "year": 1979,
+        "tmdbId": 12102
+      },
+      {
+        "id": "sophie-s-choice",
+        "title": "Sophie's Choice",
+        "year": 1982,
+        "tmdbId": 15764
+      },
+      {
+        "id": "the-devil-wears-prada",
+        "title": "The Devil Wears Prada",
+        "year": 2006,
+        "tmdbId": 350
+      },
+      {
+        "id": "doubt",
+        "title": "Doubt",
+        "year": 2008,
+        "tmdbId": 14359
+      },
+      {
+        "id": "julie-julia",
+        "title": "Julie & Julia",
+        "year": 2009,
+        "tmdbId": 24803
+      },
+      {
+        "id": "florence-foster-jenkins",
+        "title": "Florence Foster Jenkins",
+        "year": 2016,
+        "tmdbId": 315664
+      }
+    ]
+  },
+  {
+    "id": "denzel-washington",
+    "theme": "Denzel Washington",
+    "style": "shared-actor",
+    "films": [
+      {
+        "id": "training-day",
+        "title": "Training Day",
+        "year": 2001,
+        "tmdbId": 2034
+      },
+      {
+        "id": "man-on-fire",
+        "title": "Man on Fire",
+        "year": 2004,
+        "tmdbId": 9509
+      },
+      {
+        "id": "the-equalizer",
+        "title": "The Equalizer",
+        "year": 2014,
+        "tmdbId": 156022
+      },
+      {
+        "id": "flight",
+        "title": "Flight",
+        "year": 2012,
+        "tmdbId": 87502
+      },
+      {
+        "id": "fences",
+        "title": "Fences",
+        "year": 2016,
+        "tmdbId": 393457
+      },
+      {
+        "id": "the-manchurian-candidate",
+        "title": "The Manchurian Candidate",
+        "year": 2004,
+        "tmdbId": 14462
+      }
+    ]
+  },
+  {
+    "id": "brad-pitt",
+    "theme": "Brad Pitt",
+    "style": "shared-actor",
+    "films": [
+      {
+        "id": "moneyball",
+        "title": "Moneyball",
+        "year": 2011,
+        "tmdbId": 60308
+      },
+      {
+        "id": "the-big-short",
+        "title": "The Big Short",
+        "year": 2015,
+        "tmdbId": 318846
+      },
+      {
+        "id": "12-years-a-slave",
+        "title": "12 Years a Slave",
+        "year": 2013,
+        "tmdbId": 76203
+      },
+      {
+        "id": "troy",
+        "title": "Troy",
+        "year": 2004,
+        "tmdbId": 652
+      },
+      {
+        "id": "snatch",
+        "title": "Snatch",
+        "year": 2000,
+        "tmdbId": 107
+      },
+      {
+        "id": "the-assassination-of-jesse-james-by-the-coward-robert-ford",
+        "title": "The Assassination of Jesse James by the Coward Robert Ford",
+        "year": 2007,
+        "tmdbId": 4512
+      }
+    ]
   }
 ]

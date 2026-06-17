@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-12",
+  "date": "2026-08-12",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "boogie-nights",
+      "title": "Boogie Nights",
+      "year": 1997
+    },
+    {
+      "id": "magnolia",
+      "title": "Magnolia",
+      "year": 1999
+    },
+    {
+      "id": "inherent-vice",
+      "title": "Inherent Vice",
+      "year": 2014
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-16851",
+      "name": "Josh Brolin",
+      "filmId": "inherent-vice"
+    },
+    {
+      "id": "tmdb-77795",
+      "name": "Katherine Waterston",
+      "filmId": "inherent-vice"
+    },
+    {
+      "id": "tmdb-73421",
+      "name": "Joaquin Phoenix",
+      "filmId": "inherent-vice"
+    },
+    {
+      "id": "tmdb-69122",
+      "name": "Heather Graham",
+      "filmId": "boogie-nights"
+    },
+    {
+      "id": "tmdb-4492",
+      "name": "Philip Baker Hall",
+      "filmId": "magnolia",
+      "alsoIn": ["boogie-nights"]
+    },
+    {
+      "id": "tmdb-1233",
+      "name": "Philip Seymour Hoffman",
+      "filmId": "magnolia",
+      "alsoIn": ["boogie-nights"]
+    },
+    {
+      "id": "tmdb-16475",
+      "name": "Burt Reynolds",
+      "filmId": "boogie-nights"
+    },
+    {
+      "id": "tmdb-887",
+      "name": "Owen Wilson",
+      "filmId": "inherent-vice"
+    },
+    {
+      "id": "tmdb-1231",
+      "name": "Julianne Moore",
+      "filmId": "magnolia",
+      "alsoIn": ["boogie-nights"]
+    },
+    {
+      "id": "tmdb-13240",
+      "name": "Mark Wahlberg",
+      "filmId": "boogie-nights"
+    },
+    {
+      "id": "tmdb-500",
+      "name": "Tom Cruise",
+      "filmId": "magnolia"
+    },
+    {
+      "id": "tmdb-1896",
+      "name": "Don Cheadle",
+      "filmId": "boogie-nights"
+    }
+  ],
+  "theme": "Paul Thomas Anderson"
+}

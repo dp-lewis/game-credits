@@ -1,0 +1,86 @@
+{
+  "id": "2026-08-10",
+  "date": "2026-08-10",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "the-girl-with-the-dragon-tattoo",
+      "title": "The Girl with the Dragon Tattoo",
+      "year": 2011
+    },
+    {
+      "id": "fight-club",
+      "title": "Fight Club",
+      "year": 1999
+    },
+    {
+      "id": "the-social-network",
+      "title": "The Social Network",
+      "year": 2010
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-108916",
+      "name": "Rooney Mara",
+      "filmId": "the-social-network",
+      "alsoIn": ["the-girl-with-the-dragon-tattoo"]
+    },
+    {
+      "id": "tmdb-819",
+      "name": "Edward Norton",
+      "filmId": "fight-club"
+    },
+    {
+      "id": "tmdb-37625",
+      "name": "Andrew Garfield",
+      "filmId": "the-social-network"
+    },
+    {
+      "id": "tmdb-290",
+      "name": "Christopher Plummer",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-8784",
+      "name": "Daniel Craig",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-7470",
+      "name": "Meat Loaf",
+      "filmId": "fight-club"
+    },
+    {
+      "id": "tmdb-44735",
+      "name": "Jesse Eisenberg",
+      "filmId": "the-social-network"
+    },
+    {
+      "id": "tmdb-1640",
+      "name": "Stellan Skarsgård",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "fight-club"
+    },
+    {
+      "id": "tmdb-32",
+      "name": "Robin Wright",
+      "filmId": "the-girl-with-the-dragon-tattoo"
+    },
+    {
+      "id": "tmdb-1283",
+      "name": "Helena Bonham Carter",
+      "filmId": "fight-club"
+    },
+    {
+      "id": "tmdb-53807",
+      "name": "Armie Hammer",
+      "filmId": "the-social-network"
+    }
+  ],
+  "theme": "David Fincher"
+}

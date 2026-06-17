@@ -1,0 +1,86 @@
+{
+  "id": "2026-08-04",
+  "date": "2026-08-04",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "aliens",
+      "title": "Aliens",
+      "year": 1986
+    },
+    {
+      "id": "the-martian",
+      "title": "The Martian",
+      "year": 2015
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar",
+      "year": 2009
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-8691",
+      "name": "Zoe Saldaña",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-781",
+      "name": "Paul Reiser",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-41091",
+      "name": "Kristen Wiig",
+      "filmId": "the-martian"
+    },
+    {
+      "id": "tmdb-83002",
+      "name": "Jessica Chastain",
+      "filmId": "the-martian"
+    },
+    {
+      "id": "tmdb-2712",
+      "name": "Michael Biehn",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-10205",
+      "name": "Sigourney Weaver",
+      "filmId": "avatar",
+      "alsoIn": ["aliens"]
+    },
+    {
+      "id": "tmdb-32747",
+      "name": "Stephen Lang",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-10206",
+      "name": "Carrie Henn",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-8447",
+      "name": "Jeff Daniels",
+      "filmId": "the-martian"
+    },
+    {
+      "id": "tmdb-1892",
+      "name": "Matt Damon",
+      "filmId": "the-martian"
+    },
+    {
+      "id": "tmdb-2714",
+      "name": "Lance Henriksen",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-65731",
+      "name": "Sam Worthington",
+      "filmId": "avatar"
+    }
+  ],
+  "theme": "Sci-Fi"
+}

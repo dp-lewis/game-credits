@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-24",
+  "date": "2026-08-24",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "the-hateful-eight",
+      "title": "The Hateful Eight",
+      "year": 2015
+    },
+    {
+      "id": "pulp-fiction",
+      "title": "Pulp Fiction",
+      "year": 1994
+    },
+    {
+      "id": "inglourious-basterds",
+      "title": "Inglourious Basterds",
+      "year": 2009
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-8891",
+      "name": "John Travolta",
+      "filmId": "pulp-fiction"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-62",
+      "name": "Bruce Willis",
+      "filmId": "pulp-fiction"
+    },
+    {
+      "id": "tmdb-19119",
+      "name": "Mélanie Laurent",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-138",
+      "name": "Quentin Tarantino",
+      "filmId": "the-hateful-eight",
+      "alsoIn": ["pulp-fiction"]
+    },
+    {
+      "id": "tmdb-139",
+      "name": "Uma Thurman",
+      "filmId": "pulp-fiction"
+    },
+    {
+      "id": "tmdb-27319",
+      "name": "Christoph Waltz",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-10182",
+      "name": "Ving Rhames",
+      "filmId": "pulp-fiction"
+    },
+    {
+      "id": "tmdb-2231",
+      "name": "Samuel L. Jackson",
+      "filmId": "the-hateful-eight",
+      "alsoIn": ["pulp-fiction"]
+    },
+    {
+      "id": "tmdb-6856",
+      "name": "Kurt Russell",
+      "filmId": "the-hateful-eight"
+    },
+    {
+      "id": "tmdb-16847",
+      "name": "Eli Roth",
+      "filmId": "inglourious-basterds"
+    },
+    {
+      "id": "tmdb-3129",
+      "name": "Tim Roth",
+      "filmId": "the-hateful-eight",
+      "alsoIn": ["pulp-fiction"]
+    }
+  ],
+  "theme": "Quentin Tarantino"
+}

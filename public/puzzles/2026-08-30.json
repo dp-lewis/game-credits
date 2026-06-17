@@ -1,0 +1,85 @@
+{
+  "id": "2026-08-30",
+  "date": "2026-08-30",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "inside-man",
+      "title": "Inside Man",
+      "year": 2006
+    },
+    {
+      "id": "the-town",
+      "title": "The Town",
+      "year": 2010
+    },
+    {
+      "id": "the-italian-job",
+      "title": "The Italian Job",
+      "year": 2003
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-5292",
+      "name": "Denzel Washington",
+      "filmId": "inside-man"
+    },
+    {
+      "id": "tmdb-65717",
+      "name": "Jon Hamm",
+      "filmId": "the-town"
+    },
+    {
+      "id": "tmdb-6885",
+      "name": "Charlize Theron",
+      "filmId": "the-italian-job"
+    },
+    {
+      "id": "tmdb-15556",
+      "name": "Rebecca Hall",
+      "filmId": "the-town"
+    },
+    {
+      "id": "tmdb-13922",
+      "name": "Seth Green",
+      "filmId": "the-italian-job"
+    },
+    {
+      "id": "tmdb-819",
+      "name": "Edward Norton",
+      "filmId": "the-italian-job"
+    },
+    {
+      "id": "tmdb-13240",
+      "name": "Mark Wahlberg",
+      "filmId": "the-italian-job"
+    },
+    {
+      "id": "tmdb-290",
+      "name": "Christopher Plummer",
+      "filmId": "inside-man"
+    },
+    {
+      "id": "tmdb-880",
+      "name": "Ben Affleck",
+      "filmId": "the-town"
+    },
+    {
+      "id": "tmdb-1038",
+      "name": "Jodie Foster",
+      "filmId": "inside-man"
+    },
+    {
+      "id": "tmdb-17604",
+      "name": "Jeremy Renner",
+      "filmId": "the-town"
+    },
+    {
+      "id": "tmdb-2296",
+      "name": "Clive Owen",
+      "filmId": "inside-man"
+    }
+  ],
+  "theme": "Heist"
+}

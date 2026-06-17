@@ -1,0 +1,88 @@
+{
+  "id": "2026-06-27",
+  "date": "2026-06-27",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "beverly-hills-cop",
+      "title": "Beverly Hills Cop",
+      "year": 1984
+    },
+    {
+      "id": "total-recall",
+      "title": "Total Recall",
+      "year": 1990
+    },
+    {
+      "id": "robocop",
+      "title": "RoboCop",
+      "year": 1987
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-27811",
+      "name": "Peter Weller",
+      "filmId": "robocop"
+    },
+    {
+      "id": "tmdb-94557",
+      "name": "Mark Carlton",
+      "filmId": "robocop",
+      "alsoIn": ["total-recall"]
+    },
+    {
+      "id": "tmdb-776",
+      "name": "Eddie Murphy",
+      "filmId": "beverly-hills-cop"
+    },
+    {
+      "id": "tmdb-10768",
+      "name": "Rachel Ticotin",
+      "filmId": "total-recall"
+    },
+    {
+      "id": "tmdb-1100",
+      "name": "Arnold Schwarzenegger",
+      "filmId": "total-recall"
+    },
+    {
+      "id": "tmdb-778",
+      "name": "John Ashton",
+      "filmId": "beverly-hills-cop"
+    },
+    {
+      "id": "tmdb-779",
+      "name": "Lisa Eilbacher",
+      "filmId": "beverly-hills-cop"
+    },
+    {
+      "id": "tmdb-790",
+      "name": "Michael Champion",
+      "filmId": "total-recall",
+      "alsoIn": ["beverly-hills-cop"]
+    },
+    {
+      "id": "tmdb-44038",
+      "name": "Nancy Allen",
+      "filmId": "robocop"
+    },
+    {
+      "id": "tmdb-777",
+      "name": "Judge Reinhold",
+      "filmId": "beverly-hills-cop"
+    },
+    {
+      "id": "tmdb-4430",
+      "name": "Sharon Stone",
+      "filmId": "total-recall"
+    },
+    {
+      "id": "tmdb-780",
+      "name": "Ronny Cox",
+      "filmId": "robocop",
+      "alsoIn": ["beverly-hills-cop", "total-recall"]
+    }
+  ],
+  "theme": "80s Action"
+}

@@ -4,10 +4,12 @@ title: Rebuild TMDB Catalogue
 intent: catalogue-expansion
 complexity: medium
 mode: autopilot
-status: in_progress
+status: completed
 depends_on:
   - expand-cluster-roster
 created: 2026-06-17T00:00:00Z
+run_id: run-game-credits-029
+completed_at: 2026-06-17T09:56:40.093Z
 ---
 
 # Work Item: Rebuild TMDB Catalogue

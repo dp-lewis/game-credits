@@ -1,0 +1,88 @@
+{
+  "id": "2026-06-25",
+  "date": "2026-06-25",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "django-unchained",
+      "title": "Django Unchained",
+      "year": 2012
+    },
+    {
+      "id": "the-hateful-eight",
+      "title": "The Hateful Eight",
+      "year": 2015
+    },
+    {
+      "id": "kill-bill-vol-1",
+      "title": "Kill Bill: Vol. 1",
+      "year": 2003
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-76961",
+      "name": "Demián Bichir",
+      "filmId": "the-hateful-eight"
+    },
+    {
+      "id": "tmdb-147",
+      "name": "Michael Madsen",
+      "filmId": "the-hateful-eight",
+      "alsoIn": ["kill-bill-vol-1"]
+    },
+    {
+      "id": "tmdb-10431",
+      "name": "Jennifer Jason Leigh",
+      "filmId": "the-hateful-eight"
+    },
+    {
+      "id": "tmdb-27740",
+      "name": "Walton Goggins",
+      "filmId": "django-unchained",
+      "alsoIn": ["the-hateful-eight"]
+    },
+    {
+      "id": "tmdb-6856",
+      "name": "Kurt Russell",
+      "filmId": "the-hateful-eight"
+    },
+    {
+      "id": "tmdb-2535",
+      "name": "Vivica A. Fox",
+      "filmId": "kill-bill-vol-1"
+    },
+    {
+      "id": "tmdb-140",
+      "name": "Lucy Liu",
+      "filmId": "kill-bill-vol-1"
+    },
+    {
+      "id": "tmdb-27319",
+      "name": "Christoph Waltz",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-134",
+      "name": "Jamie Foxx",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-139",
+      "name": "Uma Thurman",
+      "filmId": "kill-bill-vol-1"
+    },
+    {
+      "id": "tmdb-2231",
+      "name": "Samuel L. Jackson",
+      "filmId": "django-unchained",
+      "alsoIn": ["the-hateful-eight"]
+    },
+    {
+      "id": "tmdb-589",
+      "name": "Daryl Hannah",
+      "filmId": "kill-bill-vol-1"
+    }
+  ],
+  "theme": "Quentin Tarantino"
+}

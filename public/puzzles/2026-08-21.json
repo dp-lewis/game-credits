@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-21",
+  "date": "2026-08-21",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "star-wars",
+      "title": "Star Wars",
+      "year": 1977
+    },
+    {
+      "id": "star-wars-the-last-jedi",
+      "title": "Star Wars: The Last Jedi",
+      "year": 2017
+    },
+    {
+      "id": "the-empire-strikes-back",
+      "title": "The Empire Strikes Back",
+      "year": 1980
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-236695",
+      "name": "John Boyega",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-1315036",
+      "name": "Daisy Ridley",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-15152",
+      "name": "James Earl Jones",
+      "filmId": "star-wars"
+    },
+    {
+      "id": "tmdb-3",
+      "name": "Harrison Ford",
+      "filmId": "the-empire-strikes-back",
+      "alsoIn": ["star-wars"]
+    },
+    {
+      "id": "tmdb-25072",
+      "name": "Oscar Isaac",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-2",
+      "name": "Mark Hamill",
+      "filmId": "the-empire-strikes-back",
+      "alsoIn": ["star-wars", "star-wars-the-last-jedi"]
+    },
+    {
+      "id": "tmdb-4",
+      "name": "Carrie Fisher",
+      "filmId": "the-empire-strikes-back",
+      "alsoIn": ["star-wars", "star-wars-the-last-jedi"]
+    },
+    {
+      "id": "tmdb-1023139",
+      "name": "Adam Driver",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-3799",
+      "name": "Billy Dee Williams",
+      "filmId": "the-empire-strikes-back"
+    },
+    {
+      "id": "tmdb-5",
+      "name": "Peter Cushing",
+      "filmId": "star-wars"
+    },
+    {
+      "id": "tmdb-33032",
+      "name": "Phil Brown",
+      "filmId": "star-wars"
+    },
+    {
+      "id": "tmdb-131625",
+      "name": "Shelagh Fraser",
+      "filmId": "star-wars"
+    }
+  ],
+  "theme": "Star Wars"
+}

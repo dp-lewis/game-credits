@@ -1,0 +1,88 @@
+{
+  "id": "2026-07-25",
+  "date": "2026-07-25",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "once-upon-a-time-in-hollywood",
+      "title": "Once Upon a Time in Hollywood",
+      "year": 2019
+    },
+    {
+      "id": "the-hateful-eight",
+      "title": "The Hateful Eight",
+      "year": 2015
+    },
+    {
+      "id": "django-unchained",
+      "title": "Django Unchained",
+      "year": 2012
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-6856",
+      "name": "Kurt Russell",
+      "filmId": "the-hateful-eight"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "once-upon-a-time-in-hollywood"
+    },
+    {
+      "id": "tmdb-6193",
+      "name": "Leonardo DiCaprio",
+      "filmId": "once-upon-a-time-in-hollywood",
+      "alsoIn": ["django-unchained"]
+    },
+    {
+      "id": "tmdb-27740",
+      "name": "Walton Goggins",
+      "filmId": "the-hateful-eight",
+      "alsoIn": ["django-unchained"]
+    },
+    {
+      "id": "tmdb-46593",
+      "name": "Emile Hirsch",
+      "filmId": "once-upon-a-time-in-hollywood"
+    },
+    {
+      "id": "tmdb-234352",
+      "name": "Margot Robbie",
+      "filmId": "once-upon-a-time-in-hollywood"
+    },
+    {
+      "id": "tmdb-134",
+      "name": "Jamie Foxx",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-27770",
+      "name": "Dennis Christopher",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-2231",
+      "name": "Samuel L. Jackson",
+      "filmId": "the-hateful-eight",
+      "alsoIn": ["django-unchained"]
+    },
+    {
+      "id": "tmdb-11703",
+      "name": "Kerry Washington",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-27319",
+      "name": "Christoph Waltz",
+      "filmId": "django-unchained"
+    },
+    {
+      "id": "tmdb-10431",
+      "name": "Jennifer Jason Leigh",
+      "filmId": "the-hateful-eight"
+    }
+  ],
+  "theme": "Quentin Tarantino"
+}

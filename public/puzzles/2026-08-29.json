@@ -1,0 +1,91 @@
+{
+  "id": "2026-08-29",
+  "date": "2026-08-29",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "the-lord-of-the-rings-the-two-towers",
+      "title": "The Lord of the Rings: The Two Towers",
+      "year": 2002
+    },
+    {
+      "id": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "year": 2001
+    },
+    {
+      "id": "the-hobbit-the-battle-of-the-five-armies",
+      "title": "The Hobbit: The Battle of the Five Armies",
+      "year": 2014
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-30315",
+      "name": "Richard Armitage",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "id": "tmdb-20982",
+      "name": "Marton Csokas",
+      "filmId": "the-lord-of-the-rings-the-fellowship-of-the-ring"
+    },
+    {
+      "id": "tmdb-1371",
+      "name": "David Wenham",
+      "filmId": "the-lord-of-the-rings-the-two-towers"
+    },
+    {
+      "id": "tmdb-110",
+      "name": "Viggo Mortensen",
+      "filmId": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+      "alsoIn": ["the-lord-of-the-rings-the-two-towers"]
+    },
+    {
+      "id": "tmdb-109",
+      "name": "Elijah Wood",
+      "filmId": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+      "alsoIn": ["the-lord-of-the-rings-the-two-towers"]
+    },
+    {
+      "id": "tmdb-7060",
+      "name": "Martin Freeman",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "id": "tmdb-1370",
+      "name": "Brad Dourif",
+      "filmId": "the-lord-of-the-rings-the-two-towers"
+    },
+    {
+      "id": "tmdb-48",
+      "name": "Sean Bean",
+      "filmId": "the-lord-of-the-rings-the-fellowship-of-the-ring"
+    },
+    {
+      "id": "tmdb-19034",
+      "name": "Evangeline Lilly",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "id": "tmdb-1369",
+      "name": "Bernard Hill",
+      "filmId": "the-lord-of-the-rings-the-two-towers"
+    },
+    {
+      "id": "tmdb-502",
+      "name": "Miranda Otto",
+      "filmId": "the-lord-of-the-rings-the-two-towers"
+    },
+    {
+      "id": "tmdb-1327",
+      "name": "Ian McKellen",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies",
+      "alsoIn": [
+        "the-lord-of-the-rings-the-two-towers",
+        "the-lord-of-the-rings-the-fellowship-of-the-ring"
+      ]
+    }
+  ],
+  "theme": "The Lord of the Rings"
+}

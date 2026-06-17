@@ -1,0 +1,85 @@
+{
+  "id": "2026-08-17",
+  "date": "2026-08-17",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "guardians-of-the-galaxy",
+      "title": "Guardians of the Galaxy",
+      "year": 2014
+    },
+    {
+      "id": "doctor-strange",
+      "title": "Doctor Strange",
+      "year": 2016
+    },
+    {
+      "id": "black-panther",
+      "title": "Black Panther",
+      "year": 2018
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-73457",
+      "name": "Chris Pratt",
+      "filmId": "guardians-of-the-galaxy"
+    },
+    {
+      "id": "tmdb-172069",
+      "name": "Chadwick Boseman",
+      "filmId": "black-panther"
+    },
+    {
+      "id": "tmdb-53714",
+      "name": "Rachel McAdams",
+      "filmId": "doctor-strange"
+    },
+    {
+      "id": "tmdb-82104",
+      "name": "Danai Gurira",
+      "filmId": "black-panther"
+    },
+    {
+      "id": "tmdb-5294",
+      "name": "Chiwetel Ejiofor",
+      "filmId": "doctor-strange"
+    },
+    {
+      "id": "tmdb-135651",
+      "name": "Michael B. Jordan",
+      "filmId": "black-panther"
+    },
+    {
+      "id": "tmdb-1267329",
+      "name": "Lupita Nyong'o",
+      "filmId": "black-panther"
+    },
+    {
+      "id": "tmdb-71580",
+      "name": "Benedict Cumberbatch",
+      "filmId": "doctor-strange"
+    },
+    {
+      "id": "tmdb-12835",
+      "name": "Vin Diesel",
+      "filmId": "guardians-of-the-galaxy"
+    },
+    {
+      "id": "tmdb-8691",
+      "name": "Zoe Saldaña",
+      "filmId": "guardians-of-the-galaxy"
+    },
+    {
+      "id": "tmdb-543530",
+      "name": "Dave Bautista",
+      "filmId": "guardians-of-the-galaxy"
+    },
+    {
+      "id": "tmdb-30082",
+      "name": "Benedict Wong",
+      "filmId": "doctor-strange"
+    }
+  ],
+  "theme": "The MCU"
+}

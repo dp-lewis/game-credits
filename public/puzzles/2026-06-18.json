@@ -4,84 +4,82 @@
   "maxMistakes": 4,
   "films": [
     {
-      "id": "the-hateful-eight",
-      "title": "The Hateful Eight",
-      "year": 2015
+      "id": "the-avengers",
+      "title": "The Avengers",
+      "year": 2012
     },
     {
-      "id": "once-upon-a-time-in-hollywood",
-      "title": "Once Upon a Time in Hollywood",
-      "year": 2019
+      "id": "guardians-of-the-galaxy",
+      "title": "Guardians of the Galaxy",
+      "year": 2014
     },
     {
-      "id": "inglourious-basterds",
-      "title": "Inglourious Basterds",
-      "year": 2009
+      "id": "black-panther",
+      "title": "Black Panther",
+      "year": 2018
     }
   ],
   "actors": [
     {
-      "id": "tmdb-16847",
-      "name": "Eli Roth",
-      "filmId": "inglourious-basterds"
+      "id": "tmdb-16828",
+      "name": "Chris Evans",
+      "filmId": "the-avengers"
     },
     {
-      "id": "tmdb-19119",
-      "name": "Mélanie Laurent",
-      "filmId": "inglourious-basterds"
+      "id": "tmdb-1267329",
+      "name": "Lupita Nyong'o",
+      "filmId": "black-panther"
     },
     {
-      "id": "tmdb-6856",
-      "name": "Kurt Russell",
-      "filmId": "the-hateful-eight"
+      "id": "tmdb-543530",
+      "name": "Dave Bautista",
+      "filmId": "guardians-of-the-galaxy"
     },
     {
-      "id": "tmdb-27740",
-      "name": "Walton Goggins",
-      "filmId": "the-hateful-eight"
+      "id": "tmdb-8691",
+      "name": "Zoe Saldaña",
+      "filmId": "guardians-of-the-galaxy"
     },
     {
-      "id": "tmdb-46593",
-      "name": "Emile Hirsch",
-      "filmId": "once-upon-a-time-in-hollywood"
+      "id": "tmdb-103",
+      "name": "Mark Ruffalo",
+      "filmId": "the-avengers"
     },
     {
-      "id": "tmdb-10431",
-      "name": "Jennifer Jason Leigh",
-      "filmId": "the-hateful-eight"
+      "id": "tmdb-12835",
+      "name": "Vin Diesel",
+      "filmId": "guardians-of-the-galaxy"
     },
     {
-      "id": "tmdb-27319",
-      "name": "Christoph Waltz",
-      "filmId": "inglourious-basterds"
+      "id": "tmdb-172069",
+      "name": "Chadwick Boseman",
+      "filmId": "black-panther"
     },
     {
-      "id": "tmdb-234352",
-      "name": "Margot Robbie",
-      "filmId": "once-upon-a-time-in-hollywood"
+      "id": "tmdb-82104",
+      "name": "Danai Gurira",
+      "filmId": "black-panther"
     },
     {
-      "id": "tmdb-2231",
-      "name": "Samuel L. Jackson",
-      "filmId": "the-hateful-eight"
+      "id": "tmdb-135651",
+      "name": "Michael B. Jordan",
+      "filmId": "black-panther"
     },
     {
-      "id": "tmdb-287",
-      "name": "Brad Pitt",
-      "filmId": "inglourious-basterds",
-      "alsoIn": ["once-upon-a-time-in-hollywood"]
+      "id": "tmdb-73457",
+      "name": "Chris Pratt",
+      "filmId": "guardians-of-the-galaxy"
     },
     {
-      "id": "tmdb-6905",
-      "name": "Bruce Dern",
-      "filmId": "once-upon-a-time-in-hollywood",
-      "alsoIn": ["the-hateful-eight"]
+      "id": "tmdb-74568",
+      "name": "Chris Hemsworth",
+      "filmId": "the-avengers"
     },
     {
-      "id": "tmdb-6193",
-      "name": "Leonardo DiCaprio",
-      "filmId": "once-upon-a-time-in-hollywood"
+      "id": "tmdb-3223",
+      "name": "Robert Downey Jr.",
+      "filmId": "the-avengers"
     }
   ],
-  "theme": "Quentin Tarantino"
+  "theme": "The MCU"
 }
