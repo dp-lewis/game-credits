@@ -1,0 +1,86 @@
+{
+  "id": "2026-07-02",
+  "date": "2026-07-02",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "sophie-s-choice",
+      "title": "Sophie's Choice",
+      "year": 1982
+    },
+    {
+      "id": "florence-foster-jenkins",
+      "title": "Florence Foster Jenkins",
+      "year": 2016
+    },
+    {
+      "id": "julie-julia",
+      "title": "Julie & Julia",
+      "year": 2009
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-3291",
+      "name": "Hugh Grant",
+      "filmId": "florence-foster-jenkins"
+    },
+    {
+      "id": "tmdb-9273",
+      "name": "Amy Adams",
+      "filmId": "julie-julia"
+    },
+    {
+      "id": "tmdb-933238",
+      "name": "Rebecca Ferguson",
+      "filmId": "florence-foster-jenkins"
+    },
+    {
+      "id": "tmdb-5064",
+      "name": "Meryl Streep",
+      "filmId": "florence-foster-jenkins",
+      "alsoIn": ["sophie-s-choice", "julie-julia"]
+    },
+    {
+      "id": "tmdb-135170",
+      "name": "Rita Karin",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-53863",
+      "name": "Simon Helberg",
+      "filmId": "florence-foster-jenkins"
+    },
+    {
+      "id": "tmdb-58643",
+      "name": "Linda Emond",
+      "filmId": "julie-julia"
+    },
+    {
+      "id": "tmdb-8945",
+      "name": "Kevin Kline",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-2283",
+      "name": "Stanley Tucci",
+      "filmId": "julie-julia"
+    },
+    {
+      "id": "tmdb-12688",
+      "name": "Peter MacNicol",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-33489",
+      "name": "Josh Mostel",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-61659",
+      "name": "Chris Messina",
+      "filmId": "julie-julia"
+    }
+  ],
+  "theme": "Meryl Streep"
+}

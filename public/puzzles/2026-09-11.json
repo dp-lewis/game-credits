@@ -1,0 +1,88 @@
+{
+  "id": "2026-09-11",
+  "date": "2026-09-11",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "boogie-nights",
+      "title": "Boogie Nights",
+      "year": 1997
+    },
+    {
+      "id": "the-master",
+      "title": "The Master",
+      "year": 2012
+    },
+    {
+      "id": "magnolia",
+      "title": "Magnolia",
+      "year": 1999
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-16475",
+      "name": "Burt Reynolds",
+      "filmId": "boogie-nights"
+    },
+    {
+      "id": "tmdb-1231",
+      "name": "Julianne Moore",
+      "filmId": "magnolia",
+      "alsoIn": ["boogie-nights"]
+    },
+    {
+      "id": "tmdb-9273",
+      "name": "Amy Adams",
+      "filmId": "the-master"
+    },
+    {
+      "id": "tmdb-17838",
+      "name": "Rami Malek",
+      "filmId": "the-master"
+    },
+    {
+      "id": "tmdb-13240",
+      "name": "Mark Wahlberg",
+      "filmId": "boogie-nights"
+    },
+    {
+      "id": "tmdb-500",
+      "name": "Tom Cruise",
+      "filmId": "magnolia"
+    },
+    {
+      "id": "tmdb-4492",
+      "name": "Philip Baker Hall",
+      "filmId": "magnolia",
+      "alsoIn": ["boogie-nights"]
+    },
+    {
+      "id": "tmdb-4779",
+      "name": "Jeremy Blackman",
+      "filmId": "magnolia"
+    },
+    {
+      "id": "tmdb-69122",
+      "name": "Heather Graham",
+      "filmId": "boogie-nights"
+    },
+    {
+      "id": "tmdb-1896",
+      "name": "Don Cheadle",
+      "filmId": "boogie-nights"
+    },
+    {
+      "id": "tmdb-1233",
+      "name": "Philip Seymour Hoffman",
+      "filmId": "the-master",
+      "alsoIn": ["boogie-nights", "magnolia"]
+    },
+    {
+      "id": "tmdb-73421",
+      "name": "Joaquin Phoenix",
+      "filmId": "the-master"
+    }
+  ],
+  "theme": "Paul Thomas Anderson"
+}

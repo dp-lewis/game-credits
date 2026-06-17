@@ -1,0 +1,88 @@
+{
+  "id": "2026-06-29",
+  "date": "2026-06-29",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "goodfellas",
+      "title": "Goodfellas",
+      "year": 1990
+    },
+    {
+      "id": "casino",
+      "title": "Casino",
+      "year": 1995
+    },
+    {
+      "id": "the-wolf-of-wall-street",
+      "title": "The Wolf of Wall Street",
+      "year": 2013
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-4517",
+      "name": "Joe Pesci",
+      "filmId": "casino",
+      "alsoIn": ["goodfellas"]
+    },
+    {
+      "id": "tmdb-6193",
+      "name": "Leonardo DiCaprio",
+      "filmId": "the-wolf-of-wall-street"
+    },
+    {
+      "id": "tmdb-7164",
+      "name": "Frank Vincent",
+      "filmId": "casino",
+      "alsoIn": ["goodfellas"]
+    },
+    {
+      "id": "tmdb-11478",
+      "name": "Lorraine Bracco",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-11480",
+      "name": "Frank Sivero",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-4430",
+      "name": "Sharon Stone",
+      "filmId": "casino"
+    },
+    {
+      "id": "tmdb-11477",
+      "name": "Ray Liotta",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-380",
+      "name": "Robert De Niro",
+      "filmId": "casino",
+      "alsoIn": ["goodfellas"]
+    },
+    {
+      "id": "tmdb-7004",
+      "name": "Paul Sorvino",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-21007",
+      "name": "Jonah Hill",
+      "filmId": "the-wolf-of-wall-street"
+    },
+    {
+      "id": "tmdb-10297",
+      "name": "Matthew McConaughey",
+      "filmId": "the-wolf-of-wall-street"
+    },
+    {
+      "id": "tmdb-234352",
+      "name": "Margot Robbie",
+      "filmId": "the-wolf-of-wall-street"
+    }
+  ],
+  "theme": "Martin Scorsese"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "2026-07-05",
+  "date": "2026-07-05",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "aliens",
+      "title": "Aliens",
+      "year": 1986
+    },
+    {
+      "id": "the-matrix",
+      "title": "The Matrix",
+      "year": 1999
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar",
+      "year": 2009
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-10205",
+      "name": "Sigourney Weaver",
+      "filmId": "aliens",
+      "alsoIn": ["avatar"]
+    },
+    {
+      "id": "tmdb-2712",
+      "name": "Michael Biehn",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-10206",
+      "name": "Carrie Henn",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-17647",
+      "name": "Michelle Rodriguez",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-8691",
+      "name": "Zoe Saldaña",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-530",
+      "name": "Carrie-Anne Moss",
+      "filmId": "the-matrix"
+    },
+    {
+      "id": "tmdb-2975",
+      "name": "Laurence Fishburne",
+      "filmId": "the-matrix"
+    },
+    {
+      "id": "tmdb-6384",
+      "name": "Keanu Reeves",
+      "filmId": "the-matrix"
+    },
+    {
+      "id": "tmdb-32747",
+      "name": "Stephen Lang",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-65731",
+      "name": "Sam Worthington",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-781",
+      "name": "Paul Reiser",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-1331",
+      "name": "Hugo Weaving",
+      "filmId": "the-matrix"
+    }
+  ],
+  "theme": "Sci-Fi"
+}

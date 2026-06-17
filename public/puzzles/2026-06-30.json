@@ -1,0 +1,91 @@
+{
+  "id": "2026-06-30",
+  "date": "2026-06-30",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "the-lord-of-the-rings-the-two-towers",
+      "title": "The Lord of the Rings: The Two Towers",
+      "year": 2002
+    },
+    {
+      "id": "the-hobbit-an-unexpected-journey",
+      "title": "The Hobbit: An Unexpected Journey",
+      "year": 2012
+    },
+    {
+      "id": "the-hobbit-the-battle-of-the-five-armies",
+      "title": "The Hobbit: The Battle of the Five Armies",
+      "year": 2014
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-9188",
+      "name": "Billy Connolly",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "id": "tmdb-22",
+      "name": "Barry Humphries",
+      "filmId": "the-hobbit-an-unexpected-journey"
+    },
+    {
+      "id": "tmdb-71580",
+      "name": "Benedict Cumberbatch",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "id": "tmdb-110",
+      "name": "Viggo Mortensen",
+      "filmId": "the-lord-of-the-rings-the-two-towers"
+    },
+    {
+      "id": "tmdb-1327",
+      "name": "Ian McKellen",
+      "filmId": "the-lord-of-the-rings-the-two-towers",
+      "alsoIn": [
+        "the-hobbit-an-unexpected-journey",
+        "the-hobbit-the-battle-of-the-five-armies"
+      ]
+    },
+    {
+      "id": "tmdb-114019",
+      "name": "Luke Evans",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "id": "tmdb-109",
+      "name": "Elijah Wood",
+      "filmId": "the-lord-of-the-rings-the-two-towers"
+    },
+    {
+      "id": "tmdb-7060",
+      "name": "Martin Freeman",
+      "filmId": "the-hobbit-an-unexpected-journey",
+      "alsoIn": ["the-hobbit-the-battle-of-the-five-armies"]
+    },
+    {
+      "id": "tmdb-30315",
+      "name": "Richard Armitage",
+      "filmId": "the-hobbit-an-unexpected-journey",
+      "alsoIn": ["the-hobbit-the-battle-of-the-five-armies"]
+    },
+    {
+      "id": "tmdb-80112",
+      "name": "Sylvester McCoy",
+      "filmId": "the-hobbit-an-unexpected-journey"
+    },
+    {
+      "id": "tmdb-19034",
+      "name": "Evangeline Lilly",
+      "filmId": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "id": "tmdb-1328",
+      "name": "Sean Astin",
+      "filmId": "the-lord-of-the-rings-the-two-towers"
+    }
+  ],
+  "theme": "The Lord of the Rings"
+}

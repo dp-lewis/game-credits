@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-27",
+  "date": "2026-08-27",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "split",
+      "title": "Split",
+      "year": 2016
+    },
+    {
+      "id": "glass",
+      "title": "Glass",
+      "year": 2019
+    },
+    {
+      "id": "die-hard-with-a-vengeance",
+      "title": "Die Hard with a Vengeance",
+      "year": 1995
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-16940",
+      "name": "Jeremy Irons",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-62",
+      "name": "Bruce Willis",
+      "filmId": "glass",
+      "alsoIn": ["die-hard-with-a-vengeance"]
+    },
+    {
+      "id": "tmdb-6804",
+      "name": "Graham Greene",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-230060",
+      "name": "Amy Ferguson",
+      "filmId": "split"
+    },
+    {
+      "id": "tmdb-2231",
+      "name": "Samuel L. Jackson",
+      "filmId": "glass",
+      "alsoIn": ["die-hard-with-a-vengeance"]
+    },
+    {
+      "id": "tmdb-34490",
+      "name": "Sarah Paulson",
+      "filmId": "glass"
+    },
+    {
+      "id": "tmdb-91421",
+      "name": "Nicholas Wyman",
+      "filmId": "split",
+      "alsoIn": ["die-hard-with-a-vengeance"]
+    },
+    {
+      "id": "tmdb-17351",
+      "name": "Larry Bryggman",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-937913",
+      "name": "Morgan Spector",
+      "filmId": "split"
+    },
+    {
+      "id": "tmdb-5530",
+      "name": "James McAvoy",
+      "filmId": "glass"
+    },
+    {
+      "id": "tmdb-141747",
+      "name": "Anthony Peck",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-54327",
+      "name": "Anna Mouglalis",
+      "filmId": "split"
+    }
+  ],
+  "theme": "Samuel L. Jackson"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "2026-08-01",
+  "date": "2026-08-01",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "kramer-vs-kramer",
+      "title": "Kramer vs. Kramer",
+      "year": 1979
+    },
+    {
+      "id": "sophie-s-choice",
+      "title": "Sophie's Choice",
+      "year": 1982
+    },
+    {
+      "id": "julie-julia",
+      "title": "Julie & Julia",
+      "year": 2009
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-61659",
+      "name": "Chris Messina",
+      "filmId": "julie-julia"
+    },
+    {
+      "id": "tmdb-58643",
+      "name": "Linda Emond",
+      "filmId": "julie-julia"
+    },
+    {
+      "id": "tmdb-5064",
+      "name": "Meryl Streep",
+      "filmId": "kramer-vs-kramer",
+      "alsoIn": ["sophie-s-choice", "julie-julia"]
+    },
+    {
+      "id": "tmdb-8945",
+      "name": "Kevin Kline",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-12688",
+      "name": "Peter MacNicol",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-135170",
+      "name": "Rita Karin",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-9273",
+      "name": "Amy Adams",
+      "filmId": "julie-julia"
+    },
+    {
+      "id": "tmdb-4483",
+      "name": "Dustin Hoffman",
+      "filmId": "kramer-vs-kramer"
+    },
+    {
+      "id": "tmdb-33489",
+      "name": "Josh Mostel",
+      "filmId": "sophie-s-choice"
+    },
+    {
+      "id": "tmdb-13724",
+      "name": "Jane Alexander",
+      "filmId": "kramer-vs-kramer"
+    },
+    {
+      "id": "tmdb-71241",
+      "name": "Justin Henry",
+      "filmId": "kramer-vs-kramer"
+    },
+    {
+      "id": "tmdb-2283",
+      "name": "Stanley Tucci",
+      "filmId": "julie-julia"
+    }
+  ],
+  "theme": "Meryl Streep"
+}

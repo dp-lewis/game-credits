@@ -1,8 +1,9 @@
 ---
 id: catalogue-expansion
 title: Catalogue Expansion — 3-Month Variety
-status: pending
+status: completed
 created: 2026-06-17T00:00:00Z
+completed_at: 2026-06-17T10:01:27.446Z
 ---
 
 # Intent: Catalogue Expansion — 3-Month Variety

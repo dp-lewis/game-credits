@@ -1,0 +1,87 @@
+{
+  "id": "2026-09-03",
+  "date": "2026-09-03",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "edge-of-tomorrow",
+      "title": "Edge of Tomorrow",
+      "year": 2014
+    },
+    {
+      "id": "aliens",
+      "title": "Aliens",
+      "year": 1986
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar",
+      "year": 2009
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-65731",
+      "name": "Sam Worthington",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-2053",
+      "name": "Bill Paxton",
+      "filmId": "edge-of-tomorrow",
+      "alsoIn": ["aliens"]
+    },
+    {
+      "id": "tmdb-2039",
+      "name": "Brendan Gleeson",
+      "filmId": "edge-of-tomorrow"
+    },
+    {
+      "id": "tmdb-500",
+      "name": "Tom Cruise",
+      "filmId": "edge-of-tomorrow"
+    },
+    {
+      "id": "tmdb-2712",
+      "name": "Michael Biehn",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-10205",
+      "name": "Sigourney Weaver",
+      "filmId": "aliens",
+      "alsoIn": ["avatar"]
+    },
+    {
+      "id": "tmdb-5081",
+      "name": "Emily Blunt",
+      "filmId": "edge-of-tomorrow"
+    },
+    {
+      "id": "tmdb-10206",
+      "name": "Carrie Henn",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-781",
+      "name": "Paul Reiser",
+      "filmId": "aliens"
+    },
+    {
+      "id": "tmdb-17647",
+      "name": "Michelle Rodriguez",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-32747",
+      "name": "Stephen Lang",
+      "filmId": "avatar"
+    },
+    {
+      "id": "tmdb-8691",
+      "name": "Zoe Saldaña",
+      "filmId": "avatar"
+    }
+  ],
+  "theme": "Sci-Fi"
+}

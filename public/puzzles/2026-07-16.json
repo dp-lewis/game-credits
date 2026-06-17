@@ -1,0 +1,86 @@
+{
+  "id": "2026-07-16",
+  "date": "2026-07-16",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "ed-wood",
+      "title": "Ed Wood",
+      "year": 1994
+    },
+    {
+      "id": "sweeney-todd-the-demon-barber-of-fleet-street",
+      "title": "Sweeney Todd: The Demon Barber of Fleet Street",
+      "year": 2007
+    },
+    {
+      "id": "batman-returns",
+      "title": "Batman Returns",
+      "year": 1992
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-4687",
+      "name": "Patricia Arquette",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-4566",
+      "name": "Alan Rickman",
+      "filmId": "sweeney-todd-the-demon-barber-of-fleet-street"
+    },
+    {
+      "id": "tmdb-518",
+      "name": "Danny DeVito",
+      "filmId": "batman-returns"
+    },
+    {
+      "id": "tmdb-2232",
+      "name": "Michael Keaton",
+      "filmId": "batman-returns"
+    },
+    {
+      "id": "tmdb-2641",
+      "name": "Martin Landau",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-520",
+      "name": "Sarah Jessica Parker",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-85",
+      "name": "Johnny Depp",
+      "filmId": "sweeney-todd-the-demon-barber-of-fleet-street",
+      "alsoIn": ["ed-wood"]
+    },
+    {
+      "id": "tmdb-1283",
+      "name": "Helena Bonham Carter",
+      "filmId": "sweeney-todd-the-demon-barber-of-fleet-street"
+    },
+    {
+      "id": "tmdb-4690",
+      "name": "Christopher Walken",
+      "filmId": "batman-returns"
+    },
+    {
+      "id": "tmdb-4004",
+      "name": "Jeffrey Jones",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-1160",
+      "name": "Michelle Pfeiffer",
+      "filmId": "batman-returns"
+    },
+    {
+      "id": "tmdb-9191",
+      "name": "Timothy Spall",
+      "filmId": "sweeney-todd-the-demon-barber-of-fleet-street"
+    }
+  ],
+  "theme": "Tim Burton"
+}

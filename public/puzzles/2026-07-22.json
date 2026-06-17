@@ -1,0 +1,88 @@
+{
+  "id": "2026-07-22",
+  "date": "2026-07-22",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "return-of-the-jedi",
+      "title": "Return of the Jedi",
+      "year": 1983
+    },
+    {
+      "id": "rogue-one-a-star-wars-story",
+      "title": "Rogue One: A Star Wars Story",
+      "year": 2016
+    },
+    {
+      "id": "star-wars-the-last-jedi",
+      "title": "Star Wars: The Last Jedi",
+      "year": 2017
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-1341",
+      "name": "Donnie Yen",
+      "filmId": "rogue-one-a-star-wars-story"
+    },
+    {
+      "id": "tmdb-72855",
+      "name": "Felicity Jones",
+      "filmId": "rogue-one-a-star-wars-story"
+    },
+    {
+      "id": "tmdb-1023139",
+      "name": "Adam Driver",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-1315036",
+      "name": "Daisy Ridley",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-25072",
+      "name": "Oscar Isaac",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-8688",
+      "name": "Diego Luna",
+      "filmId": "rogue-one-a-star-wars-story"
+    },
+    {
+      "id": "tmdb-4",
+      "name": "Carrie Fisher",
+      "filmId": "return-of-the-jedi",
+      "alsoIn": ["star-wars-the-last-jedi"]
+    },
+    {
+      "id": "tmdb-2",
+      "name": "Mark Hamill",
+      "filmId": "return-of-the-jedi",
+      "alsoIn": ["star-wars-the-last-jedi"]
+    },
+    {
+      "id": "tmdb-3",
+      "name": "Harrison Ford",
+      "filmId": "return-of-the-jedi"
+    },
+    {
+      "id": "tmdb-21088",
+      "name": "Alan Tudyk",
+      "filmId": "rogue-one-a-star-wars-story"
+    },
+    {
+      "id": "tmdb-236695",
+      "name": "John Boyega",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-6",
+      "name": "Anthony Daniels",
+      "filmId": "return-of-the-jedi",
+      "alsoIn": ["star-wars-the-last-jedi"]
+    }
+  ],
+  "theme": "Star Wars"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "2026-07-28",
+  "date": "2026-07-28",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "kong-skull-island",
+      "title": "Kong: Skull Island",
+      "year": 2017
+    },
+    {
+      "id": "a-time-to-kill",
+      "title": "A Time to Kill",
+      "year": 1996
+    },
+    {
+      "id": "unbreakable",
+      "title": "Unbreakable",
+      "year": 2000
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-32",
+      "name": "Robin Wright",
+      "filmId": "unbreakable"
+    },
+    {
+      "id": "tmdb-62",
+      "name": "Bruce Willis",
+      "filmId": "unbreakable"
+    },
+    {
+      "id": "tmdb-1230",
+      "name": "John Goodman",
+      "filmId": "kong-skull-island"
+    },
+    {
+      "id": "tmdb-10297",
+      "name": "Matthew McConaughey",
+      "filmId": "a-time-to-kill"
+    },
+    {
+      "id": "tmdb-91606",
+      "name": "Tom Hiddleston",
+      "filmId": "kong-skull-island"
+    },
+    {
+      "id": "tmdb-4012",
+      "name": "Spencer Treat Clark",
+      "filmId": "unbreakable"
+    },
+    {
+      "id": "tmdb-60073",
+      "name": "Brie Larson",
+      "filmId": "kong-skull-island"
+    },
+    {
+      "id": "tmdb-1151657",
+      "name": "Jing Tian",
+      "filmId": "kong-skull-island"
+    },
+    {
+      "id": "tmdb-33689",
+      "name": "Charlayne Woodard",
+      "filmId": "unbreakable"
+    },
+    {
+      "id": "tmdb-18277",
+      "name": "Sandra Bullock",
+      "filmId": "a-time-to-kill"
+    },
+    {
+      "id": "tmdb-2231",
+      "name": "Samuel L. Jackson",
+      "filmId": "a-time-to-kill",
+      "alsoIn": ["kong-skull-island", "unbreakable"]
+    },
+    {
+      "id": "tmdb-1979",
+      "name": "Kevin Spacey",
+      "filmId": "a-time-to-kill"
+    }
+  ],
+  "theme": "Samuel L. Jackson"
+}

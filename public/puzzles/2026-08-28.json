@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-28",
+  "date": "2026-08-28",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "gangs-of-new-york",
+      "title": "Gangs of New York",
+      "year": 2002
+    },
+    {
+      "id": "goodfellas",
+      "title": "Goodfellas",
+      "year": 1990
+    },
+    {
+      "id": "the-irishman",
+      "title": "The Irishman",
+      "year": 2019
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-7004",
+      "name": "Paul Sorvino",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-11856",
+      "name": "Daniel Day-Lewis",
+      "filmId": "gangs-of-new-york"
+    },
+    {
+      "id": "tmdb-11480",
+      "name": "Frank Sivero",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-1158",
+      "name": "Al Pacino",
+      "filmId": "the-irishman"
+    },
+    {
+      "id": "tmdb-6941",
+      "name": "Cameron Diaz",
+      "filmId": "gangs-of-new-york"
+    },
+    {
+      "id": "tmdb-11477",
+      "name": "Ray Liotta",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-1115",
+      "name": "Stephen Graham",
+      "filmId": "the-irishman",
+      "alsoIn": ["gangs-of-new-york"]
+    },
+    {
+      "id": "tmdb-388",
+      "name": "Jim Broadbent",
+      "filmId": "gangs-of-new-york"
+    },
+    {
+      "id": "tmdb-11478",
+      "name": "Lorraine Bracco",
+      "filmId": "goodfellas"
+    },
+    {
+      "id": "tmdb-6193",
+      "name": "Leonardo DiCaprio",
+      "filmId": "gangs-of-new-york"
+    },
+    {
+      "id": "tmdb-380",
+      "name": "Robert De Niro",
+      "filmId": "the-irishman",
+      "alsoIn": ["goodfellas"]
+    },
+    {
+      "id": "tmdb-4517",
+      "name": "Joe Pesci",
+      "filmId": "the-irishman",
+      "alsoIn": ["goodfellas"]
+    }
+  ],
+  "theme": "Martin Scorsese"
+}

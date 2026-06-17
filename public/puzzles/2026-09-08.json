@@ -1,0 +1,86 @@
+{
+  "id": "2026-09-08",
+  "date": "2026-09-08",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "moneyball",
+      "title": "Moneyball",
+      "year": 2011
+    },
+    {
+      "id": "12-years-a-slave",
+      "title": "12 Years a Slave",
+      "year": 2013
+    },
+    {
+      "id": "troy",
+      "title": "Troy",
+      "year": 2004
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-71580",
+      "name": "Benedict Cumberbatch",
+      "filmId": "12-years-a-slave"
+    },
+    {
+      "id": "tmdb-21007",
+      "name": "Jonah Hill",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "troy",
+      "alsoIn": ["moneyball", "12-years-a-slave"]
+    },
+    {
+      "id": "tmdb-32",
+      "name": "Robin Wright",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-17288",
+      "name": "Michael Fassbender",
+      "filmId": "12-years-a-slave"
+    },
+    {
+      "id": "tmdb-114",
+      "name": "Orlando Bloom",
+      "filmId": "troy"
+    },
+    {
+      "id": "tmdb-73457",
+      "name": "Chris Pratt",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-1267329",
+      "name": "Lupita Nyong'o",
+      "filmId": "12-years-a-slave"
+    },
+    {
+      "id": "tmdb-1248",
+      "name": "Brian Cox",
+      "filmId": "troy"
+    },
+    {
+      "id": "tmdb-8783",
+      "name": "Eric Bana",
+      "filmId": "troy"
+    },
+    {
+      "id": "tmdb-1233",
+      "name": "Philip Seymour Hoffman",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-5294",
+      "name": "Chiwetel Ejiofor",
+      "filmId": "12-years-a-slave"
+    }
+  ],
+  "theme": "Brad Pitt"
+}

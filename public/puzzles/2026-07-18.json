@@ -1,0 +1,86 @@
+{
+  "id": "2026-07-18",
+  "date": "2026-07-18",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "iron-man",
+      "title": "Iron Man",
+      "year": 2008
+    },
+    {
+      "id": "thor",
+      "title": "Thor",
+      "year": 2011
+    },
+    {
+      "id": "doctor-strange",
+      "title": "Doctor Strange",
+      "year": 2016
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-30082",
+      "name": "Benedict Wong",
+      "filmId": "doctor-strange"
+    },
+    {
+      "id": "tmdb-5294",
+      "name": "Chiwetel Ejiofor",
+      "filmId": "doctor-strange"
+    },
+    {
+      "id": "tmdb-9048",
+      "name": "Clark Gregg",
+      "filmId": "thor",
+      "alsoIn": ["iron-man"]
+    },
+    {
+      "id": "tmdb-1229",
+      "name": "Jeff Bridges",
+      "filmId": "iron-man"
+    },
+    {
+      "id": "tmdb-12052",
+      "name": "Gwyneth Paltrow",
+      "filmId": "iron-man"
+    },
+    {
+      "id": "tmdb-18288",
+      "name": "Terrence Howard",
+      "filmId": "iron-man"
+    },
+    {
+      "id": "tmdb-74568",
+      "name": "Chris Hemsworth",
+      "filmId": "thor"
+    },
+    {
+      "id": "tmdb-91606",
+      "name": "Tom Hiddleston",
+      "filmId": "thor"
+    },
+    {
+      "id": "tmdb-71580",
+      "name": "Benedict Cumberbatch",
+      "filmId": "doctor-strange"
+    },
+    {
+      "id": "tmdb-53714",
+      "name": "Rachel McAdams",
+      "filmId": "doctor-strange"
+    },
+    {
+      "id": "tmdb-3223",
+      "name": "Robert Downey Jr.",
+      "filmId": "iron-man"
+    },
+    {
+      "id": "tmdb-524",
+      "name": "Natalie Portman",
+      "filmId": "thor"
+    }
+  ],
+  "theme": "The MCU"
+}

@@ -1,0 +1,87 @@
+{
+  "id": "2026-07-13",
+  "date": "2026-07-13",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "there-will-be-blood",
+      "title": "There Will Be Blood",
+      "year": 2007
+    },
+    {
+      "id": "the-master",
+      "title": "The Master",
+      "year": 2012
+    },
+    {
+      "id": "magnolia",
+      "title": "Magnolia",
+      "year": 1999
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-4784",
+      "name": "Laura Dern",
+      "filmId": "the-master"
+    },
+    {
+      "id": "tmdb-11856",
+      "name": "Daniel Day-Lewis",
+      "filmId": "there-will-be-blood"
+    },
+    {
+      "id": "tmdb-1231",
+      "name": "Julianne Moore",
+      "filmId": "magnolia"
+    },
+    {
+      "id": "tmdb-17142",
+      "name": "Paul Dano",
+      "filmId": "there-will-be-blood"
+    },
+    {
+      "id": "tmdb-4492",
+      "name": "Philip Baker Hall",
+      "filmId": "magnolia"
+    },
+    {
+      "id": "tmdb-17838",
+      "name": "Rami Malek",
+      "filmId": "the-master"
+    },
+    {
+      "id": "tmdb-9273",
+      "name": "Amy Adams",
+      "filmId": "the-master"
+    },
+    {
+      "id": "tmdb-500",
+      "name": "Tom Cruise",
+      "filmId": "magnolia"
+    },
+    {
+      "id": "tmdb-1233",
+      "name": "Philip Seymour Hoffman",
+      "filmId": "magnolia",
+      "alsoIn": ["the-master"]
+    },
+    {
+      "id": "tmdb-18916",
+      "name": "Kevin J. O'Connor",
+      "filmId": "there-will-be-blood",
+      "alsoIn": ["the-master"]
+    },
+    {
+      "id": "tmdb-73421",
+      "name": "Joaquin Phoenix",
+      "filmId": "the-master"
+    },
+    {
+      "id": "tmdb-8785",
+      "name": "Ciarán Hinds",
+      "filmId": "there-will-be-blood"
+    }
+  ],
+  "theme": "Paul Thomas Anderson"
+}

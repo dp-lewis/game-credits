@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-02",
+  "date": "2026-08-02",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "burn-after-reading",
+      "title": "Burn After Reading",
+      "year": 2008
+    },
+    {
+      "id": "hail-caesar",
+      "title": "Hail, Caesar!",
+      "year": 2016
+    },
+    {
+      "id": "o-brother-where-art-thou",
+      "title": "O Brother, Where Art Thou?",
+      "year": 2000
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-71375",
+      "name": "Alden Ehrenreich",
+      "filmId": "hail-caesar"
+    },
+    {
+      "id": "tmdb-6949",
+      "name": "John Malkovich",
+      "filmId": "burn-after-reading"
+    },
+    {
+      "id": "tmdb-16851",
+      "name": "Josh Brolin",
+      "filmId": "hail-caesar"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "burn-after-reading"
+    },
+    {
+      "id": "tmdb-1241",
+      "name": "John Turturro",
+      "filmId": "o-brother-where-art-thou"
+    },
+    {
+      "id": "tmdb-1230",
+      "name": "John Goodman",
+      "filmId": "o-brother-where-art-thou"
+    },
+    {
+      "id": "tmdb-3063",
+      "name": "Tilda Swinton",
+      "filmId": "hail-caesar",
+      "alsoIn": ["burn-after-reading"]
+    },
+    {
+      "id": "tmdb-126713",
+      "name": "Elizabeth Marvel",
+      "filmId": "burn-after-reading"
+    },
+    {
+      "id": "tmdb-28633",
+      "name": "Richard Jenkins",
+      "filmId": "burn-after-reading"
+    },
+    {
+      "id": "tmdb-1462",
+      "name": "Tim Blake Nelson",
+      "filmId": "o-brother-where-art-thou"
+    },
+    {
+      "id": "tmdb-3910",
+      "name": "Frances McDormand",
+      "filmId": "hail-caesar",
+      "alsoIn": ["burn-after-reading"]
+    },
+    {
+      "id": "tmdb-1461",
+      "name": "George Clooney",
+      "filmId": "o-brother-where-art-thou",
+      "alsoIn": ["burn-after-reading", "hail-caesar"]
+    }
+  ],
+  "theme": "The Coen Brothers"
+}

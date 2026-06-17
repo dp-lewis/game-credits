@@ -499,58 +499,38 @@ intents:
         completed_at: 2026-06-16T09:46:09Z
   - id: catalogue-expansion
     title: Catalogue Expansion — 3-Month Variety
-    status: in_progress
+    status: completed
     created: 2026-06-17T00:00:00Z
+    completed_at: 2026-06-17T08:05:00Z
     work_items:
       - id: expand-cluster-roster
         title: Expand Cluster Roster
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on: []
+        run_id: run-game-credits-029
+        completed_at: 2026-06-17T10:01:27.431Z
       - id: rebuild-tmdb-catalogue
         title: Rebuild TMDB Catalogue
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - expand-cluster-roster
+        run_id: run-game-credits-029
+        completed_at: 2026-06-17T10:01:27.431Z
       - id: generate-90-day-schedule
         title: Generate 90-Day Schedule
-        status: pending
+        status: completed
         complexity: medium
         mode: autopilot
         depends_on:
           - rebuild-tmdb-catalogue
+        run_id: run-game-credits-029
+        completed_at: 2026-06-17T10:01:27.431Z
 runs:
-  active:
-    - id: run-game-credits-029
-      scope: wide
-      work_items:
-        - id: expand-cluster-roster
-          intent: catalogue-expansion
-          mode: autopilot
-          status: completed
-          current_phase: review
-          checkpoint_state: none
-          current_checkpoint: null
-          completed_at: 2026-06-17T07:57:14.514Z
-        - id: rebuild-tmdb-catalogue
-          intent: catalogue-expansion
-          mode: autopilot
-          status: in_progress
-          current_phase: execute
-          checkpoint_state: none
-          current_checkpoint: null
-        - id: generate-90-day-schedule
-          intent: catalogue-expansion
-          mode: autopilot
-          status: pending
-          current_phase: null
-          checkpoint_state: none
-          current_checkpoint: null
-      current_item: rebuild-tmdb-catalogue
-      started: 2026-06-17T07:48:58.095Z
+  active: []
   completed:
     - id: run-game-credits-001
       scope: single
@@ -833,3 +813,17 @@ runs:
           mode: autopilot
       started: 2026-06-16T09:30:00Z
       completed: 2026-06-16T09:46:09Z
+    - id: run-game-credits-029
+      scope: wide
+      work_items:
+        - id: expand-cluster-roster
+          intent: catalogue-expansion
+          mode: autopilot
+        - id: rebuild-tmdb-catalogue
+          intent: catalogue-expansion
+          mode: autopilot
+        - id: generate-90-day-schedule
+          intent: catalogue-expansion
+          mode: autopilot
+      started: 2026-06-17T07:48:58.095Z
+      completed: 2026-06-17T10:01:27.431Z

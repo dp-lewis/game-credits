@@ -1,0 +1,87 @@
+{
+  "id": "2026-06-28",
+  "date": "2026-06-28",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "glass",
+      "title": "Glass",
+      "year": 2019
+    },
+    {
+      "id": "kong-skull-island",
+      "title": "Kong: Skull Island",
+      "year": 2017
+    },
+    {
+      "id": "die-hard-with-a-vengeance",
+      "title": "Die Hard with a Vengeance",
+      "year": 1995
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-1397778",
+      "name": "Anya Taylor-Joy",
+      "filmId": "glass"
+    },
+    {
+      "id": "tmdb-2231",
+      "name": "Samuel L. Jackson",
+      "filmId": "kong-skull-island",
+      "alsoIn": ["glass", "die-hard-with-a-vengeance"]
+    },
+    {
+      "id": "tmdb-6804",
+      "name": "Graham Greene",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-1230",
+      "name": "John Goodman",
+      "filmId": "kong-skull-island"
+    },
+    {
+      "id": "tmdb-141747",
+      "name": "Anthony Peck",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-16940",
+      "name": "Jeremy Irons",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-5530",
+      "name": "James McAvoy",
+      "filmId": "glass"
+    },
+    {
+      "id": "tmdb-91606",
+      "name": "Tom Hiddleston",
+      "filmId": "kong-skull-island"
+    },
+    {
+      "id": "tmdb-62",
+      "name": "Bruce Willis",
+      "filmId": "glass",
+      "alsoIn": ["die-hard-with-a-vengeance"]
+    },
+    {
+      "id": "tmdb-17351",
+      "name": "Larry Bryggman",
+      "filmId": "die-hard-with-a-vengeance"
+    },
+    {
+      "id": "tmdb-34490",
+      "name": "Sarah Paulson",
+      "filmId": "glass"
+    },
+    {
+      "id": "tmdb-60073",
+      "name": "Brie Larson",
+      "filmId": "kong-skull-island"
+    }
+  ],
+  "theme": "Samuel L. Jackson"
+}

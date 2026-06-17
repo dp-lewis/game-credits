@@ -1,0 +1,89 @@
+{
+  "id": "2026-08-09",
+  "date": "2026-08-09",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "the-assassination-of-jesse-james-by-the-coward-robert-ford",
+      "title": "The Assassination of Jesse James by the Coward Robert Ford",
+      "year": 2007
+    },
+    {
+      "id": "troy",
+      "title": "Troy",
+      "year": 2004
+    },
+    {
+      "id": "moneyball",
+      "title": "Moneyball",
+      "year": 2011
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-73457",
+      "name": "Chris Pratt",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-114",
+      "name": "Orlando Bloom",
+      "filmId": "troy"
+    },
+    {
+      "id": "tmdb-17604",
+      "name": "Jeremy Renner",
+      "filmId": "the-assassination-of-jesse-james-by-the-coward-robert-ford"
+    },
+    {
+      "id": "tmdb-1248",
+      "name": "Brian Cox",
+      "filmId": "troy"
+    },
+    {
+      "id": "tmdb-1233",
+      "name": "Philip Seymour Hoffman",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-15684",
+      "name": "Paul Schneider",
+      "filmId": "the-assassination-of-jesse-james-by-the-coward-robert-ford"
+    },
+    {
+      "id": "tmdb-6807",
+      "name": "Sam Rockwell",
+      "filmId": "the-assassination-of-jesse-james-by-the-coward-robert-ford"
+    },
+    {
+      "id": "tmdb-21007",
+      "name": "Jonah Hill",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-287",
+      "name": "Brad Pitt",
+      "filmId": "troy",
+      "alsoIn": [
+        "the-assassination-of-jesse-james-by-the-coward-robert-ford",
+        "moneyball"
+      ]
+    },
+    {
+      "id": "tmdb-1893",
+      "name": "Casey Affleck",
+      "filmId": "the-assassination-of-jesse-james-by-the-coward-robert-ford"
+    },
+    {
+      "id": "tmdb-32",
+      "name": "Robin Wright",
+      "filmId": "moneyball"
+    },
+    {
+      "id": "tmdb-8783",
+      "name": "Eric Bana",
+      "filmId": "troy"
+    }
+  ],
+  "theme": "Brad Pitt"
+}

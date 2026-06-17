@@ -1,0 +1,86 @@
+{
+  "id": "2026-08-06",
+  "date": "2026-08-06",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "munich",
+      "title": "Munich",
+      "year": 2005
+    },
+    {
+      "id": "the-post",
+      "title": "The Post",
+      "year": 2017
+    },
+    {
+      "id": "catch-me-if-you-can",
+      "title": "Catch Me If You Can",
+      "year": 2002
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-8785",
+      "name": "Ciarán Hinds",
+      "filmId": "munich"
+    },
+    {
+      "id": "tmdb-5064",
+      "name": "Meryl Streep",
+      "filmId": "the-post"
+    },
+    {
+      "id": "tmdb-34490",
+      "name": "Sarah Paulson",
+      "filmId": "the-post"
+    },
+    {
+      "id": "tmdb-4690",
+      "name": "Christopher Walken",
+      "filmId": "catch-me-if-you-can"
+    },
+    {
+      "id": "tmdb-8349",
+      "name": "Martin Sheen",
+      "filmId": "catch-me-if-you-can"
+    },
+    {
+      "id": "tmdb-136761",
+      "name": "Nathalie Baye",
+      "filmId": "catch-me-if-you-can"
+    },
+    {
+      "id": "tmdb-8784",
+      "name": "Daniel Craig",
+      "filmId": "munich"
+    },
+    {
+      "id": "tmdb-59410",
+      "name": "Bob Odenkirk",
+      "filmId": "the-post"
+    },
+    {
+      "id": "tmdb-6193",
+      "name": "Leonardo DiCaprio",
+      "filmId": "catch-me-if-you-can"
+    },
+    {
+      "id": "tmdb-8783",
+      "name": "Eric Bana",
+      "filmId": "munich"
+    },
+    {
+      "id": "tmdb-2406",
+      "name": "Mathieu Kassovitz",
+      "filmId": "munich"
+    },
+    {
+      "id": "tmdb-31",
+      "name": "Tom Hanks",
+      "filmId": "the-post",
+      "alsoIn": ["catch-me-if-you-can"]
+    }
+  ],
+  "theme": "Steven Spielberg"
+}

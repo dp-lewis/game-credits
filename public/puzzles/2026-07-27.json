@@ -1,0 +1,85 @@
+{
+  "id": "2026-07-27",
+  "date": "2026-07-27",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "beverly-hills-cop",
+      "title": "Beverly Hills Cop",
+      "year": 1984
+    },
+    {
+      "id": "predator",
+      "title": "Predator",
+      "year": 1987
+    },
+    {
+      "id": "die-hard",
+      "title": "Die Hard",
+      "year": 1988
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-1102",
+      "name": "Elpidia Carrillo",
+      "filmId": "predator"
+    },
+    {
+      "id": "tmdb-777",
+      "name": "Judge Reinhold",
+      "filmId": "beverly-hills-cop"
+    },
+    {
+      "id": "tmdb-62",
+      "name": "Bruce Willis",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-7673",
+      "name": "Bonnie Bedelia",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-4566",
+      "name": "Alan Rickman",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-779",
+      "name": "Lisa Eilbacher",
+      "filmId": "beverly-hills-cop"
+    },
+    {
+      "id": "tmdb-1100",
+      "name": "Arnold Schwarzenegger",
+      "filmId": "predator"
+    },
+    {
+      "id": "tmdb-1109",
+      "name": "Kevin Peter Hall",
+      "filmId": "predator"
+    },
+    {
+      "id": "tmdb-776",
+      "name": "Eddie Murphy",
+      "filmId": "beverly-hills-cop"
+    },
+    {
+      "id": "tmdb-1101",
+      "name": "Carl Weathers",
+      "filmId": "predator"
+    },
+    {
+      "id": "tmdb-7674",
+      "name": "Alexander Godunov",
+      "filmId": "die-hard"
+    },
+    {
+      "id": "tmdb-778",
+      "name": "John Ashton",
+      "filmId": "beverly-hills-cop"
+    }
+  ],
+  "theme": "80s Action"
+}

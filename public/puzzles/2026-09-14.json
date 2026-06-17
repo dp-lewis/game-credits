@@ -1,0 +1,86 @@
+{
+  "id": "2026-09-14",
+  "date": "2026-09-14",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "batman-returns",
+      "title": "Batman Returns",
+      "year": 1992
+    },
+    {
+      "id": "edward-scissorhands",
+      "title": "Edward Scissorhands",
+      "year": 1990
+    },
+    {
+      "id": "ed-wood",
+      "title": "Ed Wood",
+      "year": 1994
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-2232",
+      "name": "Michael Keaton",
+      "filmId": "batman-returns"
+    },
+    {
+      "id": "tmdb-1904",
+      "name": "Anthony Michael Hall",
+      "filmId": "edward-scissorhands"
+    },
+    {
+      "id": "tmdb-4004",
+      "name": "Jeffrey Jones",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-2641",
+      "name": "Martin Landau",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-518",
+      "name": "Danny DeVito",
+      "filmId": "batman-returns"
+    },
+    {
+      "id": "tmdb-85",
+      "name": "Johnny Depp",
+      "filmId": "edward-scissorhands",
+      "alsoIn": ["ed-wood"]
+    },
+    {
+      "id": "tmdb-520",
+      "name": "Sarah Jessica Parker",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-4687",
+      "name": "Patricia Arquette",
+      "filmId": "ed-wood"
+    },
+    {
+      "id": "tmdb-1920",
+      "name": "Winona Ryder",
+      "filmId": "edward-scissorhands"
+    },
+    {
+      "id": "tmdb-1902",
+      "name": "Dianne Wiest",
+      "filmId": "edward-scissorhands"
+    },
+    {
+      "id": "tmdb-1160",
+      "name": "Michelle Pfeiffer",
+      "filmId": "batman-returns"
+    },
+    {
+      "id": "tmdb-4690",
+      "name": "Christopher Walken",
+      "filmId": "batman-returns"
+    }
+  ],
+  "theme": "Tim Burton"
+}

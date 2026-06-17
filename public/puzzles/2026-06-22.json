@@ -1,0 +1,88 @@
+{
+  "id": "2026-06-22",
+  "date": "2026-06-22",
+  "maxMistakes": 4,
+  "films": [
+    {
+      "id": "star-wars-the-force-awakens",
+      "title": "Star Wars: The Force Awakens",
+      "year": 2015
+    },
+    {
+      "id": "the-empire-strikes-back",
+      "title": "The Empire Strikes Back",
+      "year": 1980
+    },
+    {
+      "id": "star-wars-the-last-jedi",
+      "title": "Star Wars: The Last Jedi",
+      "year": 2017
+    }
+  ],
+  "actors": [
+    {
+      "id": "tmdb-2",
+      "name": "Mark Hamill",
+      "filmId": "the-empire-strikes-back",
+      "alsoIn": ["star-wars-the-force-awakens", "star-wars-the-last-jedi"]
+    },
+    {
+      "id": "tmdb-24342",
+      "name": "David Prowse",
+      "filmId": "the-empire-strikes-back"
+    },
+    {
+      "id": "tmdb-2201",
+      "name": "Max von Sydow",
+      "filmId": "star-wars-the-force-awakens"
+    },
+    {
+      "id": "tmdb-4784",
+      "name": "Laura Dern",
+      "filmId": "star-wars-the-last-jedi"
+    },
+    {
+      "id": "tmdb-3799",
+      "name": "Billy Dee Williams",
+      "filmId": "the-empire-strikes-back"
+    },
+    {
+      "id": "tmdb-1399528",
+      "name": "Pip Andersen",
+      "filmId": "star-wars-the-force-awakens"
+    },
+    {
+      "id": "tmdb-11108",
+      "name": "Simon Pegg",
+      "filmId": "star-wars-the-force-awakens"
+    },
+    {
+      "id": "tmdb-130",
+      "name": "Kenny Baker",
+      "filmId": "the-empire-strikes-back"
+    },
+    {
+      "id": "tmdb-5531",
+      "name": "Kiran Shah",
+      "filmId": "star-wars-the-force-awakens"
+    },
+    {
+      "id": "tmdb-236695",
+      "name": "John Boyega",
+      "filmId": "star-wars-the-last-jedi",
+      "alsoIn": ["star-wars-the-force-awakens"]
+    },
+    {
+      "id": "tmdb-1315036",
+      "name": "Daisy Ridley",
+      "filmId": "star-wars-the-last-jedi",
+      "alsoIn": ["star-wars-the-force-awakens"]
+    },
+    {
+      "id": "tmdb-1663195",
+      "name": "Kelly Marie Tran",
+      "filmId": "star-wars-the-last-jedi"
+    }
+  ],
+  "theme": "Star Wars"
+}

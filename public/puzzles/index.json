@@ -41,22 +41,362 @@
   },
   {
     "date": "2026-06-17",
-    "theme": "The MCU"
+    "theme": "Christopher Nolan"
   },
   {
     "date": "2026-06-18",
-    "theme": "Quentin Tarantino"
+    "theme": "The MCU"
   },
   {
     "date": "2026-06-19",
-    "theme": "Leonardo DiCaprio"
+    "theme": "Apatow comedies"
   },
   {
     "date": "2026-06-20",
-    "theme": "Martin Scorsese"
+    "theme": "Leonardo DiCaprio"
   },
   {
     "date": "2026-06-21",
+    "theme": "Wes Anderson"
+  },
+  {
+    "date": "2026-06-22",
+    "theme": "Star Wars"
+  },
+  {
+    "date": "2026-06-23",
+    "theme": "Horror"
+  },
+  {
+    "date": "2026-06-24",
+    "theme": "Tom Hanks"
+  },
+  {
+    "date": "2026-06-25",
+    "theme": "Quentin Tarantino"
+  },
+  {
+    "date": "2026-06-26",
+    "theme": "Harry Potter"
+  },
+  {
+    "date": "2026-06-27",
+    "theme": "80s Action"
+  },
+  {
+    "date": "2026-06-28",
+    "theme": "Samuel L. Jackson"
+  },
+  {
+    "date": "2026-06-29",
+    "theme": "Martin Scorsese"
+  },
+  {
+    "date": "2026-06-30",
+    "theme": "The Lord of the Rings"
+  },
+  {
+    "date": "2026-07-01",
+    "theme": "Heist"
+  },
+  {
+    "date": "2026-07-02",
+    "theme": "Meryl Streep"
+  },
+  {
+    "date": "2026-07-03",
+    "theme": "The Coen Brothers"
+  },
+  {
+    "date": "2026-07-04",
+    "theme": "Mission: Impossible"
+  },
+  {
+    "date": "2026-07-05",
+    "theme": "Sci-Fi"
+  },
+  {
+    "date": "2026-07-06",
+    "theme": "Denzel Washington"
+  },
+  {
+    "date": "2026-07-07",
+    "theme": "Steven Spielberg"
+  },
+  {
+    "date": "2026-07-08",
+    "theme": "James Bond"
+  },
+  {
+    "date": "2026-07-09",
+    "theme": "Rom-Com"
+  },
+  {
+    "date": "2026-07-10",
+    "theme": "Brad Pitt"
+  },
+  {
+    "date": "2026-07-11",
+    "theme": "David Fincher"
+  },
+  {
+    "date": "2026-07-12",
+    "theme": "Ocean's"
+  },
+  {
+    "date": "2026-07-13",
+    "theme": "Paul Thomas Anderson"
+  },
+  {
+    "date": "2026-07-14",
+    "theme": "Ridley Scott"
+  },
+  {
+    "date": "2026-07-15",
+    "theme": "Denis Villeneuve"
+  },
+  {
+    "date": "2026-07-16",
+    "theme": "Tim Burton"
+  },
+  {
+    "date": "2026-07-17",
+    "theme": "Christopher Nolan"
+  },
+  {
+    "date": "2026-07-18",
+    "theme": "The MCU"
+  },
+  {
+    "date": "2026-07-19",
     "theme": "Apatow comedies"
+  },
+  {
+    "date": "2026-07-20",
+    "theme": "Leonardo DiCaprio"
+  },
+  {
+    "date": "2026-07-21",
+    "theme": "Wes Anderson"
+  },
+  {
+    "date": "2026-07-22",
+    "theme": "Star Wars"
+  },
+  {
+    "date": "2026-07-23",
+    "theme": "Horror"
+  },
+  {
+    "date": "2026-07-24",
+    "theme": "Tom Hanks"
+  },
+  {
+    "date": "2026-07-25",
+    "theme": "Quentin Tarantino"
+  },
+  {
+    "date": "2026-07-26",
+    "theme": "Harry Potter"
+  },
+  {
+    "date": "2026-07-27",
+    "theme": "80s Action"
+  },
+  {
+    "date": "2026-07-28",
+    "theme": "Samuel L. Jackson"
+  },
+  {
+    "date": "2026-07-29",
+    "theme": "Martin Scorsese"
+  },
+  {
+    "date": "2026-07-30",
+    "theme": "The Lord of the Rings"
+  },
+  {
+    "date": "2026-07-31",
+    "theme": "Heist"
+  },
+  {
+    "date": "2026-08-01",
+    "theme": "Meryl Streep"
+  },
+  {
+    "date": "2026-08-02",
+    "theme": "The Coen Brothers"
+  },
+  {
+    "date": "2026-08-03",
+    "theme": "Mission: Impossible"
+  },
+  {
+    "date": "2026-08-04",
+    "theme": "Sci-Fi"
+  },
+  {
+    "date": "2026-08-05",
+    "theme": "Denzel Washington"
+  },
+  {
+    "date": "2026-08-06",
+    "theme": "Steven Spielberg"
+  },
+  {
+    "date": "2026-08-07",
+    "theme": "James Bond"
+  },
+  {
+    "date": "2026-08-08",
+    "theme": "Rom-Com"
+  },
+  {
+    "date": "2026-08-09",
+    "theme": "Brad Pitt"
+  },
+  {
+    "date": "2026-08-10",
+    "theme": "David Fincher"
+  },
+  {
+    "date": "2026-08-11",
+    "theme": "Ocean's"
+  },
+  {
+    "date": "2026-08-12",
+    "theme": "Paul Thomas Anderson"
+  },
+  {
+    "date": "2026-08-13",
+    "theme": "Ridley Scott"
+  },
+  {
+    "date": "2026-08-14",
+    "theme": "Denis Villeneuve"
+  },
+  {
+    "date": "2026-08-15",
+    "theme": "Tim Burton"
+  },
+  {
+    "date": "2026-08-16",
+    "theme": "Christopher Nolan"
+  },
+  {
+    "date": "2026-08-17",
+    "theme": "The MCU"
+  },
+  {
+    "date": "2026-08-18",
+    "theme": "Apatow comedies"
+  },
+  {
+    "date": "2026-08-19",
+    "theme": "Leonardo DiCaprio"
+  },
+  {
+    "date": "2026-08-20",
+    "theme": "Wes Anderson"
+  },
+  {
+    "date": "2026-08-21",
+    "theme": "Star Wars"
+  },
+  {
+    "date": "2026-08-22",
+    "theme": "Horror"
+  },
+  {
+    "date": "2026-08-23",
+    "theme": "Tom Hanks"
+  },
+  {
+    "date": "2026-08-24",
+    "theme": "Quentin Tarantino"
+  },
+  {
+    "date": "2026-08-25",
+    "theme": "Harry Potter"
+  },
+  {
+    "date": "2026-08-26",
+    "theme": "80s Action"
+  },
+  {
+    "date": "2026-08-27",
+    "theme": "Samuel L. Jackson"
+  },
+  {
+    "date": "2026-08-28",
+    "theme": "Martin Scorsese"
+  },
+  {
+    "date": "2026-08-29",
+    "theme": "The Lord of the Rings"
+  },
+  {
+    "date": "2026-08-30",
+    "theme": "Heist"
+  },
+  {
+    "date": "2026-08-31",
+    "theme": "Meryl Streep"
+  },
+  {
+    "date": "2026-09-01",
+    "theme": "The Coen Brothers"
+  },
+  {
+    "date": "2026-09-02",
+    "theme": "Mission: Impossible"
+  },
+  {
+    "date": "2026-09-03",
+    "theme": "Sci-Fi"
+  },
+  {
+    "date": "2026-09-04",
+    "theme": "Denzel Washington"
+  },
+  {
+    "date": "2026-09-05",
+    "theme": "Steven Spielberg"
+  },
+  {
+    "date": "2026-09-06",
+    "theme": "James Bond"
+  },
+  {
+    "date": "2026-09-07",
+    "theme": "Rom-Com"
+  },
+  {
+    "date": "2026-09-08",
+    "theme": "Brad Pitt"
+  },
+  {
+    "date": "2026-09-09",
+    "theme": "David Fincher"
+  },
+  {
+    "date": "2026-09-10",
+    "theme": "Ocean's"
+  },
+  {
+    "date": "2026-09-11",
+    "theme": "Paul Thomas Anderson"
+  },
+  {
+    "date": "2026-09-12",
+    "theme": "Ridley Scott"
+  },
+  {
+    "date": "2026-09-13",
+    "theme": "Denis Villeneuve"
+  },
+  {
+    "date": "2026-09-14",
+    "theme": "Tim Burton"
   }
 ]
