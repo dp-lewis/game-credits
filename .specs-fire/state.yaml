@@ -501,7 +501,27 @@ intents:
     title: Catalogue Expansion — 3-Month Variety
     status: in_progress
     created: 2026-06-17T00:00:00Z
-    work_items: []
+    work_items:
+      - id: expand-cluster-roster
+        title: Expand Cluster Roster
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on: []
+      - id: rebuild-tmdb-catalogue
+        title: Rebuild TMDB Catalogue
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - expand-cluster-roster
+      - id: generate-90-day-schedule
+        title: Generate 90-Day Schedule
+        status: pending
+        complexity: medium
+        mode: autopilot
+        depends_on:
+          - rebuild-tmdb-catalogue
 runs:
   active: []
   completed:
